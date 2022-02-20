@@ -1,0 +1,4 @@
+set -e
+
+python starcommand.py -a >starcommand_acme.asm
+tools/acme -o starcommand.bin starcommand_acme.asm
