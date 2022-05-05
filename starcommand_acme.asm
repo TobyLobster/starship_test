@@ -3196,19 +3196,22 @@ l215a
 l2184
     !byte 1  , 0  , $f8, $fa, $0f, 4  , $0a, 8  , $7f, $fe, $fc, $ff  ; 3284: 01 00 f8... ... :2184[1]
     !byte $7e, $64                                                    ; 3290: 7e 64       ~d  :2190[1]
+l2192
     !byte 2  , 0  , $f8, $fa, $fe, 4  , $0a, 8  , $7f, $fe, $ff, $ff  ; 3292: 02 00 f8... ... :2192[1]
     !byte $64, $50                                                    ; 329e: 64 50       dP  :219e[1]
+l21a0
     !byte 3  , $86, $ff, 0  , 1  , 3  , 1  , 2  , $7f, $ff, $fd, $fd  ; 32a0: 03 86 ff... ... :21a0[1]
     !byte $7e, $78                                                    ; 32ac: 7e 78       ~x  :21ac[1]
+l21ae
     !byte 4  , 0  , $10, $f0, $10, 4  , 8  , 4  , $7f, $ff, $ff, $ff  ; 32ae: 04 00 10... ... :21ae[1]
     !byte $7e, $64, 1  , 2  , 3  , 4  , 5  , 6  , 7  , 8  , 9  , $0a  ; 32ba: 7e 64 01... ~d. :21ba[1]
     !byte $0b, $0c                                                    ; 32c6: 0b 0c       ..  :21c6[1]
-l21c8
+sound_1
     !byte $11, 0  , 0  , 0                                            ; 32c8: 11 00 00... ... :21c8[1]
 ; $32cc referenced 1 time by $2516
 l21cc
     !byte 0, 0, 8, 0                                                  ; 32cc: 00 00 08... ... :21cc[1]
-l21d0
+sound_2
     !byte $10, 0                                                      ; 32d0: 10 00       ..  :21d0[1]
 ; $32d2 referenced 1 time by $2527
 l21d2
@@ -3216,14 +3219,18 @@ l21d2
 ; $32d3 referenced 1 time by $252e
 l21d3
     !byte 0, 7, 0, 8, 0                                               ; 32d3: 00 07 00... ... :21d3[1]
-l21d8
+sound_3
     !byte $13, 0  , 1  , 0  , $80, 0  , 4  , 0                        ; 32d8: 13 00 01... ... :21d8[1]
-    !byte $12, 0  , 2  , 0  , $c0, 0  , $1f, 0  , $12, 0  , 4  , 0    ; 32e0: 12 00 02... ... :21e0[1]
-    !byte $40, 0  , 8  , 0  , $12, 0  , 4  , 0  , $be, 0  , 8  , 0    ; 32ec: 40 00 08... @.. :21ec[1]
-l21f8
+sound_4
+    !byte $12, 0  , 2  , 0  , $c0, 0  , $1f, 0                        ; 32e0: 12 00 02... ... :21e0[1]
+sound_5
+    !byte $12, 0  , 4  , 0  , $40, 0  , 8  , 0                        ; 32e8: 12 00 04... ... :21e8[1]
+sound_6
+    !byte $12, 0  , 4  , 0  , $be, 0  , 8  , 0                        ; 32f0: 12 00 04... ... :21f0[1]
+sound_7
     !byte $13, 0  , 2  , 0  , $6c, 0  , 8  , 0                        ; 32f8: 13 00 02... ... :21f8[1]
 ; $3300 referenced 1 time by $254f
-l2200
+sound_8
     !byte $13, 0                                                      ; 3300: 13 00       ..  :2200[1]
 ; $3302 referenced 1 time by $2563
 l2202
@@ -3231,7 +3238,7 @@ l2202
 ; $3303 referenced 1 time by $256a
 l2203
     !byte 0  , $64, 0  , 4  , 0                                       ; 3303: 00 64 00... .d. :2203[1]
-l2208
+sound_9
     !byte $11, 0  , $f1, $ff, $c8, 0  , 4  , 0                        ; 3308: 11 00 f1... ... :2208[1]
 ; $3310 referenced 1 time by $2308
 l2210
@@ -3340,21 +3347,21 @@ loop_c22cb
 
 ; $33d5 referenced 1 time by $28ac
 sub_c22d5
-    ldx #$84                                                          ; 33d5: a2 84       ..  :22d5[1]
-    ldy #$21 ; '!'                                                    ; 33d7: a0 21       .!  :22d7[1]
-    lda #8                                                            ; 33d9: a9 08       ..  :22d9[1]
+    ldx #<(l2184)                                                     ; 33d5: a2 84       ..  :22d5[1]
+    ldy #>(l2184)                                                     ; 33d7: a0 21       .!  :22d7[1]
+    lda #osword_envelope                                              ; 33d9: a9 08       ..  :22d9[1]
     jsr osword                                                        ; 33db: 20 f1 ff     .. :22db[1]
-    ldx #$92                                                          ; 33de: a2 92       ..  :22de[1]
-    ldy #$21 ; '!'                                                    ; 33e0: a0 21       .!  :22e0[1]
-    lda #8                                                            ; 33e2: a9 08       ..  :22e2[1]
+    ldx #<(l2192)                                                     ; 33de: a2 92       ..  :22de[1]
+    ldy #>(l2192)                                                     ; 33e0: a0 21       .!  :22e0[1]
+    lda #osword_envelope                                              ; 33e2: a9 08       ..  :22e2[1]
     jsr osword                                                        ; 33e4: 20 f1 ff     .. :22e4[1]
-    ldx #$a0                                                          ; 33e7: a2 a0       ..  :22e7[1]
-    ldy #$21 ; '!'                                                    ; 33e9: a0 21       .!  :22e9[1]
-    lda #8                                                            ; 33eb: a9 08       ..  :22eb[1]
+    ldx #<(l21a0)                                                     ; 33e7: a2 a0       ..  :22e7[1]
+    ldy #>(l21a0)                                                     ; 33e9: a0 21       .!  :22e9[1]
+    lda #osword_envelope                                              ; 33eb: a9 08       ..  :22eb[1]
     jsr osword                                                        ; 33ed: 20 f1 ff     .. :22ed[1]
-    ldx #$ae                                                          ; 33f0: a2 ae       ..  :22f0[1]
-    ldy #$21 ; '!'                                                    ; 33f2: a0 21       .!  :22f2[1]
-    lda #8                                                            ; 33f4: a9 08       ..  :22f4[1]
+    ldx #<(l21ae)                                                     ; 33f0: a2 ae       ..  :22f0[1]
+    ldy #>(l21ae)                                                     ; 33f2: a0 21       .!  :22f2[1]
+    lda #osword_envelope                                              ; 33f4: a9 08       ..  :22f4[1]
     jsr osword                                                        ; 33f6: 20 f1 ff     .. :22f6[1]
     rts                                                               ; 33f9: 60          `   :22f9[1]
 
@@ -3403,7 +3410,7 @@ loop_c2320
     rts                                                               ; 3429: 60          `   :2329[1]
 
     !byte $a2, 9  , $bd                                               ; 342a: a2 09 bd    ... :232a[1]
-    !text "[", '"', " "                                               ; 342d: 5b 22 20    ["  :232d[1]
+    !text "[\" "                                                      ; 342d: 5b 22 20    ["  :232d[1]
     !byte $ee, $ff, $ca, $10, $f7, $60                                ; 3430: ee ff ca... ... :2330[1]
 ; $3436 referenced 7 times by $28a0, $41f3, $420d, $43e1, $45e4, $461f, $467b
 sub_c2336
@@ -3561,7 +3568,7 @@ sub_c2436
     lda l2146,x                                                       ; 353a: bd 46 21    .F! :243a[1]
     tay                                                               ; 353d: a8          .   :243d[1]
     tax                                                               ; 353e: aa          .   :243e[1]
-    lda #$81                                                          ; 353f: a9 81       ..  :243f[1]
+    lda #osbyte_inkey                                                 ; 353f: a9 81       ..  :243f[1]
     jsr osbyte                                                        ; 3541: 20 f4 ff     .. :2441[1]
     tya                                                               ; 3544: 98          .   :2444[1]
     rts                                                               ; 3545: 60          `   :2445[1]
@@ -3569,9 +3576,9 @@ sub_c2436
     !byte $ea, $ea, $ea                                               ; 3546: ea ea ea    ... :2446[1]
 ; $3549 referenced 2 times by $2423, $2453
 c2449
-    ldx #$a6                                                          ; 3549: a2 a6       ..  :2449[1]
+    ldx #inkey_key_delete                                             ; 3549: a2 a6       ..  :2449[1]
     ldy #$a6                                                          ; 354b: a0 a6       ..  :244b[1]
-    lda #$81                                                          ; 354d: a9 81       ..  :244d[1]
+    lda #osbyte_inkey                                                 ; 354d: a9 81       ..  :244d[1]
     jsr osbyte                                                        ; 354f: 20 f4 ff     .. :244f[1]
     tya                                                               ; 3552: 98          .   :2452[1]
     beq c2449                                                         ; 3553: f0 f4       ..  :2453[1]
@@ -3604,11 +3611,11 @@ c2470
 c247b
     lda l1cdc                                                         ; 357b: ad dc 1c    ... :247b[1]
     beq c2489                                                         ; 357e: f0 09       ..  :247e[1]
-    ldx #$e0                                                          ; 3580: a2 e0       ..  :2480[1]
-    ldy #$21 ; '!'                                                    ; 3582: a0 21       .!  :2482[1]
+    ldx #<(sound_4)                                                   ; 3580: a2 e0       ..  :2480[1]
+    ldy #>(sound_4)                                                   ; 3582: a0 21       .!  :2482[1]
 ; $3584 referenced 2 times by $246e, $2479
 c2484
-    lda #7                                                            ; 3584: a9 07       ..  :2484[1]
+    lda #osword_sound                                                 ; 3584: a9 07       ..  :2484[1]
     jsr osword                                                        ; 3586: 20 f1 ff     .. :2486[1]
 ; $3589 referenced 2 times by $2468, $247e
 c2489
@@ -3626,9 +3633,9 @@ c2496
     lda l2d63                                                         ; 359e: ad 63 2d    .c- :249e[1]
     ora l2d64                                                         ; 35a1: 0d 64 2d    .d- :24a1[1]
     beq c24af                                                         ; 35a4: f0 09       ..  :24a4[1]
-    ldx #$f8                                                          ; 35a6: a2 f8       ..  :24a6[1]
-    ldy #$49 ; 'I'                                                    ; 35a8: a0 49       .I  :24a8[1]
-    lda #7                                                            ; 35aa: a9 07       ..  :24aa[1]
+    ldx #<(l49f8)                                                     ; 35a6: a2 f8       ..  :24a6[1]
+    ldy #>(l49f8)                                                     ; 35a8: a0 49       .I  :24a8[1]
+    lda #osword_sound                                                 ; 35aa: a9 07       ..  :24aa[1]
     jsr osword                                                        ; 35ac: 20 f1 ff     .. :24ac[1]
 ; $35af referenced 1 time by $24a4
 c24af
@@ -3641,9 +3648,9 @@ c24b7
     lda l25f1                                                         ; 35b7: ad f1 25    ..% :24b7[1]
     beq c24cb                                                         ; 35ba: f0 0f       ..  :24ba[1]
     dec l25f1                                                         ; 35bc: ce f1 25    ..% :24bc[1]
-    ldx #8                                                            ; 35bf: a2 08       ..  :24bf[1]
-    ldy #$22 ; '"'                                                    ; 35c1: a0 22       ."  :24c1[1]
-    lda #7                                                            ; 35c3: a9 07       ..  :24c3[1]
+    ldx #<(sound_9)                                                   ; 35bf: a2 08       ..  :24bf[1]
+    ldy #>(sound_9)                                                   ; 35c1: a0 22       ."  :24c1[1]
+    lda #osword_sound                                                 ; 35c3: a9 07       ..  :24c3[1]
     jsr osword                                                        ; 35c5: 20 f1 ff     .. :24c5[1]
     jmp c257d                                                         ; 35c8: 4c 7d 25    L}% :24c8[1]
 
@@ -3671,9 +3678,9 @@ c24e8
     lda #$ff                                                          ; 35ef: a9 ff       ..  :24ef[1]
     adc #0                                                            ; 35f1: 69 00       i.  :24f1[1]
     sta l49f3                                                         ; 35f3: 8d f3 49    ..I :24f3[1]
-    ldx #$f0                                                          ; 35f6: a2 f0       ..  :24f6[1]
-    ldy #$49 ; 'I'                                                    ; 35f8: a0 49       .I  :24f8[1]
-    lda #7                                                            ; 35fa: a9 07       ..  :24fa[1]
+    ldx #<(l49f0)                                                     ; 35f6: a2 f0       ..  :24f6[1]
+    ldy #>(l49f0)                                                     ; 35f8: a0 49       .I  :24f8[1]
+    lda #osword_sound                                                 ; 35fa: a9 07       ..  :24fa[1]
     jsr osword                                                        ; 35fc: 20 f1 ff     .. :24fc[1]
     jmp c257d                                                         ; 35ff: 4c 7d 25    L}% :24ff[1]
 
@@ -3707,13 +3714,13 @@ c2523
     lda #$ff                                                          ; 362a: a9 ff       ..  :252a[1]
     adc #0                                                            ; 362c: 69 00       i.  :252c[1]
     sta l21d3                                                         ; 362e: 8d d3 21    ..! :252e[1]
-    ldx #$c8                                                          ; 3631: a2 c8       ..  :2531[1]
-    ldy #$21 ; '!'                                                    ; 3633: a0 21       .!  :2533[1]
-    lda #7                                                            ; 3635: a9 07       ..  :2535[1]
+    ldx #<(sound_1)                                                   ; 3631: a2 c8       ..  :2531[1]
+    ldy #>(sound_1)                                                   ; 3633: a0 21       .!  :2533[1]
+    lda #osword_sound                                                 ; 3635: a9 07       ..  :2535[1]
     jsr osword                                                        ; 3637: 20 f1 ff     .. :2537[1]
-    ldx #$d0                                                          ; 363a: a2 d0       ..  :253a[1]
-    ldy #$21 ; '!'                                                    ; 363c: a0 21       .!  :253c[1]
-    lda #7                                                            ; 363e: a9 07       ..  :253e[1]
+    ldx #<(sound_2)                                                   ; 363a: a2 d0       ..  :253a[1]
+    ldy #>(sound_2)                                                   ; 363c: a0 21       .!  :253c[1]
+    lda #osword_sound                                                 ; 363e: a9 07       ..  :253e[1]
     jsr osword                                                        ; 3640: 20 f1 ff     .. :2540[1]
 ; $3643 referenced 1 time by $2509
 c2543
@@ -3724,7 +3731,7 @@ c2543
 ; $364d referenced 1 time by $24b4
 c254d
     ora #$10                                                          ; 364d: 09 10       ..  :254d[1]
-    sta l2200                                                         ; 364f: 8d 00 22    .." :254f[1]
+    sta sound_8                                                       ; 364f: 8d 00 22    .." :254f[1]
     lda l2891                                                         ; 3652: ad 91 28    ..( :2552[1]
     and #1                                                            ; 3655: 29 01       ).  :2555[1]
     beq c2563                                                         ; 3657: f0 0a       ..  :2557[1]
@@ -3742,9 +3749,9 @@ c2563
 ; $366a referenced 1 time by $2566
 c256a
     sta l2203                                                         ; 366a: 8d 03 22    .." :256a[1]
-    ldx #0                                                            ; 366d: a2 00       ..  :256d[1]
-    ldy #$22 ; '"'                                                    ; 366f: a0 22       ."  :256f[1]
-    lda #7                                                            ; 3671: a9 07       ..  :2571[1]
+    ldx #<(sound_8)                                                   ; 366d: a2 00       ..  :256d[1]
+    ldy #>(sound_8)                                                   ; 366f: a0 22       ."  :256f[1]
+    lda #osword_sound                                                 ; 3671: a9 07       ..  :2571[1]
     jsr osword                                                        ; 3673: 20 f1 ff     .. :2573[1]
     lda l1cdb                                                         ; 3676: ad db 1c    ... :2576[1]
     cmp #3                                                            ; 3679: c9 03       ..  :2579[1]
@@ -3753,18 +3760,18 @@ c256a
 c257d
     lda l2658                                                         ; 367d: ad 58 26    .X& :257d[1]
     beq c258b                                                         ; 3680: f0 09       ..  :2580[1]
-    ldx #$d8                                                          ; 3682: a2 d8       ..  :2582[1]
-    ldy #$21 ; '!'                                                    ; 3684: a0 21       .!  :2584[1]
-    lda #7                                                            ; 3686: a9 07       ..  :2586[1]
+    ldx #<(sound_3)                                                   ; 3682: a2 d8       ..  :2582[1]
+    ldy #>(sound_3)                                                   ; 3684: a0 21       .!  :2584[1]
+    lda #osword_sound                                                 ; 3686: a9 07       ..  :2586[1]
     jmp osword                                                        ; 3688: 4c f1 ff    L.. :2588[1]
 
 ; $368b referenced 1 time by $2580
 c258b
     lda l17d1                                                         ; 368b: ad d1 17    ... :258b[1]
     beq c2599                                                         ; 368e: f0 09       ..  :258e[1]
-    ldx #$f8                                                          ; 3690: a2 f8       ..  :2590[1]
-    ldy #$21 ; '!'                                                    ; 3692: a0 21       .!  :2592[1]
-    lda #7                                                            ; 3694: a9 07       ..  :2594[1]
+    ldx #<(sound_7)                                                   ; 3690: a2 f8       ..  :2590[1]
+    ldy #>(sound_7)                                                   ; 3692: a0 21       .!  :2592[1]
+    lda #osword_sound                                                 ; 3694: a9 07       ..  :2594[1]
     jsr osword                                                        ; 3696: 20 f1 ff     .. :2596[1]
 ; $3699 referenced 2 times by $257b, $258e
 c2599
@@ -4388,8 +4395,10 @@ l2a70
 l2a81
     !byte 0                                                           ; 3b81: 00          .   :2a81[1]
 ; $3b82 referenced 1 time by $3690
+l2a82
     !byte 6                                                           ; 3b82: 06          .   :2a82[1]
 ; $3b83 referenced 1 time by $3686
+l2a83
     !byte $18, $ea, $ea, $ea, $ea, $ea, $ea, $ea                      ; 3b83: 18 ea ea... ... :2a83[1]
 ; $3b8b referenced 1 time by $36ba
 sub_c2a8b
@@ -5356,7 +5365,7 @@ loop_c3213
     !byte $d0, $0c, $20, $cc, $26, $4c, $e8, $32, $4c, $8d            ; 43da: d0 0c 20... ..  :32da[1]
     !text "3 G+ :,L"                                                  ; 43e4: 33 20 47... 3 G :32e4[1]
     !byte $d2, $36, $bd, $80, 4  , $d0                                ; 43ec: d2 36 bd... .6. :32ec[1]
-    !text '"', " &+"                                                  ; 43f2: 22 20 26... " & :32f2[1]
+    !text "\" &+"                                                     ; 43f2: 22 20 26... " & :32f2[1]
     !byte $c9, $46, $90, $12, $c9, $6e, $b0, $11                      ; 43f6: c9 46 90... .F. :32f6[1]
     !text " ), a+"                                                    ; 43fe: 20 29 2c...  ), :32fe[1]
     !byte $d0, $15, $20, $cc, $26, $4c, $1b, $33, $4c, $8d            ; 4404: d0 15 20... ..  :3304[1]
@@ -5418,18 +5427,18 @@ l33cc
 sub_c33d2
     lda #$ff                                                          ; 44d2: a9 ff       ..  :33d2[1]
     sta l0489,x                                                       ; 44d4: 9d 89 04    ... :33d4[1]
-    ldy >(l2184)                                                      ; 44d7: ac 54 0e    .T. :33d7[1]
+    ldy l0e54                                                         ; 44d7: ac 54 0e    .T. :33d7[1]
     lda #0                                                            ; 44da: a9 00       ..  :33da[1]
     sta l1ce1,y                                                       ; 44dc: 99 e1 1c    ... :33dc[1]
     sta l0488,x                                                       ; 44df: 9d 88 04    ... :33df[1]
-    jsr osword_envelope                                               ; 44e2: 20 13 21     .! :33e2[1]
+    jsr sub_c2113                                                     ; 44e2: 20 13 21     .! :33e2[1]
     lda l1cd2                                                         ; 44e5: ad d2 1c    ... :33e5[1]
     and #$0f                                                          ; 44e8: 29 0f       ).  :33e8[1]
     sta l0409,x                                                       ; 44ea: 9d 09 04    ... :33ea[1]
     ldy #$5f ; '_'                                                    ; 44ed: a0 5f       ._  :33ed[1]
     lda l1cd2                                                         ; 44ef: ad d2 1c    ... :33ef[1]
     bpl c33f6                                                         ; 44f2: 10 02       ..  :33f2[1]
-    ldy #osword_envelope                                              ; 44f4: a0 9f       ..  :33f4[1]
+    ldy #$9f                                                          ; 44f4: a0 9f       ..  :33f4[1]
 ; $44f6 referenced 1 time by $33f2
 c33f6
     sty l007a                                                         ; 44f6: 84 7a       .z  :33f6[1]
@@ -5616,7 +5625,7 @@ sub_c34f4
     sta l0f05                                                         ; 4636: 8d 05 0f    ... :3536[1]
     sta l0e33                                                         ; 4639: 8d 33 0e    .3. :3539[1]
     sta l193a                                                         ; 463c: 8d 3a 19    .:. :353c[1]
-    sta osbyte_inkey                                                  ; 463f: 8d f1 25    ..% :353f[1]
+    sta l25f1                                                         ; 463f: 8d f1 25    ..% :353f[1]
     sta l25f2                                                         ; 4642: 8d f2 25    ..% :3542[1]
     lda #4                                                            ; 4645: a9 04       ..  :3545[1]
     sta l0f00                                                         ; 4647: 8d 00 0f    ... :3547[1]
@@ -5634,9 +5643,9 @@ sub_c34f4
     sta l191c                                                         ; 4667: 8d 1c 19    ... :3567[1]
     lda #$0c                                                          ; 466a: a9 0c       ..  :356a[1]
     jsr oswrch                                                        ; 466c: 20 ee ff     .. :356c[1]
-    ldx #8                                                            ; 466f: a2 08       ..  :356f[1]
-    ldy #$20 ; ' '                                                    ; 4671: a0 20       .   :3571[1]
-    lda #7                                                            ; 4673: a9 07       ..  :3573[1]
+    ldx #<(l2008)                                                     ; 466f: a2 08       ..  :356f[1]
+    ldy #>(l2008)                                                     ; 4671: a0 20       .   :3571[1]
+    lda #osword_sound                                                 ; 4673: a9 07       ..  :3573[1]
     jsr osword                                                        ; 4675: 20 f1 ff     .. :3575[1]
     lda l34b0                                                         ; 4678: ad b0 34    ..4 :3578[1]
     asl                                                               ; 467b: 0a          .   :357b[1]
@@ -5678,8 +5687,8 @@ loop_c35b8
     jsr oswrch                                                        ; 46bb: 20 ee ff     .. :35bb[1]
     dey                                                               ; 46be: 88          .   :35be[1]
     bpl loop_c35b8                                                    ; 46bf: 10 f7       ..  :35bf[1]
-    ldy #>(l2208)                                                     ; 46c1: a0 73       .s  :35c1[1]
-    lda osword_sound                                                  ; 46c3: ad b1 34    ..4 :35c3[1]
+    ldy #$73 ; 's'                                                    ; 46c1: a0 73       .s  :35c1[1]
+    lda l34b1                                                         ; 46c3: ad b1 34    ..4 :35c3[1]
     lsr                                                               ; 46c6: 4a          J   :35c6[1]
     lsr                                                               ; 46c7: 4a          J   :35c7[1]
     lsr                                                               ; 46c8: 4a          J   :35c8[1]
@@ -5753,11 +5762,11 @@ loop_c361c
 ; $472f referenced 2 times by $28cd, $47d1
 sub_c362f
     ldx #2                                                            ; 472f: a2 02       ..  :362f[1]
-    lda #<(l21c8)                                                     ; 4731: a9 10       ..  :3631[1]
-    jsr >(l21c8)                                                      ; 4733: 20 f4 ff     .. :3633[1]
+    lda #osbyte_select_adc_channels                                   ; 4731: a9 10       ..  :3631[1]
+    jsr osbyte                                                        ; 4733: 20 f4 ff     .. :3633[1]
     ldx #1                                                            ; 4736: a2 01       ..  :3636[1]
-    lda #4                                                            ; 4738: a9 04       ..  :3638[1]
-    jsr <(l21d0)                                                      ; 473a: 20 f4 ff     .. :363a[1]
+    lda #osbyte_set_cursor_editing                                    ; 4738: a9 04       ..  :3638[1]
+    jsr osbyte                                                        ; 473a: 20 f4 ff     .. :363a[1]
     jsr sub_c2e01                                                     ; 473d: 20 01 2e     .. :363d[1]
     rts                                                               ; 4740: 60          `   :3640[1]
 
@@ -5778,7 +5787,7 @@ c365a
     lda l0e3e                                                         ; 4765: ad 3e 0e    .>. :3665[1]
     sta l0081                                                         ; 4768: 85 81       ..  :3668[1]
     lda l0e4f                                                         ; 476a: ad 4f 0e    .O. :366a[1]
-    sta <(l2200)                                                      ; 476d: 8d 54 0e    .T. :366d[1]
+    sta l0e54                                                         ; 476d: 8d 54 0e    .T. :366d[1]
     ldx #0                                                            ; 4770: a2 00       ..  :3670[1]
 ; $4772 referenced 1 time by $372a
 c3672
@@ -5793,9 +5802,9 @@ c367f
 
 ; $4782 referenced 1 time by $367a
 c3682
-    cmp #<(l21d8)                                                     ; 4782: c9 ff       ..  :3682[1]
+    cmp #$ff                                                          ; 4782: c9 ff       ..  :3682[1]
     bne c368b                                                         ; 4784: d0 05       ..  :3684[1]
-    lda osword_sound                                                  ; 4786: ad 83 2a    ..* :3686[1]
+    lda l2a83                                                         ; 4786: ad 83 2a    ..* :3686[1]
     bne c3693                                                         ; 4789: d0 08       ..  :3689[1]
 ; $478b referenced 1 time by $3684
 c368b
@@ -5804,7 +5813,7 @@ c368b
     lsr                                                               ; 478d: 4a          J   :368d[1]
     lsr                                                               ; 478e: 4a          J   :368e[1]
     clc                                                               ; 478f: 18          .   :368f[1]
-    adc <(l21f8)                                                      ; 4790: 6d 82 2a    m.* :3690[1]
+    adc l2a82                                                         ; 4790: 6d 82 2a    m.* :3690[1]
 ; $4793 referenced 1 time by $3689
 c3693
     sta l2a81                                                         ; 4793: 8d 81 2a    ..* :3693[1]
@@ -6058,7 +6067,7 @@ l39bd
     !byte $1f, 3  , $17                                               ; 4ae2: 1f 03 17    ... :39e2[1]
     !text "command the Star-Fleet authorities"                        ; 4ae5: 63 6f 6d... com :39e5[1]
     !byte $1f, 3  , $18                                               ; 4b07: 1f 03 18    ... :3a07[1]
-    !text "are  said  to  be  ", '"'                                  ; 4b0a: 61 72 65... are :3a0a[1]
+    !text "are  said  to  be  \""                                     ; 4b0a: 61 72 65... are :3a0a[1]
     !byte $0d                                                         ; 4b1e: 0d          .   :3a1e[1]
 ; $4b1f referenced 1 time by $3be2
 l3a1f
@@ -6085,10 +6094,9 @@ l3a8c
     !byte $0d                                                         ; 4bc5: 0d          .   :3ac5[1]
 ; $4bc6 referenced 2 times by $3cc3, $3ccc
 l3ac6
-    !text '"', "furious", '"', "displeased", '"', "disap"             ; 4bc6: 22 66 75... "fu :3ac6[1]
-    !text "pointed", '"', "disappointed", '"', "satisfie"             ; 4bdf: 70 6f 69... poi :3adf[1]
-    !text "d", '"', "pleased", '"', "impressed", '"', "d"             ; 4bfc: 64 22 70... d"p :3afc[1]
-    !text "elighted", '"'                                             ; 4c11: 65 6c 69... eli :3b11[1]
+    !text "\"furious\"displeased\"disappointed\"disappoi"             ; 4bc6: 22 66 75... "fu :3ac6[1]
+    !text "nted\"satisfied\"pleased\"impressed\"delighte"             ; 4bef: 6e 74 65... nte :3aef[1]
+    !text "d\""                                                       ; 4c18: 64 22       d"  :3b18[1]
     !byte $0d                                                         ; 4c1a: 0d          .   :3b1a[1]
 ; $4c1b referenced 1 time by $3d0c
 l3b1b
@@ -6446,15 +6454,15 @@ c3d60
     !byte $1f, 3  , $13                                               ; 4fdd: 1f 03 13    ... :3edd[1]
     !text "V  -  Scanners ON / Shields OFF"                           ; 4fe0: 56 20 20... V   :3ee0[1]
     !byte $1f, 3  , $14                                               ; 4fff: 1f 03 14    ... :3eff[1]
-    !text "C  -  ", '"', "Auto-Changeover", '"', " ON"                ; 5002: 43 20 20... C   :3f02[1]
+    !text "C  -  \"Auto-Changeover\" ON"                              ; 5002: 43 20 20... C   :3f02[1]
     !byte $1f, 3  , $16                                               ; 501c: 1f 03 16    ... :3f1c[1]
-    !text "f0 -  ", '"', "Rotation Dampers", '"', " ON"               ; 501f: 66 30 20... f0  :3f1f[1]
+    !text "f0 -  \"Rotation Dampers\" ON"                             ; 501f: 66 30 20... f0  :3f1f[1]
     !byte $1f, 3  , $17                                               ; 503a: 1f 03 17    ... :3f3a[1]
-    !text "2  -  ", '"', "Rotation Dampers", '"', " OFF"              ; 503d: 32 20 20... 2   :3f3d[1]
+    !text "2  -  \"Rotation Dampers\" OFF"                            ; 503d: 32 20 20... 2   :3f3d[1]
     !byte $1f, 3  , $18                                               ; 5059: 1f 03 18    ... :3f59[1]
-    !text "f1 -  ", '"', "Velocity Dampers", '"', " ON"               ; 505c: 66 31 20... f1  :3f5c[1]
+    !text "f1 -  \"Velocity Dampers\" ON"                             ; 505c: 66 31 20... f1  :3f5c[1]
     !byte $1f, 3  , $19                                               ; 5077: 1f 03 19    ... :3f77[1]
-    !text "3  -  ", '"', "Velocity Dampers", '"', " OFF"              ; 507a: 33 20 20... 3   :3f7a[1]
+    !text "3  -  \"Velocity Dampers\" OFF"                            ; 507a: 33 20 20... 3   :3f7a[1]
     !byte $1f, 3  , $1b                                               ; 5096: 1f 03 1b    ... :3f96[1]
     !text "<COPY>   - FREEZE"                                         ; 5099: 3c 43 4f... <CO :3f99[1]
     !byte $1f, 3  , $1c                                               ; 50aa: 1f 03 1c    ... :3faa[1]
@@ -7105,8 +7113,8 @@ c465f
     sta l0e50                                                         ; 576e: 8d 50 0e    .P. :466e[1]
 ; $5771 referenced 1 time by $4668
 c4671
-    lda #>(l2008)                                                     ; 5771: a9 16       ..  :4671[1]
-    jsr osword_sound                                                  ; 5773: 20 ee ff     .. :4673[1]
+    lda #$16                                                          ; 5771: a9 16       ..  :4671[1]
+    jsr oswrch                                                        ; 5773: 20 ee ff     .. :4673[1]
     lda #4                                                            ; 5776: a9 04       ..  :4676[1]
     jsr oswrch                                                        ; 5778: 20 ee ff     .. :4678[1]
     jsr sub_c2336                                                     ; 577b: 20 36 23     6# :467b[1]
@@ -7323,6 +7331,7 @@ c4965
     !text "All rights reserved"                                       ; 5acc: 41 6c 6c... All :49cc[1]
     !byte $0d, 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0    ; 5adf: 0d 00 00... ... :49df[1]
     !byte 0  , 0  , 0  , 0  , 0                                       ; 5aeb: 00 00 00... ... :49eb[1]
+l49f0
     !byte $11, 0                                                      ; 5af0: 11 00       ..  :49f0[1]
 ; $5af2 referenced 1 time by $24ec
 l49f2
@@ -7333,6 +7342,7 @@ l49f3
 ; $5af4 referenced 1 time by $24de
 l49f4
     !byte 0, 0, 4, 0                                                  ; 5af4: 00 00 04... ... :49f4[1]
+l49f8
     !byte $10, 0  , 3  , 0  , 7  , 0  , $1e, 0                        ; 5af8: 10 00 03... ... :49f8[1]
 ; $5b00 referenced 1 time by $47c4
 l4a00
@@ -9164,24 +9174,21 @@ pydis_end
 ;     l216f
 ;     l2181
 ;     l2184
+;     l2192
 ;     l2199
+;     l21a0
 ;     l21a4
+;     l21ae
 ;     l21af
 ;     l21c2
-;     l21c8
 ;     l21cb
 ;     l21cc
-;     l21d0
 ;     l21d2
 ;     l21d3
-;     l21d8
-;     l21f8
 ;     l21fb
-;     l2200
 ;     l2202
 ;     l2203
 ;     l2206
-;     l2208
 ;     l2210
 ;     l2214
 ;     l2216
@@ -9348,6 +9355,8 @@ pydis_end
 ;     l2a70
 ;     l2a79
 ;     l2a81
+;     l2a82
+;     l2a83
 ;     l2a8c
 ;     l2aa1
 ;     l2aa4
@@ -9772,9 +9781,11 @@ pydis_end
 ;     l49b0
 ;     l49be
 ;     l49c4
+;     l49f0
 ;     l49f2
 ;     l49f3
 ;     l49f4
+;     l49f8
 ;     l4a00
 ;     l4a07
 ;     l4a08
@@ -10200,38 +10211,98 @@ pydis_end
 ;     sub_c56ae
 ;     sub_c56b8
 ;     sub_c5a00
-!if (<(l21c8)) != $10 {
-    !error "Assertion failed: <(l21c8) == $10"
+!if (<(l2008)) != $08 {
+    !error "Assertion failed: <(l2008) == $08"
 }
-!if (<(l21d0)) != $fff4 {
-    !error "Assertion failed: <(l21d0) == $fff4"
+!if (<(l2184)) != $84 {
+    !error "Assertion failed: <(l2184) == $84"
 }
-!if (<(l21d8)) != $ff {
-    !error "Assertion failed: <(l21d8) == $ff"
+!if (<(l2192)) != $92 {
+    !error "Assertion failed: <(l2192) == $92"
 }
-!if (<(l21f8)) != $2a82 {
-    !error "Assertion failed: <(l21f8) == $2a82"
+!if (<(l21a0)) != $a0 {
+    !error "Assertion failed: <(l21a0) == $a0"
 }
-!if (<(l2200)) != $0e54 {
-    !error "Assertion failed: <(l2200) == $0e54"
+!if (<(l21ae)) != $ae {
+    !error "Assertion failed: <(l21ae) == $ae"
 }
 !if (<(l44e1)) != $e1 {
     !error "Assertion failed: <(l44e1) == $e1"
 }
-!if (>(l2008)) != $16 {
-    !error "Assertion failed: >(l2008) == $16"
+!if (<(l49f0)) != $f0 {
+    !error "Assertion failed: <(l49f0) == $f0"
 }
-!if (>(l2184)) != $0e54 {
-    !error "Assertion failed: >(l2184) == $0e54"
+!if (<(l49f8)) != $f8 {
+    !error "Assertion failed: <(l49f8) == $f8"
 }
-!if (>(l21c8)) != $fff4 {
-    !error "Assertion failed: >(l21c8) == $fff4"
+!if (<(sound_1)) != $c8 {
+    !error "Assertion failed: <(sound_1) == $c8"
 }
-!if (>(l2208)) != $73 {
-    !error "Assertion failed: >(l2208) == $73"
+!if (<(sound_2)) != $d0 {
+    !error "Assertion failed: <(sound_2) == $d0"
+}
+!if (<(sound_3)) != $d8 {
+    !error "Assertion failed: <(sound_3) == $d8"
+}
+!if (<(sound_4)) != $e0 {
+    !error "Assertion failed: <(sound_4) == $e0"
+}
+!if (<(sound_7)) != $f8 {
+    !error "Assertion failed: <(sound_7) == $f8"
+}
+!if (<(sound_8)) != $00 {
+    !error "Assertion failed: <(sound_8) == $00"
+}
+!if (<(sound_9)) != $08 {
+    !error "Assertion failed: <(sound_9) == $08"
+}
+!if (>(l2008)) != $20 {
+    !error "Assertion failed: >(l2008) == $20"
+}
+!if (>(l2184)) != $21 {
+    !error "Assertion failed: >(l2184) == $21"
+}
+!if (>(l2192)) != $21 {
+    !error "Assertion failed: >(l2192) == $21"
+}
+!if (>(l21a0)) != $21 {
+    !error "Assertion failed: >(l21a0) == $21"
+}
+!if (>(l21ae)) != $21 {
+    !error "Assertion failed: >(l21ae) == $21"
 }
 !if (>(l44e1)) != $44 {
     !error "Assertion failed: >(l44e1) == $44"
+}
+!if (>(l49f0)) != $49 {
+    !error "Assertion failed: >(l49f0) == $49"
+}
+!if (>(l49f8)) != $49 {
+    !error "Assertion failed: >(l49f8) == $49"
+}
+!if (>(sound_1)) != $21 {
+    !error "Assertion failed: >(sound_1) == $21"
+}
+!if (>(sound_2)) != $21 {
+    !error "Assertion failed: >(sound_2) == $21"
+}
+!if (>(sound_3)) != $21 {
+    !error "Assertion failed: >(sound_3) == $21"
+}
+!if (>(sound_4)) != $21 {
+    !error "Assertion failed: >(sound_4) == $21"
+}
+!if (>(sound_7)) != $21 {
+    !error "Assertion failed: >(sound_7) == $21"
+}
+!if (>(sound_8)) != $22 {
+    !error "Assertion failed: >(sound_8) == $22"
+}
+!if (>(sound_9)) != $22 {
+    !error "Assertion failed: >(sound_9) == $22"
+}
+!if (inkey_key_delete) != $a6 {
+    !error "Assertion failed: inkey_key_delete == $a6"
 }
 !if (osbyte_acknowledge_escape) != $7e {
     !error "Assertion failed: osbyte_acknowledge_escape == $7e"
@@ -10245,12 +10316,18 @@ pydis_end
 !if (osbyte_read_adc_or_get_buffer_status) != $80 {
     !error "Assertion failed: osbyte_read_adc_or_get_buffer_status == $80"
 }
-!if (osword_envelope) != $9f {
-    !error "Assertion failed: osword_envelope == $9f"
+!if (osbyte_select_adc_channels) != $10 {
+    !error "Assertion failed: osbyte_select_adc_channels == $10"
+}
+!if (osbyte_set_cursor_editing) != $04 {
+    !error "Assertion failed: osbyte_set_cursor_editing == $04"
+}
+!if (osword_envelope) != $08 {
+    !error "Assertion failed: osword_envelope == $08"
 }
 !if (osword_read_line) != $00 {
     !error "Assertion failed: osword_read_line == $00"
 }
-!if (osword_sound) != $ffee {
-    !error "Assertion failed: osword_sound == $ffee"
+!if (osword_sound) != $07 {
+    !error "Assertion failed: osword_sound == $07"
 }
