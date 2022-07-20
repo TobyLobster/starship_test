@@ -7,7 +7,7 @@
 from commands import *
 import acorn
 
-load(0x1f00, "ORIGINAL_DISK/COMM2#.bin")
+load(0x1f00, "ORIGINAL_DISK/COMM2#.bin", "6502")
 
 acorn.mos_labels()
 acorn.hardware_bbc()

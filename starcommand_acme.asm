@@ -1,67 +1,70 @@
-osword_envelope = $08
-osbyte_inkey = $81
-inkey_key_delete = $a6
-osword_sound = $07
-osbyte_select_adc_channels = $10
-osbyte_set_cursor_editing = $04
-osbyte_flush_buffer_class = $0f
-osbyte_acknowledge_escape = $7e
-osword_read_line = $00
-osbyte_read_adc_or_get_buffer_status = $80
+; Constants
+inkey_key_delete                       = 166
+osbyte_acknowledge_escape              = 126
+osbyte_flush_buffer_class              = 15
+osbyte_inkey                           = 129
+osbyte_read_adc_or_get_buffer_status   = 128
+osbyte_select_adc_channels             = 16
+osbyte_set_cursor_editing              = 4
+osword_envelope                        = 8
+osword_read_line                       = 0
+osword_sound                           = 7
 
-l0070 = $70
-l0071 = $71
-l0072 = $72
-l0073 = $73
-l0074 = $74
-l0075 = $75
-l0076 = $76
-l0077 = $77
-l0078 = $78
-l0079 = $79
-l007a = $7a
-l007b = $7b
-l007c = $7c
-l0080 = $80
-l0081 = $81
-l0082 = $82
-l0083 = $83
-l0084 = $84
-l0085 = $85
-l0086 = $86
-l0087 = $87
-l0088 = $88
-l0400 = $0400
-l0401 = $0401
-l0402 = $0402
-l0403 = $0403
-l0404 = $0404
-l0405 = $0405
-l0406 = $0406
-l0407 = $0407
-l0408 = $0408
-l0409 = $0409
-l040a = $040a
-l0480 = $0480
-l0481 = $0481
-l0482 = $0482
-l0483 = $0483
-l0484 = $0484
-l0485 = $0485
-l0486 = $0486
-l0487 = $0487
-l0488 = $0488
-l0489 = $0489
-l048a = $048a
-l0c00 = $0c00
-l0c10 = $0c10
-l593f = $593f
-l6b38 = $6b38
-l6c78 = $6c78
-l6e48 = $6e48
-oswrch = $ffee
-osword = $fff1
-osbyte = $fff4
+; Memory locations
+l0070   = $70
+l0071   = $71
+l0072   = $72
+l0073   = $73
+l0074   = $74
+l0075   = $75
+l0076   = $76
+l0077   = $77
+l0078   = $78
+l0079   = $79
+l007a   = $7a
+l007b   = $7b
+l007c   = $7c
+l0080   = $80
+l0081   = $81
+l0082   = $82
+l0083   = $83
+l0084   = $84
+l0085   = $85
+l0086   = $86
+l0087   = $87
+l0088   = $88
+l0400   = $0400
+l0401   = $0401
+l0402   = $0402
+l0403   = $0403
+l0404   = $0404
+l0405   = $0405
+l0406   = $0406
+l0407   = $0407
+l0408   = $0408
+l0409   = $0409
+l040a   = $040a
+l0480   = $0480
+l0481   = $0481
+l0482   = $0482
+l0483   = $0483
+l0484   = $0484
+l0485   = $0485
+l0486   = $0486
+l0487   = $0487
+l0488   = $0488
+l0489   = $0489
+l048a   = $048a
+l0c00   = $0c00
+l0c10   = $0c10
+l593f   = $593f
+l6b38   = $6b38
+l6c78   = $6c78
+l6e48   = $6e48
+oswrch  = $ffee
+osword  = $fff1
+osbyte  = $fff4
+
     * = $1f00
 
 pydis_start
@@ -114,7 +117,7 @@ l0e3a
     !byte 5                                                           ; 1f3a: 05          .   :0e3a[1]
 ; $1f3b referenced 3 times by $186a, $187d, $285c
 l0e3b
-    !byte 8  , $4d                                                    ; 1f3b: 08 4d       .M  :0e3b[1]
+    !byte   8, $4d                                                    ; 1f3b: 08 4d       .M  :0e3b[1]
 ; $1f3d referenced 2 times by $14dd, $3660
 l0e3d
     !byte $b4                                                         ; 1f3d: b4          .   :0e3d[1]
@@ -123,7 +126,7 @@ l0e3e
     !text "O7_"                                                       ; 1f3e: 4f 37 5f    O7_ :0e3e[1]
 ; $1f41 referenced 2 times by $0f41, $0f8d
 l0e41
-    !byte $80, $40, $20, $10, 8  , 4  , 2  , 1                        ; 1f41: 80 40 20... .@  :0e41[1]
+    !byte $80, $40, $20, $10,   8,   4,   2,   1                      ; 1f41: 80 40 20... .@  :0e41[1]
 ; $1f49 referenced 4 times by $13d0, $1d24, $1d58, $47b1
 l0e49
     !byte 0                                                           ; 1f49: 00          .   :0e49[1]
@@ -165,53 +168,53 @@ l0e55
     !byte 0                                                           ; 1f55: 00          .   :0e55[1]
 ; $1f56 referenced 14 times by $1408, $140f, $142b, $1432, $1aa6, $1bb8, $1bc0, $30a5, $317c, $3186, $318c, $322a, $3858, $38a7
 l0e56
-    !byte 1  , $3a                                                    ; 1f56: 01 3a       .:  :0e56[1]
+    !byte   1, $3a                                                    ; 1f56: 01 3a       .:  :0e56[1]
 ; $1f58 referenced 7 times by $1529, $1654, $1c23, $1c4d, $1e51, $2035, $292f
 l0e58
-    !byte 0  , 1  , 2  , 3  , 4  , 5  , 5  , 6  , 6  , 6  , 5  , 5    ; 1f58: 00 01 02... ... :0e58[1]
-    !byte 4  , 3  , 2  , 1  , 0  , $ff, $fe, $fd, $fc, $fb, $fb, $fa  ; 1f64: 04 03 02... ... :0e64[1]
+    !byte   0,   1,   2,   3,   4,   5,   5,   6,   6,   6,   5,   5  ; 1f58: 00 01 02... ... :0e58[1]
+    !byte   4,   3,   2,   1,   0, $ff, $fe, $fd, $fc, $fb, $fb, $fa  ; 1f64: 04 03 02... ... :0e64[1]
     !byte $fa, $fa, $fb, $fb, $fc, $fd, $fe, $ff                      ; 1f70: fa fa fb... ... :0e70[1]
 ; $1f78 referenced 7 times by $1514, $1659, $1c31, $1c56, $1e5d, $2041, $2939
 l0e78
-    !byte $fa, $fa, $fb, $fb, $fc, $fd, $fe, $ff, 0  , 1  , 2  , 3    ; 1f78: fa fa fb... ... :0e78[1]
-    !byte 4  , 5  , 5  , 6  , 6  , 6  , 5  , 5  , 4  , 3  , 2  , 1    ; 1f84: 04 05 05... ... :0e84[1]
-    !byte 0  , $ff, $fe, $fd, $fc, $fb, $fb, $fa                      ; 1f90: 00 ff fe... ... :0e90[1]
+    !byte $fa, $fa, $fb, $fb, $fc, $fd, $fe, $ff,   0,   1,   2,   3  ; 1f78: fa fa fb... ... :0e78[1]
+    !byte   4,   5,   5,   6,   6,   6,   5,   5,   4,   3,   2,   1  ; 1f84: 04 05 05... ... :0e84[1]
+    !byte   0, $ff, $fe, $fd, $fc, $fb, $fb, $fa                      ; 1f90: 00 ff fe... ... :0e90[1]
 ; $1f98 referenced 1 time by $18e9
 l0e98
-    !byte 3  , $0f, 3  , $0f, $0f, $0c, $0f, $0c, $0c, $0d, $0c, $0d  ; 1f98: 03 0f 03... ... :0e98[1]
-    !byte $0d, 1  , $0d, 1  , 1  , 5  , 1  , 5  , 5  , 4  , 5  , 4    ; 1fa4: 0d 01 0d... ... :0ea4[1]
-    !byte 4  , 7  , 4  , 7  , 7  , 3  , 7  , 3  , 0  , $ff, $ff, $ff  ; 1fb0: 04 07 04... ... :0eb0[1]
+    !byte   3, $0f,   3, $0f, $0f, $0c, $0f, $0c, $0c, $0d, $0c, $0d  ; 1f98: 03 0f 03... ... :0e98[1]
+    !byte $0d,   1, $0d,   1,   1,   5,   1,   5,   5,   4,   5,   4  ; 1fa4: 0d 01 0d... ... :0ea4[1]
+    !byte   4,   7,   4,   7,   7,   3,   7,   3,   0, $ff, $ff, $ff  ; 1fb0: 04 07 04... ... :0eb0[1]
     !byte $ff, $ff                                                    ; 1fbc: ff ff       ..  :0ebc[1]
 ; $1fbe referenced 1 time by $1a35
 l0ebe
-    !byte 0  , $fe, $f8, $ee, $e0, $ce                                ; 1fbe: 00 fe f8... ... :0ebe[1]
+    !byte   0, $fe, $f8, $ee, $e0, $ce                                ; 1fbe: 00 fe f8... ... :0ebe[1]
 ; $1fc4 referenced 1 time by $1a2f
 l0ec4
-    !byte 0  , 2  , 4  , 6  , 8  , $0a, 0  , 0  , 0  , 0  , 0  , 0    ; 1fc4: 00 02 04... ... :0ec4[1]
+    !byte   0,   2,   4,   6,   8, $0a,   0,   0,   0,   0,   0,   0  ; 1fc4: 00 02 04... ... :0ec4[1]
 ; $1fd0 referenced 1 time by $103e
 l0ed0
-    !byte 0  , $ff, $fc, $f7, $f0, $e7                                ; 1fd0: 00 ff fc... ... :0ed0[1]
+    !byte   0, $ff, $fc, $f7, $f0, $e7                                ; 1fd0: 00 ff fc... ... :0ed0[1]
 ; $1fd6 referenced 2 times by $1046, $1193
 l0ed6
     !byte 0, 0, 1, 2, 3, 4                                            ; 1fd6: 00 00 01... ... :0ed6[1]
 ; $1fdc referenced 1 time by $1062
 l0edc
-    !byte 0  , 1  , 4  , 9  , $10, $19                                ; 1fdc: 00 01 04... ... :0edc[1]
+    !byte   0,   1,   4,   9, $10, $19                                ; 1fdc: 00 01 04... ... :0edc[1]
 ; $1fe2 referenced 2 times by $106a, $11c9
 l0ee2
     !byte 0, 1, 2, 3, 4, 5                                            ; 1fe2: 00 01 02... ... :0ee2[1]
 ; $1fe8 referenced 1 time by $1183
 l0ee8
-    !byte 0  , $fe, $ff, $fc, $fa, $f6                                ; 1fe8: 00 fe ff... ... :0ee8[1]
+    !byte   0, $fe, $ff, $fc, $fa, $f6                                ; 1fe8: 00 fe ff... ... :0ee8[1]
 ; $1fee referenced 1 time by $118b
 l0eee
-    !byte 0  , $fe, $fb, $f6, $ef, $e6                                ; 1fee: 00 fe fb... ... :0eee[1]
+    !byte   0, $fe, $fb, $f6, $ef, $e6                                ; 1fee: 00 fe fb... ... :0eee[1]
 ; $1ff4 referenced 1 time by $11b9
 l0ef4
-    !byte 1  , 0  , 2  , 0  , $ff, $fe                                ; 1ff4: 01 00 02... ... :0ef4[1]
+    !byte   1,   0,   2,   0, $ff, $fe                                ; 1ff4: 01 00 02... ... :0ef4[1]
 ; $1ffa referenced 1 time by $11c1
 l0efa
-    !byte 0  , 1  , 4  , 9  , $0f, $18                                ; 1ffa: 00 01 04... ... :0efa[1]
+    !byte   0,   1,   4,   9, $0f, $18                                ; 1ffa: 00 01 04... ... :0efa[1]
 ; $2000 referenced 14 times by $107b, $11fe, $1989, $198c, $1997, $19b1, $19bb, $24d5, $2f4c, $3547, $38a4, $38dc, $4818, $4916
 l0f00
     !byte 0                                                           ; 2000: 00          .   :0f00[1]
@@ -230,6 +233,7 @@ l0f04
 ; $2005 referenced 7 times by $0f9a, $1002, $1081, $10fb, $1a32, $3536, $482f
 l0f05
     !byte 0                                                           ; 2005: 00          .   :0f05[1]
+
 ; $2006 referenced 20 times by $2e75, $2e95, $2f01, $2f06, $2f0b, $2f10, $2f17, $2f1c, $2f21, $2f26, $2f90, $2f95, $2ffc, $3001, $30d7, $3122, $3127, $312c, $3131, $3149
 sub_c0f06
     jsr sub_c0f18                                                     ; 2006: 20 18 0f     .. :0f06[1]
@@ -275,6 +279,7 @@ sub_c0f18
     rts                                                               ; 2044: 60          `   :0f44[1]
 
     !byte $ea, $ea, $d0, $fc, $60                                     ; 2045: ea ea d0... ... :0f45[1]
+
 ; $204a referenced 5 times by $18e4, $2083, $208c, $2095, $209a
 sub_c0f4a
     lda l007a                                                         ; 204a: a5 7a       .z  :0f4a[1]
@@ -327,6 +332,7 @@ sub_c0f64
     rts                                                               ; 2094: 60          `   :0f94[1]
 
     !byte $ea, $ea, $91, $70                                          ; 2095: ea ea 91... ... :0f95[1]
+
 ; $2099 referenced 2 times by $0f55, $0f62
 c0f99
     rts                                                               ; 2099: 60          `   :0f99[1]
@@ -914,6 +920,7 @@ c1360
     rts                                                               ; 2460: 60          `   :1360[1]
 
     !byte $ea                                                         ; 2461: ea          .   :1361[1]
+
 ; $2462 referenced 1 time by $146e
 c1362
     inc l007a                                                         ; 2462: e6 7a       .z  :1362[1]
@@ -1018,6 +1025,7 @@ c1408
     rts                                                               ; 2529: 60          `   :1429[1]
 
     !byte $ea                                                         ; 252a: ea          .   :142a[1]
+
 ; $252b referenced 4 times by $1a98, $1bbd, $28ca, $322d
 c142b
     lda l0e56                                                         ; 252b: ad 56 0e    .V. :142b[1]
@@ -1051,6 +1059,7 @@ c1458
     rts                                                               ; 2558: 60          `   :1458[1]
 
     !byte $ea                                                         ; 2559: ea          .   :1459[1]
+
 ; $255a referenced 3 times by $124c, $12d5, $135d
 c145a
     ldy #2                                                            ; 255a: a0 02       ..  :145a[1]
@@ -1095,6 +1104,7 @@ c1471
     rts                                                               ; 25a0: 60          `   :14a0[1]
 
     !text "INY"                                                       ; 25a1: 49 4e 59    INY :14a1[1]
+
 ; $25a4 referenced 1 time by $38c4
 sub_c14a4
     lda #0                                                            ; 25a4: a9 00       ..  :14a4[1]
@@ -1351,6 +1361,7 @@ sub_c1611
     !byte $0f, $c6                                                    ; 272a: 0f c6       ..  :162a[1]
     !text "z d"                                                       ; 272c: 7a 20 64    z d :162c[1]
     !byte $0f, $60                                                    ; 272f: 0f 60       .`  :162f[1]
+
 ; $2731 referenced 1 time by $384a
 sub_c1631
     lda l0e4f                                                         ; 2731: ad 4f 0e    .O. :1631[1]
@@ -1471,6 +1482,7 @@ c16ee
     rts                                                               ; 27ee: 60          `   :16ee[1]
 
     !byte $ea, $ea, $ea                                               ; 27ef: ea ea ea    ... :16ef[1]
+
 ; $27f2 referenced 2 times by $3598, $3865
 sub_c16f2
     lda l0e4f                                                         ; 27f2: ad 4f 0e    .O. :16f2[1]
@@ -1592,6 +1604,7 @@ l17b2
 ; $28d1 referenced 3 times by $1894, $258b, $3844
 l17d1
     !byte 0, 0, 0, 0, 0, 0, 0                                         ; 28d1: 00 00 00... ... :17d1[1]
+
 ; $28d8 referenced 1 time by $3852
 sub_c17d8
     lda l0e4f                                                         ; 28d8: ad 4f 0e    .O. :17d8[1]
@@ -1894,7 +1907,8 @@ l1939
     !byte 4                                                           ; 2a39: 04          .   :1939[1]
 ; $2a3a referenced 4 times by $1a76, $1a8d, $353c, $45ae
 l193a
-    !byte 0  , $ea, $ea, $ea, $ea                                     ; 2a3a: 00 ea ea... ... :193a[1]
+    !byte   0, $ea, $ea, $ea, $ea                                     ; 2a3a: 00 ea ea... ... :193a[1]
+
 ; $2a3f referenced 1 time by $38c1
 sub_c193f
     lda #0                                                            ; 2a3f: a9 00       ..  :193f[1]
@@ -2103,6 +2117,7 @@ c1aa1
     rts                                                               ; 2ba1: 60          `   :1aa1[1]
 
     !byte $ea                                                         ; 2ba2: ea          .   :1aa2[1]
+
 ; $2ba3 referenced 2 times by $1567, $1841
 sub_c1aa3
     stx l1925                                                         ; 2ba3: 8e 25 19    .%. :1aa3[1]
@@ -2137,6 +2152,7 @@ sub_c1ac7
     jmp c25f3                                                         ; 2bcd: 4c f3 25    L.% :1acd[1]
 
     !byte $60                                                         ; 2bd0: 60          `   :1ad0[1]
+
 ; $2bd1 referenced 1 time by $1ac7
 sub_c1ad1
     lda l191c                                                         ; 2bd1: ad 1c 19    ... :1ad1[1]
@@ -2291,6 +2307,7 @@ c1bc8
     rts                                                               ; 2cc8: 60          `   :1bc8[1]
 
     !byte $ea, $ea, $ea, $ea, $ea, $ea                                ; 2cc9: ea ea ea... ... :1bc9[1]
+
 ; $2ccf referenced 7 times by $1b79, $229d, $2eb8, $2ec5, $2ed7, $2ee4, $360e
 sub_c1bcf
     sta l0084                                                         ; 2ccf: 85 84       ..  :1bcf[1]
@@ -2478,7 +2495,7 @@ l1cd1
     !byte $ca                                                         ; 2dd1: ca          .   :1cd1[1]
 ; $2dd2 referenced 19 times by $1d74, $1f3a, $1f9a, $1fe9, $2118, $2137, $26ac, $3175, $33e5, $33ef, $3401, $342b, $3460, $3484, $3703, $38d0, $3c8c, $460c, $4863
 l1cd2
-    !byte $48, 0  , 0  , 0                                            ; 2dd2: 48 00 00... H.. :1cd2[1]
+    !byte $48,   0,   0,   0                                          ; 2dd2: 48 00 00... H.. :1cd2[1]
 ; $2dd6 referenced 2 times by $2350, $239a
 l1cd6
     !byte 0                                                           ; 2dd6: 00          .   :1cd6[1]
@@ -2514,12 +2531,12 @@ l1ce0
     !byte $ea                                                         ; 2de0: ea          .   :1ce0[1]
 ; $2de1 referenced 5 times by $1708, $1f70, $1f75, $1f86, $33dc
 l1ce1
-    !byte $2e, 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0                   ; 2de1: 2e 00 00... ... :1ce1[1]
+    !byte $2e,   0,   0,   0,   0,   0,   0,   0,   0                 ; 2de1: 2e 00 00... ... :1ce1[1]
     !text "SIE/256:I?SN"                                              ; 2dea: 53 49 45... SIE :1cea[1]
 ; $2df6 referenced 2 times by $170c, $1f8a
 l1cf6
-    !byte $4c, 0  , $40, $80, $c0, 0  , $40, $80, $c0, 0  , $40, $80  ; 2df6: 4c 00 40... L.@ :1cf6[1]
-    !byte $c0, 0  , $40, $80, $c0                                     ; 2e02: c0 00 40... ..@ :1d02[1]
+    !byte $4c,   0, $40, $80, $c0,   0, $40, $80, $c0,   0, $40, $80  ; 2df6: 4c 00 40... L.@ :1cf6[1]
+    !byte $c0,   0, $40, $80, $c0                                     ; 2e02: c0 00 40... ..@ :1d02[1]
 ; $2e07 referenced 2 times by $1711, $1f8f
 l1d07
     !text "SMMMMNNNNOOOOPPPP"                                         ; 2e07: 53 4d 4d... SMM :1d07[1]
@@ -2528,7 +2545,8 @@ l1d18
     !byte $0f, $11, $13, $15                                          ; 2e18: 0f 11 13... ... :1d18[1]
 ; $2e1c referenced 1 time by $1e10
 l1d1c
-    !byte 5  , 6  , 7  , 8  , 9  , $0a, $0b, $0c                      ; 2e1c: 05 06 07... ... :1d1c[1]
+    !byte   5,   6,   7,   8,   9, $0a, $0b, $0c                      ; 2e1c: 05 06 07... ... :1d1c[1]
+
 ; $2e24 referenced 2 times by $28c7, $4836
 sub_c1d24
     lda l0e49                                                         ; 2e24: ad 49 0e    .I. :1d24[1]
@@ -2559,6 +2577,7 @@ c1d4e
     rts                                                               ; 2e53: 60          `   :1d53[1]
 
     !byte $ea, $ea, $ea, $ea                                          ; 2e54: ea ea ea... ... :1d54[1]
+
 ; $2e58 referenced 1 time by $358f
 sub_c1d58
     lda l0e49                                                         ; 2e58: ad 49 0e    .I. :1d58[1]
@@ -2589,6 +2608,7 @@ c1d84
     rts                                                               ; 2e89: 60          `   :1d89[1]
 
     !byte $ea, $ea, $ea, $ea                                          ; 2e8a: ea ea ea... ... :1d8a[1]
+
 ; $2e8e referenced 2 times by $1de0, $28af
 c1d8e
     ldx #$0f                                                          ; 2e8e: a2 0f       ..  :1d8e[1]
@@ -2610,6 +2630,7 @@ loop_c1d9e
     rts                                                               ; 2eaa: 60          `   :1daa[1]
 
     !byte $ea, $ea, $ea, $ea                                          ; 2eab: ea ea ea... ... :1dab[1]
+
 ; $2eaf referenced 1 time by $1af8
 sub_c1daf
     lda l1cca                                                         ; 2eaf: ad ca 1c    ... :1daf[1]
@@ -2639,6 +2660,7 @@ c1dcd
     jmp c1d8e                                                         ; 2ee0: 4c 8e 1d    L.. :1de0[1]
 
     !byte $ea, $ea, $ea, $ea, $ea                                     ; 2ee3: ea ea ea... ... :1de3[1]
+
 ; $2ee8 referenced 1 time by $38b8
 sub_c1de8
     dec l1cce                                                         ; 2ee8: ce ce 1c    ... :1de8[1]
@@ -2695,6 +2717,7 @@ c1e36
     rts                                                               ; 2f3b: 60          `   :1e3b[1]
 
     !byte $ea                                                         ; 2f3c: ea          .   :1e3c[1]
+
 ; $2f3d referenced 3 times by $1dbf, $1e06, $1e28
 sub_c1e3d
     ldy #0                                                            ; 2f3d: a0 00       ..  :1e3d[1]
@@ -2822,6 +2845,7 @@ c1efe
 
     !byte $ea                                                         ; 2fff: ea          .   :1eff[1]
     !byte $ea, $ea, $ea                                               ; 3000: ea ea ea    ... :1f00[1]
+
 ; $3003 referenced 1 time by $28a9
 sub_c1f03
     lda l1ccd                                                         ; 3003: ad cd 1c    ... :1f03[1]
@@ -2875,6 +2899,7 @@ c1f4d
     rts                                                               ; 3058: 60          `   :1f58[1]
 
     !byte $ea, $ea, $ea, $ea                                          ; 3059: ea ea ea... ... :1f59[1]
+
 ; $305d referenced 5 times by $182e, $18ae, $1bf8, $27f4, $2980
 sub_c1f5d
     lda l0400,x                                                       ; 305d: bd 00 04    ... :1f5d[1]
@@ -2926,6 +2951,7 @@ loop_c1f97
     jmp c2d86                                                         ; 30af: 4c 86 2d    L.- :1faf[1]
 
     !byte $ea, $ea                                                    ; 30b2: ea ea       ..  :1fb2[1]
+
 ; $30b4 referenced 1 time by $171e
 sub_c1fb4
     lda l0409,x                                                       ; 30b4: bd 09 04    ... :1fb4[1]
@@ -2986,6 +3012,7 @@ c2002
 
 l2008
     !byte $ea, $ea, $ea, $ea                                          ; 3108: ea ea ea... ... :2008[1]
+
 ; $310c referenced 1 time by $1767
 sub_c200c
     jsr sub_c20a4                                                     ; 310c: 20 a4 20     .  :200c[1]
@@ -3005,6 +3032,7 @@ c201b
     rts                                                               ; 3120: 60          `   :2020[1]
 
     !byte $ea, $ea, $ea, $ea                                          ; 3121: ea ea ea... ... :2021[1]
+
 ; $3125 referenced 2 times by $1fce, $2017
 sub_c2025
     lda (l0086),y                                                     ; 3125: b1 86       ..  :2025[1]
@@ -3094,6 +3122,7 @@ c209d
     rts                                                               ; 319f: 60          `   :209f[1]
 
     !byte $ea, $ea, $ea, $ea                                          ; 31a0: ea ea ea... ... :20a0[1]
+
 ; $31a4 referenced 2 times by $1fc3, $200c
 sub_c20a4
     stx l0088                                                         ; 31a4: 86 88       ..  :20a4[1]
@@ -3114,6 +3143,7 @@ c20c1
     rts                                                               ; 31c1: 60          `   :20c1[1]
 
     !byte $ea, $ea, $ea                                               ; 31c2: ea ea ea    ... :20c2[1]
+
 ; $31c5 referenced 1 time by $20bb
 c20c5
     and #$1f                                                          ; 31c5: 29 1f       ).  :20c5[1]
@@ -3153,6 +3183,7 @@ c20c5
     rts                                                               ; 320e: 60          `   :210e[1]
 
     !byte $ea, $ea, $ea, $ea                                          ; 320f: ea ea ea... ... :210f[1]
+
 ; $3213 referenced 12 times by $1d68, $1f2d, $1f97, $1fe6, $26a9, $3172, $33e2, $3425, $3448, $346a, $36f9, $38cd
 sub_c2113
     lda l1cd1                                                         ; 3213: ad d1 1c    ... :2113[1]
@@ -3189,30 +3220,30 @@ l2146
     !byte $9b, $ad, $96, $ff, $ff, $ff, $ff, $96                      ; 3252: 9b ad 96... ... :2152[1]
 ; $325a referenced 1 time by $22fc
 l215a
-    !byte 0  , 0  , 3  , $ff, 5  , $19, 3  , $ff, 3  , $ff, 5  , $19  ; 325a: 00 00 03... ... :215a[1]
-    !byte 3  , $ff, 0  , 0  , 5  , $19, 0  , 0  , 0  , 0  , 5  , $19  ; 3266: 03 ff 00... ... :2166[1]
-    !byte 0  , 0  , 4  , $ff, 5  , $19, 2  , $fc, 4  , $ff, 5  , $19  ; 3272: 00 00 04... ... :2172[1]
-    !byte 2  , $fc, 4  , 0  , 4  , $19                                ; 327e: 02 fc 04... ... :217e[1]
+    !byte   0,   0,   3, $ff,   5, $19,   3, $ff,   3, $ff,   5, $19  ; 325a: 00 00 03... ... :215a[1]
+    !byte   3, $ff,   0,   0,   5, $19,   0,   0,   0,   0,   5, $19  ; 3266: 03 ff 00... ... :2166[1]
+    !byte   0,   0,   4, $ff,   5, $19,   2, $fc,   4, $ff,   5, $19  ; 3272: 00 00 04... ... :2172[1]
+    !byte   2, $fc,   4,   0,   4, $19                                ; 327e: 02 fc 04... ... :217e[1]
 l2184
-    !byte 1  , 0  , $f8, $fa, $0f, 4  , $0a, 8  , $7f, $fe, $fc, $ff  ; 3284: 01 00 f8... ... :2184[1]
+    !byte   1,   0, $f8, $fa, $0f,   4, $0a,   8, $7f, $fe, $fc, $ff  ; 3284: 01 00 f8... ... :2184[1]
     !byte $7e, $64                                                    ; 3290: 7e 64       ~d  :2190[1]
 l2192
-    !byte 2  , 0  , $f8, $fa, $fe, 4  , $0a, 8  , $7f, $fe, $ff, $ff  ; 3292: 02 00 f8... ... :2192[1]
+    !byte   2,   0, $f8, $fa, $fe,   4, $0a,   8, $7f, $fe, $ff, $ff  ; 3292: 02 00 f8... ... :2192[1]
     !byte $64, $50                                                    ; 329e: 64 50       dP  :219e[1]
 l21a0
-    !byte 3  , $86, $ff, 0  , 1  , 3  , 1  , 2  , $7f, $ff, $fd, $fd  ; 32a0: 03 86 ff... ... :21a0[1]
+    !byte   3, $86, $ff,   0,   1,   3,   1,   2, $7f, $ff, $fd, $fd  ; 32a0: 03 86 ff... ... :21a0[1]
     !byte $7e, $78                                                    ; 32ac: 7e 78       ~x  :21ac[1]
 l21ae
-    !byte 4  , 0  , $10, $f0, $10, 4  , 8  , 4  , $7f, $ff, $ff, $ff  ; 32ae: 04 00 10... ... :21ae[1]
-    !byte $7e, $64, 1  , 2  , 3  , 4  , 5  , 6  , 7  , 8  , 9  , $0a  ; 32ba: 7e 64 01... ~d. :21ba[1]
+    !byte   4,   0, $10, $f0, $10,   4,   8,   4, $7f, $ff, $ff, $ff  ; 32ae: 04 00 10... ... :21ae[1]
+    !byte $7e, $64,   1,   2,   3,   4,   5,   6,   7,   8,   9, $0a  ; 32ba: 7e 64 01... ~d. :21ba[1]
     !byte $0b, $0c                                                    ; 32c6: 0b 0c       ..  :21c6[1]
 sound_1
-    !byte $11, 0  , 0  , 0                                            ; 32c8: 11 00 00... ... :21c8[1]
+    !byte $11,   0,   0,   0                                          ; 32c8: 11 00 00... ... :21c8[1]
 ; $32cc referenced 1 time by $2516
 l21cc
     !byte 0, 0, 8, 0                                                  ; 32cc: 00 00 08... ... :21cc[1]
 sound_2
-    !byte $10, 0                                                      ; 32d0: 10 00       ..  :21d0[1]
+    !byte $10,   0                                                    ; 32d0: 10 00       ..  :21d0[1]
 ; $32d2 referenced 1 time by $2527
 l21d2
     !byte 0                                                           ; 32d2: 00          .   :21d2[1]
@@ -3220,58 +3251,59 @@ l21d2
 l21d3
     !byte 0, 7, 0, 8, 0                                               ; 32d3: 00 07 00... ... :21d3[1]
 sound_3
-    !byte $13, 0  , 1  , 0  , $80, 0  , 4  , 0                        ; 32d8: 13 00 01... ... :21d8[1]
+    !byte $13,   0,   1,   0, $80,   0,   4,   0                      ; 32d8: 13 00 01... ... :21d8[1]
 sound_4
-    !byte $12, 0  , 2  , 0  , $c0, 0  , $1f, 0                        ; 32e0: 12 00 02... ... :21e0[1]
+    !byte $12,   0,   2,   0, $c0,   0, $1f,   0                      ; 32e0: 12 00 02... ... :21e0[1]
 sound_5
-    !byte $12, 0  , 4  , 0  , $40, 0  , 8  , 0                        ; 32e8: 12 00 04... ... :21e8[1]
+    !byte $12,   0,   4,   0, $40,   0,   8,   0                      ; 32e8: 12 00 04... ... :21e8[1]
 sound_6
-    !byte $12, 0  , 4  , 0  , $be, 0  , 8  , 0                        ; 32f0: 12 00 04... ... :21f0[1]
+    !byte $12,   0,   4,   0, $be,   0,   8,   0                      ; 32f0: 12 00 04... ... :21f0[1]
 sound_7
-    !byte $13, 0  , 2  , 0  , $6c, 0  , 8  , 0                        ; 32f8: 13 00 02... ... :21f8[1]
+    !byte $13,   0,   2,   0, $6c,   0,   8,   0                      ; 32f8: 13 00 02... ... :21f8[1]
 ; $3300 referenced 1 time by $254f
 sound_8
-    !byte $13, 0                                                      ; 3300: 13 00       ..  :2200[1]
+    !byte $13,   0                                                    ; 3300: 13 00       ..  :2200[1]
 ; $3302 referenced 1 time by $2563
 l2202
     !byte 0                                                           ; 3302: 00          .   :2202[1]
 ; $3303 referenced 1 time by $256a
 l2203
-    !byte 0  , $64, 0  , 4  , 0                                       ; 3303: 00 64 00... .d. :2203[1]
+    !byte   0, $64,   0,   4,   0                                     ; 3303: 00 64 00... .d. :2203[1]
 sound_9
-    !byte $11, 0  , $f1, $ff, $c8, 0  , 4  , 0                        ; 3308: 11 00 f1... ... :2208[1]
+    !byte $11,   0, $f1, $ff, $c8,   0,   4,   0                      ; 3308: 11 00 f1... ... :2208[1]
 ; $3310 referenced 1 time by $2308
 l2210
-    !byte 0  , 0  , 0  , 7  , 1  , $13                                ; 3310: 00 00 00... ... :2210[1]
+    !byte   0,   0,   0,   7,   1, $13                                ; 3310: 00 00 00... ... :2210[1]
 ; $3316 referenced 1 time by $2314
 l2216
-    !byte 0  , 0  , 0  , 0  , 1  , $13                                ; 3316: 00 00 00... ... :2216[1]
+    !byte   0,   0,   0,   0,   1, $13                                ; 3316: 00 00 00... ... :2216[1]
 ; $331c referenced 1 time by $2320
 l221c
-    !byte 0  , 0  , 0  , 0  , 0  , $13                                ; 331c: 00 00 00... ... :221c[1]
+    !byte   0,   0,   0,   0,   0, $13                                ; 331c: 00 00 00... ... :221c[1]
 ; $3322 referenced 1 time by $22a5
 l2222
     !text "YGRENE"                                                    ; 3322: 59 47 52... YGR :2222[1]
     !byte $11, $21, $1f                                               ; 3328: 11 21 1f    .!. :2228[1]
 ; $332b referenced 1 time by $22b3
 l222b
-    !byte 4  , $34, $0a, 8  , $33, $0a, 8  , $32, $0a, 8  , $31, 5    ; 332b: 04 34 0a... .4. :222b[1]
-    !byte 1  , $ac, 4  , 8  , 4  , $19                                ; 3337: 01 ac 04... ... :2237[1]
+    !byte   4, $34, $0a,   8, $33, $0a,   8, $32, $0a,   8, $31,   5  ; 332b: 04 34 0a... .4. :222b[1]
+    !byte   1, $ac,   4,   8,   4, $19                                ; 3337: 01 ac 04... ... :2237[1]
 ; $333d referenced 1 time by $22bf
 l223d
-    !byte $4e, $4f, 5  , $23, $1f                                     ; 333d: 4e 4f 05... NO. :223d[1]
+    !byte $4e, $4f,   5, $23, $1f                                     ; 333d: 4e 4f 05... NO. :223d[1]
     !text "SDLEIHS"                                                   ; 3342: 53 44 4c... SDL :2242[1]
-    !byte 2  , $21, $1f                                               ; 3349: 02 21 1f    .!. :2249[1]
+    !byte   2, $21, $1f                                               ; 3349: 02 21 1f    .!. :2249[1]
 ; $334c referenced 1 time by $22cb
 l224c
-    !byte $20, $20, 5  , $23, $1f                                     ; 334c: 20 20 05...   . :224c[1]
+    !byte $20, $20,   5, $23, $1f                                     ; 334c: 20 20 05...   . :224c[1]
     !text "       "                                                   ; 3351: 20 20 20...     :2251[1]
-    !byte 2  , $21, $1f, 0  , 0  , 0  , 0  , 0  , 0  , $60, $0a, 0    ; 3358: 02 21 1f... .!. :2258[1]
+    !byte   2, $21, $1f,   0,   0,   0,   0,   0,   0, $60, $0a,   0  ; 3358: 02 21 1f... .!. :2258[1]
     !byte $17                                                         ; 3364: 17          .   :2264[1]
 ; $3365 referenced 1 time by $2338
 l2265
-    !byte 0  , 0  , 0  , 0  , 0  , 0  , $3c, $0a, 0  , $17, $ea, $ea  ; 3365: 00 00 00... ... :2265[1]
+    !byte   0,   0,   0,   0,   0,   0, $3c, $0a,   0, $17, $ea, $ea  ; 3365: 00 00 00... ... :2265[1]
     !byte $ea, $ea, $ea, $ea                                          ; 3371: ea ea ea... ... :2271[1]
+
 ; $3375 referenced 1 time by $28b8
 sub_c2275
     lda #$93                                                          ; 3375: a9 93       ..  :2275[1]
@@ -3409,9 +3441,10 @@ loop_c2320
     bpl loop_c2320                                                    ; 3427: 10 f7       ..  :2327[1]
     rts                                                               ; 3429: 60          `   :2329[1]
 
-    !byte $a2, 9  , $bd                                               ; 342a: a2 09 bd    ... :232a[1]
-    !text "[\" "                                                      ; 342d: 5b 22 20    ["  :232d[1]
+    !byte $a2,   9, $bd                                               ; 342a: a2 09 bd    ... :232a[1]
+    !text "[", '"', " "                                               ; 342d: 5b 22 20    ["  :232d[1]
     !byte $ee, $ff, $ca, $10, $f7, $60                                ; 3430: ee ff ca... ... :2330[1]
+
 ; $3436 referenced 7 times by $28a0, $41f3, $420d, $43e1, $45e4, $461f, $467b
 sub_c2336
     ldx #9                                                            ; 3436: a2 09       ..  :2336[1]
@@ -3424,6 +3457,7 @@ loop_c2338
     rts                                                               ; 3441: 60          `   :2341[1]
 
     !byte $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea                 ; 3442: ea ea ea... ... :2342[1]
+
 ; $344b referenced 1 time by $195e
 sub_c234b
     ldy l1cd8                                                         ; 344b: ac d8 1c    ... :234b[1]
@@ -3540,15 +3574,16 @@ c23eb
     rts                                                               ; 34f5: 60          `   :23f5[1]
 
     !text " 6$"                                                       ; 34f6: 20 36 24     6$ :23f6[1]
-    !byte $f0, 3  , $4c, $1e                                          ; 34f9: f0 03 4c... ..L :23f9[1]
+    !byte $f0,   3, $4c, $1e                                          ; 34f9: f0 03 4c... ..L :23f9[1]
     !text "$ 6$"                                                      ; 34fd: 24 20 36... $ 6 :23fd[1]
-    !byte $f0, 3  , $4c, $1e                                          ; 3501: f0 03 4c... ..L :2401[1]
+    !byte $f0,   3, $4c, $1e                                          ; 3501: f0 03 4c... ..L :2401[1]
     !text "$ 6$"                                                      ; 3505: 24 20 36... $ 6 :2405[1]
-    !byte $f0, 3  , $4c, $1e                                          ; 3509: f0 03 4c... ..L :2409[1]
+    !byte $f0,   3, $4c, $1e                                          ; 3509: f0 03 4c... ..L :2409[1]
     !text "$ 6$"                                                      ; 350d: 24 20 36... $ 6 :240d[1]
-    !byte $f0, 3  , $4c, $1e                                          ; 3511: f0 03 4c... ..L :2411[1]
+    !byte $f0,   3, $4c, $1e                                          ; 3511: f0 03 4c... ..L :2411[1]
     !text "$ 6$"                                                      ; 3515: 24 20 36... $ 6 :2415[1]
-    !byte $f0, 3  , $4c, $1e, $24                                     ; 3519: f0 03 4c... ..L :2419[1]
+    !byte $f0,   3, $4c, $1e, $24                                     ; 3519: f0 03 4c... ..L :2419[1]
+
 ; $351e referenced 1 time by $23ee
 c241e
     jsr sub_c2436                                                     ; 351e: 20 36 24     6$ :241e[1]
@@ -3561,6 +3596,7 @@ c2426
 
     !byte $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea  ; 3527: ea ea ea... ... :2427[1]
     !byte $ea, $ea, $ea                                               ; 3533: ea ea ea    ... :2433[1]
+
 ; $3536 referenced 15 times by $2362, $236a, $2372, $237a, $2382, $238a, $2392, $23ad, $23b8, $23c3, $23ce, $23d9, $23e2, $23eb, $241e
 sub_c2436
     inc l0075                                                         ; 3536: e6 75       .u  :2436[1]
@@ -3574,6 +3610,7 @@ sub_c2436
     rts                                                               ; 3545: 60          `   :2445[1]
 
     !byte $ea, $ea, $ea                                               ; 3546: ea ea ea    ... :2446[1]
+
 ; $3549 referenced 2 times by $2423, $2453
 c2449
     ldx #inkey_key_delete                                             ; 3549: a2 a6       ..  :2449[1]
@@ -3585,6 +3622,7 @@ c2449
     rts                                                               ; 3555: 60          `   :2455[1]
 
     !byte $ea, $ea, $ea, $ea                                          ; 3556: ea ea ea... ... :2456[1]
+
 ; $355a referenced 1 time by $38c7
 sub_c245a
     lda l1cd7                                                         ; 355a: ad d7 1c    ... :245a[1]
@@ -3780,8 +3818,8 @@ c2599
     !byte $ea, $ea, $ff, $60, $ea, $ea, $ff, $ff, $ff, $ff, $ff, $ff  ; 369a: ea ea ff... ... :259a[1]
     !byte $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff  ; 36a6: ff ff ff... ... :25a6[1]
     !byte $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff  ; 36b2: ff ff ff... ... :25b2[1]
-    !byte $ff, $ff, 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0    ; 36be: ff ff 00... ... :25be[1]
-    !byte 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0         ; 36ca: 00 00 00... ... :25ca[1]
+    !byte $ff, $ff,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0  ; 36be: ff ff 00... ... :25be[1]
+    !byte   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0       ; 36ca: 00 00 00... ... :25ca[1]
 ; $36d5 referenced 1 time by $1546
 l25d5
     !byte $86                                                         ; 36d5: 86          .   :25d5[1]
@@ -3830,6 +3868,7 @@ l25f1
 ; $36f2 referenced 4 times by $25f3, $2601, $260a, $3542
 l25f2
     !byte 0                                                           ; 36f2: 00          .   :25f2[1]
+
 ; $36f3 referenced 1 time by $1acd
 c25f3
     lda l25f2                                                         ; 36f3: ad f2 25    ..% :25f3[1]
@@ -3874,9 +3913,9 @@ loop_c262b
     bpl loop_c262b                                                    ; 3734: 10 f5       ..  :2634[1]
     rts                                                               ; 3736: 60          `   :2636[1]
 
-    !byte $ea, $ea, $ea, $ff, $ff, $ff, $ff, $ff, $ff, 0  , 0  , 0    ; 3737: ea ea ea... ... :2637[1]
-    !byte 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0    ; 3743: 00 00 00... ... :2643[1]
-    !byte 0  , 0  , 0                                                 ; 374f: 00 00 00    ... :264f[1]
+    !byte $ea, $ea, $ea, $ff, $ff, $ff, $ff, $ff, $ff,   0,   0,   0  ; 3737: ea ea ea... ... :2637[1]
+    !byte   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0  ; 3743: 00 00 00... ... :2643[1]
+    !byte   0,   0,   0                                               ; 374f: 00 00 00    ... :264f[1]
 ; $3752 referenced 2 times by $2667, $2d90
 l2652
     !byte 1                                                           ; 3752: 01          .   :2652[1]
@@ -3903,7 +3942,8 @@ l265a
     !byte $ea                                                         ; 375a: ea          .   :265a[1]
 ; $375b referenced 1 time by $1469
 l265b
-    !byte 0  , $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea  ; 375b: 00 ea ea... ... :265b[1]
+    !byte   0, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea  ; 375b: 00 ea ea... ... :265b[1]
+
 ; $3767 referenced 1 time by $386b
 sub_c2667
     lda l2652                                                         ; 3767: ad 52 26    .R& :2667[1]
@@ -3963,22 +4003,23 @@ c26bf
 c26c9
     rts                                                               ; 37c9: 60          `   :26c9[1]
 
-    !byte $ea, $ea, $ad, $55, $0e, $f0, $1d, $bd, $8a, 4  , $29, $0f  ; 37ca: ea ea ad... ... :26ca[1]
-    !byte $d0, $16, $a0, 0  , $b1, $80, $f0, $12, $a5, $80, $18, $69  ; 37d6: d0 16 a0... ... :26d6[1]
-    !byte 6  , $85, $80, $90, 2  , $e6, $81, $ce, $55, $0e, $d0, $ec  ; 37e2: 06 85 80... ... :26e2[1]
-    !byte $18, $60, $bd, $87, 4                                       ; 37ee: 18 60 bd... .`. :26ee[1]
+    !byte $ea, $ea, $ad, $55, $0e, $f0, $1d, $bd, $8a,   4, $29, $0f  ; 37ca: ea ea ad... ... :26ca[1]
+    !byte $d0, $16, $a0,   0, $b1, $80, $f0, $12, $a5, $80, $18, $69  ; 37d6: d0 16 a0... ... :26d6[1]
+    !byte   6, $85, $80, $90,   2, $e6, $81, $ce, $55, $0e, $d0, $ec  ; 37e2: 06 85 80... ... :26e2[1]
+    !byte $18, $60, $bd, $87,   4                                     ; 37ee: 18 60 bd... .`. :26ee[1]
     !text "JJJ"                                                       ; 37f3: 4a 4a 4a    JJJ :26f3[1]
-    !byte $cd, $55, $26, $d0, $f3, $bd, $8a, 4                        ; 37f6: cd 55 26... .U& :26f6[1]
+    !byte $cd, $55, $26, $d0, $f3, $bd, $8a,   4                      ; 37f6: cd 55 26... .U& :26f6[1]
     !text "JJJJ}"                                                     ; 37fe: 4a 4a 4a... JJJ :26fe[1]
-    !byte $8a, 4  , $9d, $8a, 4  , $bd, 9  , 4  , $29, $10, $f0, 3    ; 3803: 8a 04 9d... ... :2703[1]
-    !byte $4c, $d4, $29, $ad, $36, $0e, $a0, 0  , $91, $80, $bd, $87  ; 380f: 4c d4 29... L.) :270f[1]
-    !byte 4  , $a0, 5  , $91, $80                                     ; 381b: 04 a0 05... ... :271b[1]
+    !byte $8a,   4, $9d, $8a,   4, $bd,   9,   4, $29, $10, $f0,   3  ; 3803: 8a 04 9d... ... :2703[1]
+    !byte $4c, $d4, $29, $ad, $36, $0e, $a0,   0, $91, $80, $bd, $87  ; 380f: 4c d4 29... L.) :270f[1]
+    !byte   4, $a0,   5, $91, $80                                     ; 381b: 04 a0 05... ... :271b[1]
     !text "JJJ"                                                       ; 3820: 4a 4a 4a    JJJ :2720[1]
-    !byte $a8, $b9, $58, $0e, $18, $7d, $82, 4  , $85, $7a, $b9, $78  ; 3823: a8 b9 58... ..X :2723[1]
-    !byte $0e, $18, $7d, $85, 4  , $a0, 4  , $91, $80, $a0, 2  , $a5  ; 382f: 0e 18 7d... ..} :272f[1]
+    !byte $a8, $b9, $58, $0e, $18, $7d, $82,   4, $85, $7a, $b9, $78  ; 3823: a8 b9 58... ..X :2723[1]
+    !byte $0e, $18, $7d, $85,   4, $a0,   4, $91, $80, $a0,   2, $a5  ; 382f: 0e 18 7d... ..} :272f[1]
     !byte $7a, $91, $80, $ee, $dc, $1c, $86, $75, $20, $11, $16, $a6  ; 383b: 7a 91 80... z.. :273b[1]
-    !byte $75, $ce, $55, $0e, $a5, $80, $18, $69, 6  , $85, $80, $90  ; 3847: 75 ce 55... u.U :2747[1]
-    !byte 2  , $e6, $81, $38, $60                                     ; 3853: 02 e6 81... ... :2753[1]
+    !byte $75, $ce, $55, $0e, $a5, $80, $18, $69,   6, $85, $80, $90  ; 3847: 75 ce 55... u.U :2747[1]
+    !byte   2, $e6, $81, $38, $60                                     ; 3853: 02 e6 81... ... :2753[1]
+
 ; $3858 referenced 2 times by $2a9a, $3419
 sub_c2758
     lda l0076                                                         ; 3858: a5 76       .v  :2758[1]
@@ -4079,7 +4120,9 @@ c27d3
     nop                                                               ; 38d9: ea          .   :27d9[1]
     nop                                                               ; 38da: ea          .   :27da[1]
     brk                                                               ; 38db: 00          .   :27db[1]
+
     !byte 0, 0, 0, 0                                                  ; 38dc: 00 00 00... ... :27dc[1]
+
 ; $38e0 referenced 1 time by $18c9
 c27e0
     ldx l0080                                                         ; 38e0: a6 80       ..  :27e0[1]
@@ -4205,7 +4248,8 @@ l2896
     !byte 0                                                           ; 3996: 00          .   :2896[1]
 ; $3997 referenced 3 times by $28e0, $2921, $2928
 l2897
-    !byte 0  , $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea                 ; 3997: 00 ea ea... ... :2897[1]
+    !byte   0, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea                 ; 3997: 00 ea ea... ... :2897[1]
+
 ; $39a0 referenced 1 time by $3595
 sub_c28a0
     jsr sub_c2336                                                     ; 39a0: 20 36 23     6# :28a0[1]
@@ -4228,6 +4272,7 @@ sub_c28a0
     rts                                                               ; 39d3: 60          `   :28d3[1]
 
     !byte $ea, $ea, $ea                                               ; 39d4: ea ea ea    ... :28d4[1]
+
 ; $39d7 referenced 1 time by $2397
 c28d7
     ldy #$c0                                                          ; 39d7: a0 c0       ..  :28d7[1]
@@ -4343,6 +4388,7 @@ c2991
     rts                                                               ; 3a96: 60          `   :2996[1]
 
     !byte $ea                                                         ; 3a97: ea          .   :2997[1]
+
 ; $3a98 referenced 2 times by $2911, $2961
 sub_c2998
     lda l2894                                                         ; 3a98: ad 94 28    ..( :2998[1]
@@ -4364,24 +4410,24 @@ sub_c2998
     rts                                                               ; 3abf: 60          `   :29bf[1]
 
     !byte $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea  ; 3ac0: ea ea ea... ... :29c0[1]
-    !byte $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $bd, $87, 4         ; 3acc: ea ea ea... ... :29cc[1]
+    !byte $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $bd, $87,   4       ; 3acc: ea ea ea... ... :29cc[1]
     !text "JJJ"                                                       ; 3ad7: 4a 4a 4a    JJJ :29d7[1]
-    !byte $a8, $b9, $58, $0e, $18, $7d, $82, 4  , $85, $73, $b9, $78  ; 3ada: a8 b9 58... ..X :29da[1]
-    !byte $0e, $18, $7d, $85, 4  , $85, $72, $20, $13, $2a, $c6, $73  ; 3ae6: 0e 18 7d... ..} :29e6[1]
+    !byte $a8, $b9, $58, $0e, $18, $7d, $82,   4, $85, $73, $b9, $78  ; 3ada: a8 b9 58... ..X :29da[1]
+    !byte $0e, $18, $7d, $85,   4, $85, $72, $20, $13, $2a, $c6, $73  ; 3ae6: 0e 18 7d... ..} :29e6[1]
     !byte $c6, $73, $c6, $72, $c6, $72, $20, $13, $2a, $e6, $73, $e6  ; 3af2: c6 73 c6... .s. :29f2[1]
     !byte $73, $c6, $72, $c6, $72, $20, $13, $2a, $e6, $73, $e6, $73  ; 3afe: 73 c6 72... s.r :29fe[1]
     !byte $e6, $72, $e6, $72, $20, $13                                ; 3b0a: e6 72 e6... .r. :2a0a[1]
     !text "*8`"                                                       ; 3b10: 2a 38 60    *8` :2a10[1]
-    !byte $a0, 0  , $ad, $36, $0e, $91, $80, $a0, 2  , $a5, $73, $91  ; 3b13: a0 00 ad... ... :2a13[1]
-    !byte $80, $a0, 4  , $a5, $72, $91, $80, $c8, $bd, $87, 4  , $91  ; 3b1f: 80 a0 04... ... :2a1f[1]
+    !byte $a0,   0, $ad, $36, $0e, $91, $80, $a0,   2, $a5, $73, $91  ; 3b13: a0 00 ad... ... :2a13[1]
+    !byte $80, $a0,   4, $a5, $72, $91, $80, $c8, $bd, $87,   4, $91  ; 3b1f: 80 a0 04... ... :2a1f[1]
     !byte $80, $ee, $dc, $1c, $86, $75, $20, $11, $16, $a6, $75, $a0  ; 3b2b: 80 ee dc... ... :2a2b[1]
-    !byte 0  , $ce, $55, $0e, $f0, $10, $a5, $80, $18, $69, 6  , $85  ; 3b37: 00 ce 55... ..U :2a37[1]
-    !byte $80, $90, 2  , $e6, $81, $b1, $80, $d0, $ec                 ; 3b43: 80 90 02... ... :2a43[1]
+    !byte   0, $ce, $55, $0e, $f0, $10, $a5, $80, $18, $69,   6, $85  ; 3b37: 00 ce 55... ..U :2a37[1]
+    !byte $80, $90,   2, $e6, $81, $b1, $80, $d0, $ec                 ; 3b43: 80 90 02... ... :2a43[1]
     !text "`hh8`"                                                     ; 3b4c: 60 68 68... `hh :2a4c[1]
     !byte $ea, $ea, $ea, $ea, $ea                                     ; 3b51: ea ea ea... ... :2a51[1]
 ; $3b56 referenced 1 time by $2be0
 l2a56
-    !byte 0  , 0  , 1  , 3  , 7  , 5  , 2  , 2  , $ea                 ; 3b56: 00 00 01... ... :2a56[1]
+    !byte   0,   0,   1,   3,   7,   5,   2,   2, $ea                 ; 3b56: 00 00 01... ... :2a56[1]
 ; $3b5f referenced 1 time by $36c5
 l2a5f
     !byte $49, $b1, $ee, $1e                                          ; 3b5f: 49 b1 ee... I.. :2a5f[1]
@@ -4400,6 +4446,7 @@ l2a82
 ; $3b83 referenced 1 time by $3686
 l2a83
     !byte $18, $ea, $ea, $ea, $ea, $ea, $ea, $ea                      ; 3b83: 18 ea ea... ... :2a83[1]
+
 ; $3b8b referenced 1 time by $36ba
 sub_c2a8b
     lda l0480,x                                                       ; 3b8b: bd 80 04    ... :2a8b[1]
@@ -4471,33 +4518,34 @@ c2af7
     clc                                                               ; 3bf7: 18          .   :2af7[1]
     rts                                                               ; 3bf8: 60          `   :2af8[1]
 
-    !byte $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $bd, $82, 4  , $30  ; 3bf9: ea ea ea... ... :2af9[1]
-    !byte 2  , $49, $ff, $85, $7a, $ad, 1  , $0f, $85, $7b, $ad, 0    ; 3c05: 02 49 ff... .I. :2b05[1]
-    !byte $0f, 6  , $7b, $2a, 6  , $7b, $2a, 6                        ; 3c11: 0f 06 7b... ..{ :2b11[1]
+    !byte $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $bd, $82,   4, $30  ; 3bf9: ea ea ea... ... :2af9[1]
+    !byte   2, $49, $ff, $85, $7a, $ad,   1, $0f, $85, $7b, $ad,   0  ; 3c05: 02 49 ff... .I. :2b05[1]
+    !byte $0f,   6, $7b, $2a,   6, $7b, $2a,   6                      ; 3c11: 0f 06 7b... ..{ :2b11[1]
     !text "{*}"                                                       ; 3c19: 7b 2a 7d    {*} :2b19[1]
-    !byte $85, 4  , $30, 2  , $49, $ff, $18                           ; 3c1c: 85 04 30... ..0 :2b1c[1]
+    !byte $85,   4, $30,   2, $49, $ff, $18                           ; 3c1c: 85 04 30... ..0 :2b1c[1]
     !text "ez`"                                                       ; 3c23: 65 7a 60    ez` :2b23[1]
-    !byte $bd, $82, 4  , $30, 2  , $49, $ff, $85, $7a, $bd, $85, 4    ; 3c26: bd 82 04... ... :2b26[1]
-    !byte $30, 2  , $49, $ff, $18                                     ; 3c32: 30 02 49... 0.I :2b32[1]
+    !byte $bd, $82,   4, $30,   2, $49, $ff, $85, $7a, $bd, $85,   4  ; 3c26: bd 82 04... ... :2b26[1]
+    !byte $30,   2, $49, $ff, $18                                     ; 3c32: 30 02 49... 0.I :2b32[1]
     !text "ez`"                                                       ; 3c37: 65 7a 60    ez` :2b37[1]
-    !byte $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $bd, $80, 4  , $f0  ; 3c3a: ea ea ea... ... :2b3a[1]
-    !byte $0d, $bd, $83, 4  , $85, $77, $bd, $86, 4  , $85            ; 3c46: 0d bd 83... ... :2b46[1]
+    !byte $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $bd, $80,   4, $f0  ; 3c3a: ea ea ea... ... :2b3a[1]
+    !byte $0d, $bd, $83,   4, $85, $77, $bd, $86,   4, $85            ; 3c46: 0d bd 83... ... :2b46[1]
     !text "vL^+"                                                      ; 3c50: 76 4c 5e... vL^ :2b50[1]
-    !byte $bd, $82, 4  , $85, $77, $bd, $85, 4  , $85                 ; 3c54: bd 82 04... ... :2b54[1]
+    !byte $bd, $82,   4, $85, $77, $bd, $85,   4, $85                 ; 3c54: bd 82 04... ... :2b54[1]
     !text "v X'"                                                      ; 3c5d: 76 20 58... v X :2b5d[1]
     !byte $ad, $55, $26, $18, $69, $10, $29, $1f, $8d, $55, $26, $c9  ; 3c61: ad 55 26... .U& :2b61[1]
-    !byte $11, $90, 5  , $49, $1f, $69, 0                             ; 3c6d: 11 90 05... ... :2b6d[1]
+    !byte $11, $90,   5, $49, $1f, $69,   0                           ; 3c6d: 11 90 05... ... :2b6d[1]
     !text "8fu"                                                       ; 3c74: 38 66 75    8fu :2b74[1]
-    !byte $a8, $b9, $58, $0e, $85, $7b, $ad, 1  , $0f, $85, $7a, $ad  ; 3c77: a8 b9 58... ..X :2b77[1]
-    !byte 0  , $0f, 6  , $7a, $2a, 6  , $7a, $2a, 6  , $7a, $2a, $85  ; 3c83: 00 0f 06... ... :2b83[1]
-    !byte $7a, $a9, 0  , $a0, 3  , $46, $7b, $90, 3  , $18            ; 3c8f: 7a a9 00... z.. :2b8f[1]
+    !byte $a8, $b9, $58, $0e, $85, $7b, $ad,   1, $0f, $85, $7a, $ad  ; 3c77: a8 b9 58... ..X :2b77[1]
+    !byte   0, $0f,   6, $7a, $2a,   6, $7a, $2a,   6, $7a, $2a, $85  ; 3c83: 00 0f 06... ... :2b83[1]
+    !byte $7a, $a9,   0, $a0,   3, $46, $7b, $90,   3, $18            ; 3c8f: 7a a9 00... z.. :2b8f[1]
     !text "ezj"                                                       ; 3c99: 65 7a 6a    ezj :2b99[1]
-    !byte $88, $d0, $f5, $4a, $c9, 2  , $90, $15, $c8, $c9, 5  , $90  ; 3c9c: 88 d0 f5... ... :2b9c[1]
-    !byte $10, $c8, $c9, 8  , $90, $0b, $c8, $c9, $0b, $90, 6  , $c8  ; 3ca8: 10 c8 c9... ... :2ba8[1]
-    !byte $c9, $0e, $90, 1  , $c8, $98, 6  , $75, $90, 4  , $49, $1f  ; 3cb4: c9 0e 90... ... :2bb4[1]
-    !byte $69, 0  , $85, $7b, $ad                                     ; 3cc0: 69 00 85... i.. :2bc0[1]
+    !byte $88, $d0, $f5, $4a, $c9,   2, $90, $15, $c8, $c9,   5, $90  ; 3c9c: 88 d0 f5... ... :2b9c[1]
+    !byte $10, $c8, $c9,   8, $90, $0b, $c8, $c9, $0b, $90,   6, $c8  ; 3ca8: 10 c8 c9... ... :2ba8[1]
+    !byte $c9, $0e, $90,   1, $c8, $98,   6, $75, $90,   4, $49, $1f  ; 3cb4: c9 0e 90... ... :2bb4[1]
+    !byte $69,   0, $85, $7b, $ad                                     ; 3cc0: 69 00 85... i.. :2bc0[1]
     !text "U&8"                                                       ; 3cc5: 55 26 38    U&8 :2bc5[1]
     !byte $e5, $7b, $29, $1f, $8d, $55, $26                           ; 3cc8: e5 7b 29... .{) :2bc8[1]
+
 ; $3ccf referenced 1 time by $2ae7
 sub_c2bcf
     lda l0487,x                                                       ; 3ccf: bd 87 04    ... :2bcf[1]
@@ -4543,10 +4591,11 @@ c2c06
 c2c10
     rts                                                               ; 3d10: 60          `   :2c10[1]
 
-    !byte $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $bd, $82, 4  , $85  ; 3d11: ea ea ea... ... :2c11[1]
-    !byte $77, $bd, $85, 4  , $85                                     ; 3d1d: 77 bd 85... w.. :2c1d[1]
+    !byte $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $bd, $82,   4, $85  ; 3d11: ea ea ea... ... :2c11[1]
+    !byte $77, $bd, $85,   4, $85                                     ; 3d1d: 77 bd 85... w.. :2c1d[1]
     !text "v X'L"                                                     ; 3d22: 76 20 58... v X :2c22[1]
     !byte $cf, $2b                                                    ; 3d27: cf 2b       .+  :2c27[1]
+
 ; $3d29 referenced 3 times by $2be9, $2bf0, $367c
 sub_c2c29
     lda l0408,x                                                       ; 3d29: bd 08 04    ... :2c29[1]
@@ -4559,6 +4608,7 @@ c2c34
     rts                                                               ; 3d34: 60          `   :2c34[1]
 
     !byte $ea, $ea, $ea, $ea, $ea                                     ; 3d35: ea ea ea... ... :2c35[1]
+
 ; $3d3a referenced 1 time by $2aea
 sub_c2c3a
     lda l2a81                                                         ; 3d3a: ad 81 2a    ..* :2c3a[1]
@@ -4578,41 +4628,41 @@ c2c4d
 c2c50
     rts                                                               ; 3d50: 60          `   :2c50[1]
 
-    !byte $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, 0  , 0  , 0  , 0    ; 3d51: ea ea ea... ... :2c51[1]
-    !byte 0  , 0  , 0                                                 ; 3d5d: 00 00 00    ... :2c5d[1]
+    !byte $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea,   0,   0,   0,   0  ; 3d51: ea ea ea... ... :2c51[1]
+    !byte   0,   0,   0                                               ; 3d5d: 00 00 00    ... :2c5d[1]
 ; $3d60 referenced 1 time by $3583
 l2c60
     !text "AAAC"                                                      ; 3d60: 41 41 41... AAA :2c60[1]
-    !byte $e7, $a7, $a5, $a3, 4  , 4  , 4  , $84, $ce, $ca, $4a, $8a  ; 3d64: e7 a7 a5... ... :2c64[1]
-    !byte $fb, $4f, $43, 5  , $0d, $0d, $0d, 7  , $be, $e4, $84       ; 3d70: fb 4f 43... .OC :2c70[1]
+    !byte $e7, $a7, $a5, $a3,   4,   4,   4, $84, $ce, $ca, $4a, $8a  ; 3d64: e7 a7 a5... ... :2c64[1]
+    !byte $fb, $4f, $43,   5, $0d, $0d, $0d,   7, $be, $e4, $84       ; 3d70: fb 4f 43... .OC :2c70[1]
     !text "@```"                                                      ; 3d7b: 40 60 60... @`` :2c7b[1]
-    !byte $c0, 3  , $0c, $10, $13                                     ; 3d7f: c0 03 0c... ... :2c7f[1]
+    !byte $c0,   3, $0c, $10, $13                                     ; 3d7f: c0 03 0c... ... :2c7f[1]
     !text "$%$"                                                       ; 3d84: 24 25 24    $%$ :2c84[1]
     !byte $13, $80, $60, $10, $90                                     ; 3d87: 13 80 60... ..` :2c87[1]
     !text "HHH"                                                       ; 3d8c: 48 48 48    HHH :2c8c[1]
     !byte $90, $10, $4c, $e3, $e6, $fc, $e6, $e3, $40, $10, $64, $8e  ; 3d8f: 90 10 4c... ..L :2c8f[1]
-    !byte $ce, $7e, $ce, $8e, 4  , 1  , 7                             ; 3d9b: ce 7e ce... .~. :2c9b[1]
+    !byte $ce, $7e, $ce, $8e,   4,   1,   7                           ; 3d9b: ce 7e ce... .~. :2c9b[1]
     !text "LLGA"                                                      ; 3da2: 4c 4c 47... LLG :2ca2[1]
-    !byte $e2, $a1, 0  , $c0, $64, $64, $c4, 4  , $8e, $0a, $a2, $a1  ; 3da6: e2 a1 00... ... :2ca6[1]
-    !byte $93, $9c, $a8, $44, 2  , 1  , $8a, $0a, $92                 ; 3db2: 93 9c a8... ... :2cb2[1]
+    !byte $e2, $a1,   0, $c0, $64, $64, $c4,   4, $8e, $0a, $a2, $a1  ; 3da6: e2 a1 00... ... :2ca6[1]
+    !byte $93, $9c, $a8, $44,   2,   1, $8a, $0a, $92                 ; 3db2: 93 9c a8... ... :2cb2[1]
     !text "r*D"                                                       ; 3dbb: 72 2a 44    r*D :2cbb[1]
-    !byte $80, 0  , 1  , 1  , 3  , $c3, $c6, $c6, $cc, $cd, 0  , 0    ; 3dbe: 80 00 01... ... :2cbe[1]
+    !byte $80,   0,   1,   1,   3, $c3, $c6, $c6, $cc, $cd,   0,   0  ; 3dbe: 80 00 01... ... :2cbe[1]
     !byte $80, $86, $c6, $c6, $66, $66, $f9, $c3, $fc, $c6, $f3, $d9  ; 3dca: 80 86 c6... ... :2cca[1]
-    !byte $cd, 7  , $3e, $86, $7e, $c6, $9e, $36, $66, $c0, 0  , 3    ; 3dd6: cd 07 3e... ..> :2cd6[1]
-    !byte 4  , 8  , $11, $12, $11, $48, 0  , $80, $40, $20, $10, $90  ; 3de2: 04 08 11... ... :2ce2[1]
+    !byte $cd,   7, $3e, $86, $7e, $c6, $9e, $36, $66, $c0,   0,   3  ; 3dd6: cd 07 3e... ..> :2cd6[1]
+    !byte   4,   8, $11, $12, $11, $48,   0, $80, $40, $20, $10, $90  ; 3de2: 04 08 11... ... :2ce2[1]
     !byte $10, $24, $e4, $e3, $d2, $da, $ee, $e4                      ; 3dee: 10 24 e4... .$. :2cee[1]
     !text "BAN"                                                       ; 3df6: 42 41 4e    BAN :2cf6[1]
-    !byte $8e, $96, $b6, $ee, $4e, $84, 4  , 3  , 6                   ; 3df9: 8e 96 b6... ... :2cf9[1]
+    !byte $8e, $96, $b6, $ee, $4e, $84,   4,   3,   6                 ; 3df9: 8e 96 b6... ... :2cf9[1]
     !text "LGB"                                                       ; 3e02: 4c 47 42    LGB :2d02[1]
     !byte $e2, $a2, $a2, $80, $c0, $64, $c4, $84, $8e, $8a, $8a, $92  ; 3e05: e2 a2 a2... ... :2d05[1]
-    !byte $8a, $85, $91, $a9, $45, $43, 1  , $92, $a2, $42, $12, $2a  ; 3e11: 8a 85 91... ... :2d11[1]
-    !byte $44, $84, 0  , 1  , 1                                       ; 3e1d: 44 84 00... D.. :2d1d[1]
+    !byte $8a, $85, $91, $a9, $45, $43,   1, $92, $a2, $42, $12, $2a  ; 3e11: 8a 85 91... ... :2d11[1]
+    !byte $44, $84,   0,   1,   1                                     ; 3e1d: 44 84 00... D.. :2d1d[1]
     !text "CCF"                                                       ; 3e22: 43 43 46    CCF :2d22[1]
-    !byte $e6, $ed, $ed, 0  , 0  , $84, $84, $c4, $ce, $6e, $6e, $f9  ; 3e25: e6 ed ed... ... :2d25[1]
-    !byte $c1, $fd, $c3, $f9, $ed, $e6, $43, $3e, 6  , $7e, $86, $3e  ; 3e31: c1 fd c3... ... :2d31[1]
-    !byte $6e, $ce, $84, 7  , $0c, $19, $1b, $1b, $19, $0c, $c7, $c0  ; 3e3d: 6e ce 84... n.. :2d3d[1]
+    !byte $e6, $ed, $ed,   0,   0, $84, $84, $c4, $ce, $6e, $6e, $f9  ; 3e25: e6 ed ed... ... :2d25[1]
+    !byte $c1, $fd, $c3, $f9, $ed, $e6, $43, $3e,   6, $7e, $86, $3e  ; 3e31: c1 fd c3... ... :2d31[1]
+    !byte $6e, $ce, $84,   7, $0c, $19, $1b, $1b, $19, $0c, $c7, $c0  ; 3e3d: 6e ce 84... n.. :2d3d[1]
     !byte $60, $30, $b0, $b0, $30, $60, $c6, $c1, $e3, $f3, $db, $cf  ; 3e49: 60 30 b0... `0. :2d49[1]
-    !byte $c3, $c3, $c1, 6  , $8e, $9e, $b6, $e6, $86, $86, 6  , $ea  ; 3e55: c3 c3 c1... ... :2d55[1]
+    !byte $c3, $c3, $c1,   6, $8e, $9e, $b6, $e6, $86, $86,   6, $ea  ; 3e55: c3 c3 c1... ... :2d55[1]
 ; $3e61 referenced 5 times by $2f5b, $2f64, $2f69, $2f89, $3527
 l2d61
     !byte 0                                                           ; 3e61: 00          .   :2d61[1]
@@ -4633,7 +4683,7 @@ l2d66
     !byte 0                                                           ; 3e66: 00          .   :2d66[1]
 ; $3e67 referenced 10 times by $2de5, $2dea, $2e01, $2e0b, $3800, $3c33, $44f8, $4503, $4576, $4648
 l2d67
-    !byte 0  , $ea, $ea, $ea, $ea, $ea, $ea                           ; 3e67: 00 ea ea... ... :2d67[1]
+    !byte   0, $ea, $ea, $ea, $ea, $ea, $ea                           ; 3e67: 00 ea ea... ... :2d67[1]
 ; $3e6e referenced 3 times by $2e34, $2e4a, $3c07
 l2d6e
     !byte 0                                                           ; 3e6e: 00          .   :2d6e[1]
@@ -4651,11 +4701,12 @@ l2d72
     !byte 0                                                           ; 3e72: 00          .   :2d72[1]
 ; $3e73 referenced 1 time by $2e08
 l2d73
-    !byte 0  , $ea                                                    ; 3e73: 00 ea       ..  :2d73[1]
+    !byte   0, $ea                                                    ; 3e73: 00 ea       ..  :2d73[1]
 ; $3e75 referenced 1 time by $2db2
 l2d75
-    !byte 8  , $12, 3  , 4  , $70, $90, 3  , 4  , 2  , 3  , $ea, $ea  ; 3e75: 08 12 03... ... :2d75[1]
+    !byte   8, $12,   3,   4, $70, $90,   3,   4,   2,   3, $ea, $ea  ; 3e75: 08 12 03... ... :2d75[1]
     !byte $ea, $ea, $ea, $ea, $ea                                     ; 3e81: ea ea ea... ... :2d81[1]
+
 ; $3e86 referenced 1 time by $1faf
 c2d86
     lda #1                                                            ; 3e86: a9 01       ..  :2d86[1]
@@ -4699,6 +4750,7 @@ c2db2
     rts                                                               ; 3ec8: 60          `   :2dc8[1]
 
     !byte $ea, $ea, $ea, $ea, $ea, $ea, $ea                           ; 3ec9: ea ea ea... ... :2dc9[1]
+
 ; $3ed0 referenced 1 time by $38ca
 sub_c2dd0
     lda l2d63                                                         ; 3ed0: ad 63 2d    .c- :2dd0[1]
@@ -4783,6 +4835,7 @@ c2e5e
     rts                                                               ; 3f5e: 60          `   :2e5e[1]
 
     !byte $ea, $ea                                                    ; 3f5f: ea ea       ..  :2e5f[1]
+
 ; $3f61 referenced 1 time by $28be
 sub_c2e61
     inc l0079                                                         ; 3f61: e6 79       .y  :2e61[1]
@@ -4899,6 +4952,7 @@ sub_c2eac
     rts                                                               ; 4038: 60          `   :2f38[1]
 
     !byte $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea  ; 4039: ea ea ea... ... :2f39[1]
+
 ; $4045 referenced 1 time by $1aca
 sub_c2f45
     inc l0079                                                         ; 4045: e6 79       .y  :2f45[1]
@@ -5016,6 +5070,7 @@ c300a
     rts                                                               ; 410c: 60          `   :300c[1]
 
     !byte $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea  ; 410d: ea ea ea... ... :300d[1]
+
 ; $4119 referenced 3 times by $1415, $3189, $3862
 sub_c3019
     inc l0079                                                         ; 4119: e6 79       .y  :3019[1]
@@ -5202,6 +5257,7 @@ c3142
 
     !byte $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea  ; 424f: ea ea ea... ... :314f[1]
     !byte $ea, $ea, $ea, $ea, $ea, $ea                                ; 425b: ea ea ea... ... :315b[1]
+
 ; $4261 referenced 1 time by $387d
 sub_c3161
     lda l191f                                                         ; 4261: ad 1f 19    ... :3161[1]
@@ -5341,64 +5397,64 @@ loop_c3213
     rts                                                               ; 4338: 60          `   :3238[1]
 
     !byte $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea  ; 4339: ea ea ea... ... :3239[1]
-    !byte $ea, $ea, $ea, $ea, $bd, $88, 4  , $29, $10, $d0, $16, $bd  ; 4345: ea ea ea... ... :3245[1]
-    !byte $83, 4  , $c9, $7f, $d0, $3b, $bd, $86, 4  , $c9, $7e, $d0  ; 4351: 83 04 c9... ... :3251[1]
-    !byte $34, $bd, $88, 4  , 9  , $10, $9d, $88, 4  , $a9, 4  , $8d  ; 435d: 34 bd 88... 4.. :325d[1]
+    !byte $ea, $ea, $ea, $ea, $bd, $88,   4, $29, $10, $d0, $16, $bd  ; 4345: ea ea ea... ... :3245[1]
+    !byte $83,   4, $c9, $7f, $d0, $3b, $bd, $86,   4, $c9, $7e, $d0  ; 4351: 83 04 c9... ... :3251[1]
+    !byte $34, $bd, $88,   4,   9, $10, $9d, $88,   4, $a9,   4, $8d  ; 435d: 34 bd 88... 4.. :325d[1]
     !byte $81                                                         ; 4369: 81          .   :3269[1]
     !text "* :,"                                                      ; 436a: 2a 20 3a... * : :326a[1]
-    !byte $bd, $80, 4  , $d0, $0b                                     ; 436e: bd 80 04... ... :326e[1]
+    !byte $bd, $80,   4, $d0, $0b                                     ; 436e: bd 80 04... ... :326e[1]
     !text " a+"                                                       ; 4373: 20 61 2b     a+ :3273[1]
     !byte $d0, $36, $20, $cc, $26, $4c, $d2                           ; 4376: d0 36 20... .6  :3276[1]
     !text "6 G+"                                                      ; 437d: 36 20 47... 6 G :327d[1]
-    !byte $a5, $76, $c9, $80, $90, $27, $bd, $88, 4  , $29, $ef, $9d  ; 4381: a5 76 c9... .v. :3281[1]
-    !byte $88, 4  , $4c, $d2, $36, $bd, $83, 4  , $85, $77, $bd, $86  ; 438d: 88 04 4c... ..L :328d[1]
-    !byte 4  , $18, $69, 1  , $85                                     ; 4399: 04 18 69... ..i :3299[1]
+    !byte $a5, $76, $c9, $80, $90, $27, $bd, $88,   4, $29, $ef, $9d  ; 4381: a5 76 c9... .v. :3281[1]
+    !byte $88,   4, $4c, $d2, $36, $bd, $83,   4, $85, $77, $bd, $86  ; 438d: 88 04 4c... ..L :328d[1]
+    !byte   4, $18, $69,   1, $85                                     ; 4399: 04 18 69... ..i :3299[1]
     !text "v ^+"                                                      ; 439e: 76 20 5e... v ^ :329e[1]
     !byte $ad, $81, $2a, $18, $69, $0a, $8d, $81                      ; 43a2: ad 81 2a... ..* :32a2[1]
     !text "* :,L"                                                     ; 43aa: 2a 20 3a... * : :32aa[1]
-    !byte $d2, $36, $bd, $80, 4  , $d0, $2f, $20, 1  , $2b, $c9, $40  ; 43af: d2 36 bd... .6. :32af[1]
-    !byte $90, $25, $ad, 1  , $0f, $85, $7a, $ad, 0  , $0f, 6  , $7a  ; 43bb: 90 25 ad... .%. :32bb[1]
-    !byte $2a, $85, $7b, 6                                            ; 43c7: 2a 85 7b... *.{ :32c7[1]
+    !byte $d2, $36, $bd, $80,   4, $d0, $2f, $20,   1, $2b, $c9, $40  ; 43af: d2 36 bd... .6. :32af[1]
+    !byte $90, $25, $ad,   1, $0f, $85, $7a, $ad,   0, $0f,   6, $7a  ; 43bb: 90 25 ad... .%. :32bb[1]
+    !byte $2a, $85, $7b,   6                                          ; 43c7: 2a 85 7b... *.{ :32c7[1]
     !text "z*e{"                                                      ; 43cb: 7a 2a 65... z*e :32cb[1]
-    !byte $cd, $81, $2a, $b0, 3  , $8d, $81                           ; 43cf: cd 81 2a... ..* :32cf[1]
+    !byte $cd, $81, $2a, $b0,   3, $8d, $81                           ; 43cf: cd 81 2a... ..* :32cf[1]
     !text "* a+"                                                      ; 43d6: 2a 20 61... * a :32d6[1]
     !byte $d0, $0c, $20, $cc, $26, $4c, $e8, $32, $4c, $8d            ; 43da: d0 0c 20... ..  :32da[1]
     !text "3 G+ :,L"                                                  ; 43e4: 33 20 47... 3 G :32e4[1]
-    !byte $d2, $36, $bd, $80, 4  , $d0                                ; 43ec: d2 36 bd... .6. :32ec[1]
-    !text "\" &+"                                                     ; 43f2: 22 20 26... " & :32f2[1]
+    !byte $d2, $36, $bd, $80,   4, $d0                                ; 43ec: d2 36 bd... .6. :32ec[1]
+    !text '"', " &+"                                                  ; 43f2: 22 20 26... " & :32f2[1]
     !byte $c9, $46, $90, $12, $c9, $6e, $b0, $11                      ; 43f6: c9 46 90... .F. :32f6[1]
     !text " ), a+"                                                    ; 43fe: 20 29 2c...  ), :32fe[1]
     !byte $d0, $15, $20, $cc, $26, $4c, $1b, $33, $4c, $8d            ; 4404: d0 15 20... ..  :3304[1]
     !text "3 a+L"                                                     ; 440e: 33 20 61... 3 a :330e[1]
     !byte $18                                                         ; 4413: 18          .   :3313[1]
     !text "3 G+ :,L"                                                  ; 4414: 33 20 47... 3 G :3314[1]
-    !byte $d2, $36, $bd, $80, 4  , $d0, $15                           ; 441c: d2 36 bd... .6. :331c[1]
+    !byte $d2, $36, $bd, $80,   4, $d0, $15                           ; 441c: d2 36 bd... .6. :331c[1]
     !text " a+"                                                       ; 4423: 20 61 2b     a+ :3323[1]
-    !byte $d0, 3  , $20, $cc                                          ; 4426: d0 03 20... ..  :3326[1]
+    !byte $d0,   3, $20, $cc                                          ; 4426: d0 03 20... ..  :3326[1]
     !text "& &+"                                                      ; 442a: 26 20 26... & & :332a[1]
     !byte $c9, $78, $b0, $0c                                          ; 442e: c9 78 b0... .x. :332e[1]
     !text " ),L"                                                      ; 4432: 20 29 2c...  ), :3332[1]
     !byte $d2                                                         ; 4436: d2          .   :3336[1]
     !text "6 G+ :,L"                                                  ; 4437: 36 20 47... 6 G :3337[1]
-    !byte $d2, $36, $bd, $80, 4  , $d0, $1b                           ; 443f: d2 36 bd... .6. :333f[1]
+    !byte $d2, $36, $bd, $80,   4, $d0, $1b                           ; 443f: d2 36 bd... .6. :333f[1]
     !text " &+"                                                       ; 4446: 20 26 2b     &+ :3346[1]
-    !byte $c9, $64, $90, 6                                            ; 4449: c9 64 90... .d. :3349[1]
+    !byte $c9, $64, $90,   6                                          ; 4449: c9 64 90... .d. :3349[1]
     !text " :,LV3 ), a+"                                              ; 444d: 20 3a 2c...  :, :334d[1]
-    !byte $d0, 9  , $20, $cc, $26, $4c, $d2                           ; 4459: d0 09 20... ..  :3359[1]
+    !byte $d0,   9, $20, $cc, $26, $4c, $d2                           ; 4459: d0 09 20... ..  :3359[1]
     !text "6 G+ :,L"                                                  ; 4460: 36 20 47... 6 G :3360[1]
-    !byte $d2, $36, $bd, $80, 4  , $d0, $15                           ; 4468: d2 36 bd... .6. :3368[1]
+    !byte $d2, $36, $bd, $80,   4, $d0, $15                           ; 4468: d2 36 bd... .6. :3368[1]
     !text " &+"                                                       ; 446f: 20 26 2b     &+ :336f[1]
     !byte $c9, $50, $90, $0b                                          ; 4472: c9 50 90... .P. :3372[1]
     !text " a+"                                                       ; 4476: 20 61 2b     a+ :3376[1]
     !byte $d0, $0c, $20, $cc, $26, $4c, $87, $33, $4c, $8d            ; 4479: d0 0c 20... ..  :3379[1]
     !text "3 G+ :,L"                                                  ; 4483: 33 20 47... 3 G :3383[1]
-    !byte $d2, $36, $bd, $88, 4  , 9  , $80, $9d, $88, 4  , $20, $cf  ; 448b: d2 36 bd... .6. :338b[1]
+    !byte $d2, $36, $bd, $88,   4,   9, $80, $9d, $88,   4, $20, $cf  ; 448b: d2 36 bd... .6. :338b[1]
     !text "+ :,L"                                                     ; 4497: 2b 20 3a... + : :3397[1]
     !byte $d2, $36, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff  ; 449c: d2 36 ff... .6. :339c[1]
     !byte $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff                 ; 44a8: ff ff ff... ... :33a8[1]
 ; $44b1 referenced 1 time by $3476
 l33b1
-    !byte $0f, $0d, $0b, 9  , 7  , 5  , 3  , 2                        ; 44b1: 0f 0d 0b... ... :33b1[1]
+    !byte $0f, $0d, $0b,   9,   7,   5,   3,   2                      ; 44b1: 0f 0d 0b... ... :33b1[1]
 ; $44b9 referenced 3 times by $346d, $34f7, $37f5
 l33b9
     !byte 0                                                           ; 44b9: 00          .   :33b9[1]
@@ -5416,13 +5472,14 @@ l33bd
     !byte 0, 0, 0                                                     ; 44bd: 00 00 00    ... :33bd[1]
 ; $44c0 referenced 1 time by $4659
 l33c0
-    !byte $ec, $f2, $0f, $17, 0  , 0                                  ; 44c0: ec f2 0f... ... :33c0[1]
+    !byte $ec, $f2, $0f, $17,   0,   0                                ; 44c0: ec f2 0f... ... :33c0[1]
 ; $44c6 referenced 1 time by $4653
 l33c6
-    !byte $20, 4  , $b8, $ff, 0  , 0                                  ; 44c6: 20 04 b8...  .. :33c6[1]
+    !byte $20,   4, $b8, $ff,   0,   0                                ; 44c6: 20 04 b8...  .. :33c6[1]
 ; $44cc referenced 1 time by $3811
 l33cc
-    !byte $c0, $82, 4  , 2  , 0  , 0                                  ; 44cc: c0 82 04... ... :33cc[1]
+    !byte $c0, $82,   4,   2,   0,   0                                ; 44cc: c0 82 04... ... :33cc[1]
+
 ; $44d2 referenced 2 times by $1726, $361c
 sub_c33d2
     lda #$ff                                                          ; 44d2: a9 ff       ..  :33d2[1]
@@ -5575,7 +5632,7 @@ l34bb
     !byte $fe                                                         ; 45bb: fe          .   :34bb[1]
 ; $45bc referenced 1 time by $38ad
 l34bc
-    !byte 4  , $ea, $ea, $ea                                          ; 45bc: 04 ea ea... ... :34bc[1]
+    !byte   4, $ea, $ea, $ea                                          ; 45bc: 04 ea ea... ... :34bc[1]
 ; $45c0 referenced 1 time by $35f9
 l34c0
     !text "DEHCNUAL"                                                  ; 45c0: 44 45 48... DEH :34c0[1]
@@ -5586,14 +5643,15 @@ l34c0
     !byte $17, $20, $1f                                               ; 45db: 17 20 1f    . . :34db[1]
 ; $45de referenced 1 time by $35d4
 l34de
-    !byte 0  , $81, 4                                                 ; 45de: 00 81 04    ... :34de[1]
+    !byte   0, $81,   4                                               ; 45de: 00 81 04    ... :34de[1]
 ; $45e1 referenced 1 time by $35cf
 l34e1
-    !byte $6f, 4  , $19                                               ; 45e1: 6f 04 19    o.. :34e1[1]
+    !byte $6f,   4, $19                                               ; 45e1: 6f 04 19    o.. :34e1[1]
 ; $45e4 referenced 1 time by $35b8
 l34e4
     !text "DNAMMOC"                                                   ; 45e4: 44 4e 41... DNA :34e4[1]
-    !byte 5  , 0  , $a2, 4  , $0f, 4  , $19, $ea, $ea                 ; 45eb: 05 00 a2... ... :34eb[1]
+    !byte   5,   0, $a2,   4, $0f,   4, $19, $ea, $ea                 ; 45eb: 05 00 a2... ... :34eb[1]
+
 ; $45f4 referenced 2 times by $381a, $467e
 sub_c34f4
     inc l34b0                                                         ; 45f4: ee b0 34    ..4 :34f4[1]
@@ -5670,6 +5728,7 @@ loop_c3583
     rts                                                               ; 469b: 60          `   :359b[1]
 
     !byte $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea                 ; 469c: ea ea ea... ... :359c[1]
+
 ; $46a5 referenced 1 time by $28c1
 sub_c35a5
     lda #$d4                                                          ; 46a5: a9 d4       ..  :35a5[1]
@@ -5772,6 +5831,7 @@ sub_c362f
 
     !byte $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea  ; 4741: ea ea ea... ... :3641[1]
     !byte $ea, $ea                                                    ; 474d: ea ea       ..  :364d[1]
+
 ; $474f referenced 1 time by $3855
 sub_c364f
     dec l34b4                                                         ; 474f: ce b4 34    ..4 :364f[1]
@@ -5849,10 +5909,11 @@ c36ba
     sta l0083                                                         ; 47cd: 85 83       ..  :36cd[1]
     jmp (l0082)                                                       ; 47cf: 6c 82 00    l.. :36cf[1]
 
-    !byte $bd, $83, 4  , $30, 2  , $49, $ff, $85, $7a, $bd, $86, 4    ; 47d2: bd 83 04... ... :36d2[1]
-    !byte $30, 2  , $49, $ff, $18, $65, $7a, $c9, 6  , $90, $10, $bc  ; 47de: 30 02 49... 0.I :36de[1]
-    !byte 8  , 4  , $c0, $22, $b0, 9  , $69, $50, $90, 2  , $a9, $ff  ; 47ea: 08 04 c0... ... :36ea[1]
-    !byte $9d, 8  , 4                                                 ; 47f6: 9d 08 04    ... :36f6[1]
+    !byte $bd, $83,   4, $30,   2, $49, $ff, $85, $7a, $bd, $86,   4  ; 47d2: bd 83 04... ... :36d2[1]
+    !byte $30,   2, $49, $ff, $18, $65, $7a, $c9,   6, $90, $10, $bc  ; 47de: 30 02 49... 0.I :36de[1]
+    !byte   8,   4, $c0, $22, $b0,   9, $69, $50, $90,   2, $a9, $ff  ; 47ea: 08 04 c0... ... :36ea[1]
+    !byte $9d,   8,   4                                               ; 47f6: 9d 08 04    ... :36f6[1]
+
 ; $47f9 referenced 1 time by $36bd
 c36f9
     jsr sub_c2113                                                     ; 47f9: 20 13 21     .! :36f9[1]
@@ -5887,31 +5948,32 @@ c371d
 c372d
     rts                                                               ; 482d: 60          `   :372d[1]
 
-    !byte $bd, $80, 4  , $d0                                          ; 482e: bd 80 04... ... :372e[1]
+    !byte $bd, $80,   4, $d0                                          ; 482e: bd 80 04... ... :372e[1]
     !text "% a+"                                                      ; 4832: 25 20 61... % a :3732[1]
-    !byte $d0, 3  , $20, $cc, $26, $bd, $85, 4  , $10, $0b, $29, $7f  ; 4836: d0 03 20... ..  :3736[1]
-    !byte $4a, $18, $6d, $54, $0e, $e9, 6  , $b0, 2  , $a9, 1  , $cd  ; 4842: 4a 18 6d... J.m :3742[1]
-    !byte $81, $2a, $b0, 9  , $8d, $81                                ; 484e: 81 2a b0... .*. :374e[1]
+    !byte $d0,   3, $20, $cc, $26, $bd, $85,   4, $10, $0b, $29, $7f  ; 4836: d0 03 20... ..  :3736[1]
+    !byte $4a, $18, $6d, $54, $0e, $e9,   6, $b0,   2, $a9,   1, $cd  ; 4842: 4a 18 6d... J.m :3742[1]
+    !byte $81, $2a, $b0,   9, $8d, $81                                ; 484e: 81 2a b0... .*. :374e[1]
     !text "*L[7 G+ :,L"                                               ; 4854: 2a 4c 5b... *L[ :3754[1]
-    !byte $d2, $36, $ad, $81, $2a, $18, $69, 8  , $8d, $81, $2a, $bd  ; 485f: d2 36 ad... .6. :375f[1]
-    !byte $80, 4  , $d0, $68, $bd, $88, 4  , $a8, $29, $10, $d0, $37  ; 486b: 80 04 d0... ... :376b[1]
-    !byte $98, $29, $20, $d0, $0e, $ad, 0  , $0f, $c9, 2  , $90, 7    ; 4877: 98 29 20... .)  :3777[1]
-    !byte $98, 9  , $10, $a8, $9d, $88, 4                             ; 4883: 98 09 10... ... :3783[1]
+    !byte $d2, $36, $ad, $81, $2a, $18, $69,   8, $8d, $81, $2a, $bd  ; 485f: d2 36 ad... .6. :375f[1]
+    !byte $80,   4, $d0, $68, $bd, $88,   4, $a8, $29, $10, $d0, $37  ; 486b: 80 04 d0... ... :376b[1]
+    !byte $98, $29, $20, $d0, $0e, $ad,   0, $0f, $c9,   2, $90,   7  ; 4877: 98 29 20... .)  :3777[1]
+    !byte $98,   9, $10, $a8, $9d, $88,   4                           ; 4883: 98 09 10... ... :3783[1]
     !text " &+"                                                       ; 488a: 20 26 2b     &+ :378a[1]
-    !byte $c9, $69, $90, $0c, $98, $29, $cf, $9d, $88, 4              ; 488d: c9 69 90... .i. :378d[1]
+    !byte $c9, $69, $90, $0c, $98, $29, $cf, $9d, $88,   4            ; 488d: c9 69 90... .i. :378d[1]
     !text " :,L"                                                      ; 4897: 20 3a 2c...  :, :3797[1]
     !byte $a3                                                         ; 489b: a3          .   :379b[1]
     !text "7 ), ), a+"                                                ; 489c: 37 20 29... 7 ) :379c[1]
     !byte $d0, $35, $20, $cc, $26, $4c, $dd, $37, $ad                 ; 48a6: d0 35 20... .5  :37a6[1]
     !text "U&J"                                                       ; 48af: 55 26 4a    U&J :37af[1]
-    !byte $18, $69, 8  , $29, $1f, $8d                                ; 48b2: 18 69 08... .i. :37b2[1]
+    !byte $18, $69,   8, $29, $1f, $8d                                ; 48b2: 18 69 08... .i. :37b2[1]
     !text "U& a+"                                                     ; 48b8: 55 26 20... U&  :37b8[1]
-    !byte $bd, $85, 4  , $30, $18, $bd, $82, 4  , $38, $e9, $60, $c9  ; 48bd: bd 85 04... ... :37bd[1]
-    !byte $40, $b0, $0e, $bd, $88, 4  , $49, $30, $9d, $88, 4  , $4c  ; 48c9: 40 b0 0e... @.. :37c9[1]
+    !byte $bd, $85,   4, $30, $18, $bd, $82,   4, $38, $e9, $60, $c9  ; 48bd: bd 85 04... ... :37bd[1]
+    !byte $40, $b0, $0e, $bd, $88,   4, $49, $30, $9d, $88,   4, $4c  ; 48c9: 40 b0 0e... @.. :37c9[1]
     !byte $da                                                         ; 48d5: da          .   :37d5[1]
     !text "7 G+ :,L"                                                  ; 48d6: 37 20 47... 7 G :37d6[1]
     !byte $d2, $36, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea  ; 48de: d2 36 ea... .6. :37de[1]
     !byte $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea                 ; 48ea: ea ea ea... ... :37ea[1]
+
 ; $48f3 referenced 1 time by $45f5
 c37f3
     lda #$ff                                                          ; 48f3: a9 ff       ..  :37f3[1]
@@ -5936,6 +5998,7 @@ loop_c3811
 
     !byte $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea  ; 4920: ea ea ea... ... :3820[1]
     !byte $ea, $ea, $ea, $ea, $ea, $ea, $ea                           ; 492c: ea ea ea... ... :382c[1]
+
 ; $4933 referenced 3 times by $381d, $38f6, $4681
 c3833
     lda #0                                                            ; 4933: a9 00       ..  :3833[1]
@@ -6041,72 +6104,73 @@ l3909
     !byte 0                                                           ; 4a09: 00          .   :3909[1]
 ; $4a0a referenced 4 times by $3c44, $3c77, $3d09, $462e
 l390a
-    !byte 0  , $ea, $ea, $ea, $ea, $ea, $ea, $ea                      ; 4a0a: 00 ea ea... ... :390a[1]
+    !byte   0, $ea, $ea, $ea, $ea, $ea, $ea, $ea                      ; 4a0a: 00 ea ea... ... :390a[1]
 ; $4a12 referenced 1 time by $3b98
 l3912
-    !byte $1f, $0b, 5                                                 ; 4a12: 1f 0b 05    ... :3912[1]
+    !byte $1f, $0b,   5                                               ; 4a12: 1f 0b 05    ... :3912[1]
     !text "STARSHIP COMMAND"                                          ; 4a15: 53 54 41... STA :3915[1]
-    !byte $1f, 5  , $0a                                               ; 4a25: 1f 05 0a    ... :3925[1]
+    !byte $1f,   5, $0a                                               ; 4a25: 1f 05 0a    ... :3925[1]
     !text "An escape capsule was launched"                            ; 4a28: 41 6e 20... An  :3928[1]
-    !byte $1f, 4  , $0f                                               ; 4a46: 1f 04 0f    ... :3946[1]
+    !byte $1f,   4, $0f                                               ; 4a46: 1f 04 0f    ... :3946[1]
     !text "Your official combat experience"                           ; 4a49: 59 6f 75... You :3949[1]
-    !byte $1f, 4  , $11                                               ; 4a68: 1f 04 11    ... :3968[1]
+    !byte $1f,   4, $11                                               ; 4a68: 1f 04 11    ... :3968[1]
     !text "rating is now recorded as."                                ; 4a6b: 72 61 74... rat :396b[1]
     !byte $1f, $0d, $1f                                               ; 4a85: 1f 0d 1f    ... :3985[1]
     !text "Press <RETURN>"                                            ; 4a88: 50 72 65... Pre :3988[1]
     !byte $0d                                                         ; 4a96: 0d          .   :3996[1]
 ; $4a97 referenced 1 time by $3bce
 l3997
-    !byte $1f, 5  , $0a, $4e, $4f, $1f, 5  , $0b                      ; 4a97: 1f 05 0a... ... :3997[1]
+    !byte $1f,   5, $0a, $4e, $4f, $1f,   5, $0b                      ; 4a97: 1f 05 0a... ... :3997[1]
     !text "before the starship exploded."                             ; 4a9f: 62 65 66... bef :399f[1]
     !byte $0d                                                         ; 4abc: 0d          .   :39bc[1]
 ; $4abd referenced 1 time by $3c81
 l39bd
-    !byte $1f, 3  , $16                                               ; 4abd: 1f 03 16    ... :39bd[1]
+    !byte $1f,   3, $16                                               ; 4abd: 1f 03 16    ... :39bd[1]
     !text "After  your  performance  on  this"                        ; 4ac0: 41 66 74... Aft :39c0[1]
-    !byte $1f, 3  , $17                                               ; 4ae2: 1f 03 17    ... :39e2[1]
+    !byte $1f,   3, $17                                               ; 4ae2: 1f 03 17    ... :39e2[1]
     !text "command the Star-Fleet authorities"                        ; 4ae5: 63 6f 6d... com :39e5[1]
-    !byte $1f, 3  , $18                                               ; 4b07: 1f 03 18    ... :3a07[1]
-    !text "are  said  to  be  \""                                     ; 4b0a: 61 72 65... are :3a0a[1]
+    !byte $1f,   3, $18                                               ; 4b07: 1f 03 18    ... :3a07[1]
+    !text "are  said  to  be  ", '"'                                  ; 4b0a: 61 72 65... are :3a0a[1]
     !byte $0d                                                         ; 4b1e: 0d          .   :3a1e[1]
 ; $4b1f referenced 1 time by $3be2
 l3a1f
-    !byte $1f, 5  , $0b                                               ; 4b1f: 1f 05 0b    ... :3a1f[1]
+    !byte $1f,   5, $0b                                               ; 4b1f: 1f 05 0b    ... :3a1f[1]
     !text "and returned safely from the"                              ; 4b22: 61 6e 64... and :3a22[1]
-    !byte $1f, 5  , $0c                                               ; 4b3e: 1f 05 0c    ... :3a3e[1]
+    !byte $1f,   5, $0c                                               ; 4b3e: 1f 05 0c    ... :3a3e[1]
     !text "combat zone."                                              ; 4b41: 63 6f 6d... com :3a41[1]
     !byte $0d                                                         ; 4b4d: 0d          .   :3a4d[1]
 ; $4b4e referenced 1 time by $3bf1
 l3a4e
-    !byte $1f, 5  , $0b                                               ; 4b4e: 1f 05 0b    ... :3a4e[1]
+    !byte $1f,   5, $0b                                               ; 4b4e: 1f 05 0b    ... :3a4e[1]
     !text "but collided with an enemy ship."                          ; 4b51: 62 75 74... but :3a51[1]
     !byte $0d                                                         ; 4b71: 0d          .   :3a71[1]
 ; $4b72 referenced 1 time by $3c50
 l3a72
-    !byte $1f, 4  , $13                                               ; 4b72: 1f 04 13    ... :3a72[1]
+    !byte $1f,   4, $13                                               ; 4b72: 1f 04 13    ... :3a72[1]
     !text "having  just  gained  "                                    ; 4b75: 68 61 76... hav :3a75[1]
     !byte $0d                                                         ; 4b8b: 0d          .   :3a8b[1]
 ; $4b8c referenced 2 times by $3ced, $3cfa
 l3a8c
     !text "and but they allow you the command of"                     ; 4b8c: 61 6e 64... and :3a8c[1]
-    !byte $1f, 3  , $1b                                               ; 4bb1: 1f 03 1b    ... :3ab1[1]
+    !byte $1f,   3, $1b                                               ; 4bb1: 1f 03 1b    ... :3ab1[1]
     !text "another starship."                                         ; 4bb4: 61 6e 6f... ano :3ab4[1]
     !byte $0d                                                         ; 4bc5: 0d          .   :3ac5[1]
 ; $4bc6 referenced 2 times by $3cc3, $3ccc
 l3ac6
-    !text "\"furious\"displeased\"disappointed\"disappoi"             ; 4bc6: 22 66 75... "fu :3ac6[1]
-    !text "nted\"satisfied\"pleased\"impressed\"delighte"             ; 4bef: 6e 74 65... nte :3aef[1]
-    !text "d\""                                                       ; 4c18: 64 22       d"  :3b18[1]
+    !text '"', "furious", '"', "displeased", '"', "disappointed", '"' ; 4bc6: 22 66 75... "fu :3ac6[1]
+    !text "disappointed", '"', "satisfied", '"', "pleased", '"', "i"  ; 4be7: 64 69 73... dis :3ae7[1]
+    !text "mpressed", '"', "delighted", '"'                           ; 4c07: 6d 70 72... mpr :3b07[1]
     !byte $0d                                                         ; 4c1a: 0d          .   :3b1a[1]
 ; $4c1b referenced 1 time by $3d0c
 l3b1b
-    !byte $1f, 0  , $1a                                               ; 4c1b: 1f 00 1a    ... :3b1b[1]
+    !byte $1f,   0, $1a                                               ; 4c1b: 1f 00 1a    ... :3b1b[1]
     !text "and they retire you from active service."                  ; 4c1e: 61 6e 64... and :3b1e[1]
 ; $4c46 referenced 1 time by $3cb2
 l3b46
-    !byte $0d, 2  , 3  , 4  , 7  , $0d, $14, $1e, $ea, $ea, $ea, $ea  ; 4c46: 0d 02 03... ... :3b46[1]
+    !byte $0d,   2,   3,   4,   7, $0d, $14, $1e, $ea, $ea, $ea, $ea  ; 4c46: 0d 02 03... ... :3b46[1]
     !byte $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea  ; 4c52: ea ea ea... ... :3b52[1]
     !byte $ea, $ea, $ea                                               ; 4c5e: ea ea ea    ... :3b5e[1]
+
 ; $4c61 referenced 1 time by $4625
 sub_c3b61
     lda #$0a                                                          ; 4c61: a9 0a       ..  :3b61[1]
@@ -6426,55 +6490,55 @@ c3d60
     rts                                                               ; 4e60: 60          `   :3d60[1]
 
     !byte $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea  ; 4e61: ea ea ea... ... :3d61[1]
-    !byte $ea, $ea, $ea, $ea, $ea, $ea, $ea, 0  , 0  , 0  , 0  , 0    ; 4e6d: ea ea ea... ... :3d6d[1]
-    !byte 0  , 0  , 0  , 0  , 0  , 0  , 0  , $ff, $ff, $ff, $ff, $ff  ; 4e79: 00 00 00... ... :3d79[1]
+    !byte $ea, $ea, $ea, $ea, $ea, $ea, $ea,   0,   0,   0,   0,   0  ; 4e6d: ea ea ea... ... :3d6d[1]
+    !byte   0,   0,   0,   0,   0,   0,   0, $ff, $ff, $ff, $ff, $ff  ; 4e79: 00 00 00... ... :3d79[1]
     !byte $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff  ; 4e85: ff ff ff... ... :3d85[1]
-    !byte $ff, $1f, 6  , 2                                            ; 4e91: ff 1f 06... ... :3d91[1]
+    !byte $ff, $1f,   6,   2                                          ; 4e91: ff 1f 06... ... :3d91[1]
     !text "**** STARSHIP CONTROLS ****"                               ; 4e95: 2a 2a 2a... *** :3d95[1]
-    !byte $1f, 3  , 5                                                 ; 4eb0: 1f 03 05    ... :3db0[1]
+    !byte $1f,   3,   5                                               ; 4eb0: 1f 03 05    ... :3db0[1]
     !text "Z  -  Rotate left"                                         ; 4eb3: 5a 20 20... Z   :3db3[1]
-    !byte $1f, 3  , 6                                                 ; 4ec4: 1f 03 06    ... :3dc4[1]
+    !byte $1f,   3,   6                                               ; 4ec4: 1f 03 06    ... :3dc4[1]
     !text "X  -  Rotate right"                                        ; 4ec7: 58 20 20... X   :3dc7[1]
-    !byte $1f, 3  , 7                                                 ; 4ed9: 1f 03 07    ... :3dd9[1]
+    !byte $1f,   3,   7                                               ; 4ed9: 1f 03 07    ... :3dd9[1]
     !text "N  -  Fire torpedoes"                                      ; 4edc: 4e 20 20... N   :3ddc[1]
-    !byte $1f, 3  , 8                                                 ; 4ef0: 1f 03 08    ... :3df0[1]
+    !byte $1f,   3,   8                                               ; 4ef0: 1f 03 08    ... :3df0[1]
     !text "M  -  Thrust"                                              ; 4ef3: 4d 20 20... M   :3df3[1]
-    !byte $1f, 3  , 9                                                 ; 4eff: 1f 03 09    ... :3dff[1]
+    !byte $1f,   3,   9                                               ; 4eff: 1f 03 09    ... :3dff[1]
     !text ",  -  Brake"                                               ; 4f02: 2c 20 20... ,   :3e02[1]
-    !byte $1f, 3  , $0b                                               ; 4f0d: 1f 03 0b    ... :3e0d[1]
+    !byte $1f,   3, $0b                                               ; 4f0d: 1f 03 0b    ... :3e0d[1]
     !text "F  -  Launch port escape capsule"                          ; 4f10: 46 20 20... F   :3e10[1]
-    !byte $1f, 3  , $0c                                               ; 4f30: 1f 03 0c    ... :3e30[1]
+    !byte $1f,   3, $0c                                               ; 4f30: 1f 03 0c    ... :3e30[1]
     !text "G  -  Launch starboard escape capsule"                     ; 4f33: 47 20 20... G   :3e33[1]
-    !byte $1f, 0  , $0e                                               ; 4f58: 1f 00 0e    ... :3e58[1]
-    !text "All the above may operate simultaneouslyAlter"             ; 4f5b: 41 6c 6c... All :3e5b[1]
-    !text "natively , ONE of the following maybe depress"             ; 4f88: 6e 61 74... nat :3e88[1]
-    !text "ed...."                                                    ; 4fb5: 65 64 2e... ed. :3eb5[1]
-    !byte $1f, 3  , $12                                               ; 4fbb: 1f 03 12    ... :3ebb[1]
+    !byte $1f,   0, $0e                                               ; 4f58: 1f 00 0e    ... :3e58[1]
+    !text "All the above may operate simultaneouslyAlternatively ,"   ; 4f5b: 41 6c 6c... All :3e5b[1]
+    !text " ONE of the following maybe depressed...."                 ; 4f92: 20 4f 4e...  ON :3e92[1]
+    !byte $1f,   3, $12                                               ; 4fbb: 1f 03 12    ... :3ebb[1]
     !text "B  -  Shields ON / Scanners OFF"                           ; 4fbe: 42 20 20... B   :3ebe[1]
-    !byte $1f, 3  , $13                                               ; 4fdd: 1f 03 13    ... :3edd[1]
+    !byte $1f,   3, $13                                               ; 4fdd: 1f 03 13    ... :3edd[1]
     !text "V  -  Scanners ON / Shields OFF"                           ; 4fe0: 56 20 20... V   :3ee0[1]
-    !byte $1f, 3  , $14                                               ; 4fff: 1f 03 14    ... :3eff[1]
-    !text "C  -  \"Auto-Changeover\" ON"                              ; 5002: 43 20 20... C   :3f02[1]
-    !byte $1f, 3  , $16                                               ; 501c: 1f 03 16    ... :3f1c[1]
-    !text "f0 -  \"Rotation Dampers\" ON"                             ; 501f: 66 30 20... f0  :3f1f[1]
-    !byte $1f, 3  , $17                                               ; 503a: 1f 03 17    ... :3f3a[1]
-    !text "2  -  \"Rotation Dampers\" OFF"                            ; 503d: 32 20 20... 2   :3f3d[1]
-    !byte $1f, 3  , $18                                               ; 5059: 1f 03 18    ... :3f59[1]
-    !text "f1 -  \"Velocity Dampers\" ON"                             ; 505c: 66 31 20... f1  :3f5c[1]
-    !byte $1f, 3  , $19                                               ; 5077: 1f 03 19    ... :3f77[1]
-    !text "3  -  \"Velocity Dampers\" OFF"                            ; 507a: 33 20 20... 3   :3f7a[1]
-    !byte $1f, 3  , $1b                                               ; 5096: 1f 03 1b    ... :3f96[1]
+    !byte $1f,   3, $14                                               ; 4fff: 1f 03 14    ... :3eff[1]
+    !text "C  -  ", '"', "Auto-Changeover", '"', " ON"                ; 5002: 43 20 20... C   :3f02[1]
+    !byte $1f,   3, $16                                               ; 501c: 1f 03 16    ... :3f1c[1]
+    !text "f0 -  ", '"', "Rotation Dampers", '"', " ON"               ; 501f: 66 30 20... f0  :3f1f[1]
+    !byte $1f,   3, $17                                               ; 503a: 1f 03 17    ... :3f3a[1]
+    !text "2  -  ", '"', "Rotation Dampers", '"', " OFF"              ; 503d: 32 20 20... 2   :3f3d[1]
+    !byte $1f,   3, $18                                               ; 5059: 1f 03 18    ... :3f59[1]
+    !text "f1 -  ", '"', "Velocity Dampers", '"', " ON"               ; 505c: 66 31 20... f1  :3f5c[1]
+    !byte $1f,   3, $19                                               ; 5077: 1f 03 19    ... :3f77[1]
+    !text "3  -  ", '"', "Velocity Dampers", '"', " OFF"              ; 507a: 33 20 20... 3   :3f7a[1]
+    !byte $1f,   3, $1b                                               ; 5096: 1f 03 1b    ... :3f96[1]
     !text "<COPY>   - FREEZE"                                         ; 5099: 3c 43 4f... <CO :3f99[1]
-    !byte $1f, 3  , $1c                                               ; 50aa: 1f 03 1c    ... :3faa[1]
+    !byte $1f,   3, $1c                                               ; 50aa: 1f 03 1c    ... :3faa[1]
     !text "<DELETE> - UNFREEZE"                                       ; 50ad: 3c 44 45... <DE :3fad[1]
     !byte $1f, $0d, $1f                                               ; 50c0: 1f 0d 1f    ... :3fc0[1]
     !text "Press <RETURN>~"                                           ; 50c3: 50 72 65... Pre :3fc3[1]
-    !byte 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0    ; 50d2: 00 00 00... ... :3fd2[1]
-    !byte 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0    ; 50de: 00 00 00... ... :3fde[1]
-    !byte 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0    ; 50ea: 00 00 00... ... :3fea[1]
-    !byte 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , $ff, $ff  ; 50f6: 00 00 00... ... :3ff6[1]
+    !byte   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0  ; 50d2: 00 00 00... ... :3fd2[1]
+    !byte   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0  ; 50de: 00 00 00... ... :3fde[1]
+    !byte   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0  ; 50ea: 00 00 00... ... :3fea[1]
+    !byte   0,   0,   0,   0,   0,   0,   0,   0,   0,   0, $ff, $ff  ; 50f6: 00 00 00... ... :3ff6[1]
     !byte $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ea, $ea, $ea  ; 5102: ff ff ff... ... :4002[1]
     !byte $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea                      ; 510e: ea ea ea... ... :400e[1]
+
 ; $5116 referenced 1 time by $41f9
 sub_c4016
     lda #$92                                                          ; 5116: a9 92       ..  :4016[1]
@@ -6503,6 +6567,7 @@ c4031
     rts                                                               ; 5140: 60          `   :4040[1]
 
     !byte $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea       ; 5141: ea ea ea... ... :4041[1]
+
 ; $514c referenced 10 times by $4033, $4038, $403d, $4230, $4235, $4468, $446d, $4472, $47e5, $47ea
 sub_c404c
     tay                                                               ; 514c: a8          .   :404c[1]
@@ -6532,43 +6597,44 @@ l4070
     !byte 0, 0                                                        ; 5170: 00 00       ..  :4070[1]
 ; $5172 referenced 1 time by $429a
 l4072
-    !byte 0  , 0  , 0  , 1  , 0  , 1  , $60, $ea, 0                   ; 5172: 00 00 00... ... :4072[1]
+    !byte   0,   0,   0,   1,   0,   1, $60, $ea,   0                 ; 5172: 00 00 00... ... :4072[1]
 ; $517b referenced 1 time by $4290
 l407b
-    !byte 1  , $d7, $5b, $20                                          ; 517b: 01 d7 5b... ..[ :407b[1]
+    !byte   1, $d7, $5b, $20                                          ; 517b: 01 d7 5b... ..[ :407b[1]
 ; $517f referenced 1 time by $4295
 l407f
-    !byte $d6, $1c, $26, $16, $1c, $1f, 6  , 3                        ; 517f: d6 1c 26... ..& :407f[1]
+    !byte $d6, $1c, $26, $16, $1c, $1f,   6,   3                      ; 517f: d6 1c 26... ..& :407f[1]
     !text "**** COMBAT PREPARATION ****"                              ; 5187: 2a 2a 2a... *** :4087[1]
-    !byte $1f, 6  , 7                                                 ; 51a3: 1f 06 07    ... :40a3[1]
+    !byte $1f,   6,   7                                               ; 51a3: 1f 06 07    ... :40a3[1]
     !text "f0  View starship controls"                                ; 51a6: 66 30 20... f0  :40a6[1]
-    !byte $1f, 6  , 9                                                 ; 51c0: 1f 06 09    ... :40c0[1]
+    !byte $1f,   6,   9                                               ; 51c0: 1f 06 09    ... :40c0[1]
     !text "f1  View Star-Fleet records"                               ; 51c3: 66 31 20... f1  :40c3[1]
-    !byte $1f, 6  , $0b                                               ; 51de: 1f 06 0b    ... :40de[1]
+    !byte $1f,   6, $0b                                               ; 51de: 1f 06 0b    ... :40de[1]
     !text "f2  Enable"                                                ; 51e1: 66 32 20... f2  :40e1[1]
     !byte $1f, $11, $0c                                               ; 51eb: 1f 11 0c    ... :40eb[1]
     !text "}the sound effects"                                        ; 51ee: 7d 74 68... }th :40ee[1]
-    !byte $1f, 6  , $0d                                               ; 5200: 1f 06 0d    ... :4100[1]
+    !byte $1f,   6, $0d                                               ; 5200: 1f 06 0d    ... :4100[1]
     !text "f3  Disable"                                               ; 5203: 66 33 20... f3  :4103[1]
-    !byte $1f, 6  , $0f                                               ; 520e: 1f 06 0f    ... :410e[1]
+    !byte $1f,   6, $0f                                               ; 520e: 1f 06 0f    ... :410e[1]
     !text "f4  Small"                                                 ; 5211: 66 34 20... f4  :4111[1]
     !byte $1f, $11, $10                                               ; 521a: 1f 11 10    ... :411a[1]
     !text "}starship torpedoes"                                       ; 521d: 7d 73 74... }st :411d[1]
-    !byte $1f, 6  , $11                                               ; 5230: 1f 06 11    ... :4130[1]
+    !byte $1f,   6, $11                                               ; 5230: 1f 06 11    ... :4130[1]
     !text "f5  Large"                                                 ; 5233: 66 35 20... f5  :4133[1]
-    !byte $1f, 6  , $13                                               ; 523c: 1f 06 13    ... :413c[1]
+    !byte $1f,   6, $13                                               ; 523c: 1f 06 13    ... :413c[1]
     !text "f6  Small"                                                 ; 523f: 66 36 20... f6  :413f[1]
     !byte $1f, $11, $14                                               ; 5248: 1f 11 14    ... :4148[1]
     !text "}enemy torpedoes"                                          ; 524b: 7d 65 6e... }en :414b[1]
-    !byte $1f, 6  , $15                                               ; 525b: 1f 06 15    ... :415b[1]
+    !byte $1f,   6, $15                                               ; 525b: 1f 06 15    ... :415b[1]
     !text "f7  Large"                                                 ; 525e: 66 37 20... f7  :415e[1]
-    !byte $1f, 6  , $17                                               ; 5267: 1f 06 17    ... :4167[1]
+    !byte $1f,   6, $17                                               ; 5267: 1f 06 17    ... :4167[1]
     !text "f8  Keyboard"                                              ; 526a: 66 38 20... f8  :416a[1]
-    !byte $1f, 6  , $19                                               ; 5276: 1f 06 19    ... :4176[1]
+    !byte $1f,   6, $19                                               ; 5276: 1f 06 19    ... :4176[1]
     !text "f9  Joystick"                                              ; 5279: 66 39 20... f9  :4179[1]
     !byte $1f, $0d, $1e                                               ; 5285: 1f 0d 1e    ... :4185[1]
     !text "Press <RETURN>~"                                           ; 5288: 50 72 65... Pre :4188[1]
     !byte $ff, $ff, $ff, $ff                                          ; 5297: ff ff ff... ... :4197[1]
+
 ; $529b referenced 1 time by $423b
 sub_c419b
     ldx #3                                                            ; 529b: a2 03       ..  :419b[1]
@@ -6615,7 +6681,9 @@ c41c4
 ; $52de referenced 1 time by $41d7
 c41de
     brk                                                               ; 52de: 00          .   :41de[1]
-    !byte $60, 0                                                      ; 52df: 60 00       `.  :41df[1]
+
+    !byte $60,   0                                                    ; 52df: 60 00       `.  :41df[1]
+
 ; $52e1 referenced 1 time by $41cf
 c41e1
     lda #osbyte_acknowledge_escape                                    ; 52e1: a9 7e       .~  :41e1[1]
@@ -6728,11 +6796,11 @@ c4282
 c42a4
     rts                                                               ; 53a4: 60          `   :42a4[1]
 
-    !byte $1f, 6  , 1                                                 ; 53a5: 1f 06 01    ... :42a5[1]
+    !byte $1f,   6,   1                                               ; 53a5: 1f 06 01    ... :42a5[1]
     !text "**** STAR-FLEET RECORDS ****"                              ; 53a8: 2a 2a 2a... *** :42a8[1]
-    !byte $1f, 0  , 4                                                 ; 53c4: 1f 00 04    ... :42c4[1]
-    !text "Below is a list of the most highly ratedof St"             ; 53c7: 42 65 6c... Bel :42c7[1]
-    !text "ar-Fleet's past commanders."                               ; 53f4: 61 72 2d... ar- :42f4[1]
+    !byte $1f,   0,   4                                               ; 53c4: 1f 00 04    ... :42c4[1]
+    !text "Below is a list of the most highly ratedof Star-Fleet's"   ; 53c7: 42 65 6c... Bel :42c7[1]
+    !text " past commanders."                                         ; 53fe: 20 70 61...  pa :42fe[1]
     !byte $1f, $0d, $18                                               ; 540f: 1f 0d 18    ... :430f[1]
     !text "Press <RETURN>~"                                           ; 5412: 50 72 65... Pre :4312[1]
     !byte $0d, $ff, $ff, $ff                                          ; 5421: 0d ff ff... ... :4321[1]
@@ -6760,19 +6828,20 @@ l4338
     !byte 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0                       ; 5438: 00 00 00... ... :4338[1]
 ; $5445 referenced 1 time by $4535
 l4345
-    !byte 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0    ; 5445: 00 00 00... ... :4345[1]
-    !byte 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0    ; 5451: 00 00 00... ... :4351[1]
-    !byte 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0    ; 545d: 00 00 00... ... :435d[1]
-    !byte 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0    ; 5469: 00 00 00... ... :4369[1]
-    !byte 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0    ; 5475: 00 00 00... ... :4375[1]
-    !byte 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0    ; 5481: 00 00 00... ... :4381[1]
-    !byte 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0    ; 548d: 00 00 00... ... :438d[1]
-    !byte 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0    ; 5499: 00 00 00... ... :4399[1]
-    !byte 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0    ; 54a5: 00 00 00... ... :43a5[1]
-    !byte 0  , 0  , 0  , 0  , $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff  ; 54b1: 00 00 00... ... :43b1[1]
-    !byte $ff, $ff, $ff, 0  , 0  , 0  , 0  , 0  , $ea, $ea, $ea, $ea  ; 54bd: ff ff ff... ... :43bd[1]
+    !byte   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0  ; 5445: 00 00 00... ... :4345[1]
+    !byte   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0  ; 5451: 00 00 00... ... :4351[1]
+    !byte   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0  ; 545d: 00 00 00... ... :435d[1]
+    !byte   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0  ; 5469: 00 00 00... ... :4369[1]
+    !byte   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0  ; 5475: 00 00 00... ... :4375[1]
+    !byte   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0  ; 5481: 00 00 00... ... :4381[1]
+    !byte   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0  ; 548d: 00 00 00... ... :438d[1]
+    !byte   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0  ; 5499: 00 00 00... ... :4399[1]
+    !byte   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0  ; 54a5: 00 00 00... ... :43a5[1]
+    !byte   0,   0,   0,   0, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff  ; 54b1: 00 00 00... ... :43b1[1]
+    !byte $ff, $ff, $ff,   0,   0,   0,   0,   0, $ea, $ea, $ea, $ea  ; 54bd: ff ff ff... ... :43bd[1]
     !byte $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea  ; 54c9: ea ea ea... ... :43c9[1]
     !byte $ea, $ea                                                    ; 54d5: ea ea       ..  :43d5[1]
+
 ; $54d7 referenced 2 times by $427c, $4599
 sub_c43d7
     lda #$16                                                          ; 54d7: a9 16       ..  :43d7[1]
@@ -6887,7 +6956,7 @@ c4490
     jsr oswrch                                                        ; 5590: 20 ee ff     .. :4490[1]
     rts                                                               ; 5593: 60          `   :4493[1]
 
-    !byte $1f, 0  , $0a                                               ; 5594: 1f 00 0a    ... :4494[1]
+    !byte $1f,   0, $0a                                               ; 5594: 1f 00 0a    ... :4494[1]
     !text "Enter your name for Star-Fleet records."                   ; 5597: 45 6e 74... Ent :4497[1]
     !byte $1f, $0d, $10                                               ; 55be: 1f 0d 10    ... :44be[1]
     !text "-------------"                                             ; 55c1: 2d 2d 2d... --- :44c1[1]
@@ -6897,7 +6966,8 @@ l44d3
     !text "PPPPPPPPPPPP"                                              ; 55d3: 50 50 50... PPP :44d3[1]
     !byte $88, $0d                                                    ; 55df: 88 0d       ..  :44df[1]
 l44e1
-    !byte $d3, $44, $0d, $20, $ff, 0  , $ea                           ; 55e1: d3 44 0d... .D. :44e1[1]
+    !byte $d3, $44, $0d, $20, $ff,   0, $ea                           ; 55e1: d3 44 0d... .D. :44e1[1]
+
 ; $55e8 referenced 1 time by $4633
 sub_c44e8
     lda #$16                                                          ; 55e8: a9 16       ..  :44e8[1]
@@ -7043,8 +7113,9 @@ loop_c45ba
 c45c4
     rts                                                               ; 56c4: 60          `   :45c4[1]
 
-    !byte $ea, $ea, $ea, $60, 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0    ; 56c5: ea ea ea... ... :45c5[1]
-    !byte 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0                   ; 56d1: 00 00 00... ... :45d1[1]
+    !byte $ea, $ea, $ea, $60,   0,   0,   0,   0,   0,   0,   0,   0  ; 56c5: ea ea ea... ... :45c5[1]
+    !byte   0,   0,   0,   0,   0,   0,   0,   0,   0                 ; 56d1: 00 00 00... ... :45d1[1]
+
 ; $56da referenced 1 time by $486e
 c45da
     lda #$16                                                          ; 56da: a9 16       ..  :45da[1]
@@ -7061,6 +7132,7 @@ c45da
 
     !byte $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea  ; 56f8: ea ea ea... ... :45f8[1]
     !byte $ea, $ea, $ea                                               ; 5704: ea ea ea    ... :4604[1]
+
 ; $5707 referenced 1 time by $1ded
 c4607
     pla                                                               ; 5707: 68          h   :4607[1]
@@ -7122,20 +7194,20 @@ c4671
     jmp c3833                                                         ; 5781: 4c 33 38    L38 :4681[1]
 
     !byte $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea  ; 5784: ea ea ea... ... :4684[1]
-    !byte $ea, $ea, $ea, $1f, 0  , 5                                  ; 5790: ea ea ea... ... :4690[1]
-    !text "  The frontiers of space are frequently penet"             ; 5796: 20 20 54...   T :4696[1]
-    !text "rated  by  hostile  alien  ships .  These are"             ; 57c3: 72 61 74... rat :46c3[1]
-    !text " tackled by battle starships ,the  command  o"             ; 57f0: 20 74 61...  ta :46f0[1]
-    !text "f  which  is  given  to  deserving captains f"             ; 581d: 66 20 20... f   :471d[1]
-    !text "rom the Star-Fleet ."                                      ; 584a: 72 6f 6d... rom :474a[1]
-    !byte $1f, $0b, 2                                                 ; 585e: 1f 0b 02    ... :475e[1]
+    !byte $ea, $ea, $ea, $1f,   0,   5                                ; 5790: ea ea ea... ... :4690[1]
+    !text "  The frontiers of space are frequently penetrated  by "   ; 5796: 20 20 54...   T :4696[1]
+    !text " hostile  alien  ships .  These are tackled by battle s"   ; 57cd: 20 68 6f...  ho :46cd[1]
+    !text "tarships ,the  command  of  which  is  given  to  deser"   ; 5804: 74 61 72... tar :4704[1]
+    !text "ving captains from the Star-Fleet ."                       ; 583b: 76 69 6e... vin :473b[1]
+    !byte $1f, $0b,   2                                               ; 585e: 1f 0b 02    ... :475e[1]
     !text "STARSHIP  COMMAND"                                         ; 5861: 53 54 41... STA :4761[1]
-    !byte $1f, 6  , $0a                                               ; 5872: 1f 06 0a    ... :4772[1]
+    !byte $1f,   6, $0a                                               ; 5872: 1f 06 0a    ... :4772[1]
     !text "To begin your first command"                               ; 5875: 54 6f 20... To  :4775[1]
     !byte $1f, $0c, $0b                                               ; 5890: 1f 0c 0b    ... :4790[1]
     !text "Press <RETURN>~"                                           ; 5893: 50 72 65... Pre :4793[1]
     !byte $0d, $ff, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea, $ea  ; 58a2: 0d ff ea... ... :47a2[1]
     !byte $ea, $ea, $ea                                               ; 58ae: ea ea ea    ... :47ae[1]
+
 ; $58b1 referenced 2 times by $4636, $61f6
 c47b1
     lda l0e49                                                         ; 58b1: ad 49 0e    .I. :47b1[1]
@@ -7237,18 +7309,19 @@ c485a
     jsr c4203                                                         ; 596b: 20 03 42     .B :486b[1]
     jmp c45da                                                         ; 596e: 4c da 45    L.E :486e[1]
 
-    !byte $54, $48, $e0, $0d, $d0, $dd, $60, 0  , $1f, $0b, $0a       ; 5971: 54 48 e0... TH. :4871[1]
+    !byte $54, $48, $e0, $0d, $d0, $dd, $60,   0, $1f, $0b, $0a       ; 5971: 54 48 e0... TH. :4871[1]
     !text "STARSHIP COMMAND I"                                        ; 597c: 53 54 41... STA :487c[1]
     !byte $1f, $0b, $0c                                               ; 598e: 1f 0b 0c    ... :488e[1]
     !text "COPYRIGHT (c) 1982"                                        ; 5991: 43 4f 50... COP :4891[1]
     !byte $1f, $0b, $0e                                               ; 59a3: 1f 0b 0e    ... :48a3[1]
     !text "Peter J.M. Irvin.~"                                        ; 59a6: 50 65 74... Pet :48a6[1]
-    !byte $0d, $ff, $a9, $16, $20, $ee, $ff, $a9, 7  , $20, $ee, $ff  ; 59b8: 0d ff a9... ... :48b8[1]
-    !byte $a0, 0  , $b9, $79, $48, $c9, $7e, $f0, 6  , $20, $ee, $ff  ; 59c4: a0 00 b9... ... :48c4[1]
-    !byte $c8, $d0, $f3, $a0, 0  , $a2, $64, $a9, $81, $20, $f4, $ff  ; 59d0: c8 d0 f3... ... :48d0[1]
+    !byte $0d, $ff, $a9, $16, $20, $ee, $ff, $a9,   7, $20, $ee, $ff  ; 59b8: 0d ff a9... ... :48b8[1]
+    !byte $a0,   0, $b9, $79, $48, $c9, $7e, $f0,   6, $20, $ee, $ff  ; 59c4: a0 00 b9... ... :48c4[1]
+    !byte $c8, $d0, $f3, $a0,   0, $a2, $64, $a9, $81, $20, $f4, $ff  ; 59d0: c8 d0 f3... ... :48d0[1]
     !byte $4c, $b1, $47, $9c, $a9, $b8, $a9, $be, $ec, $86, $e2, $81  ; 59dc: 4c b1 47... L.G :48dc[1]
-    !byte $e2, $ec, $85, $be, $ba, $a5, $a2, $e2, 0  , 0  , 0  , 0    ; 59e8: e2 ec 85... ... :48e8[1]
-    !byte 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0    ; 59f4: 00 00 00... ... :48f4[1]
+    !byte $e2, $ec, $85, $be, $ba, $a5, $a2, $e2,   0,   0,   0,   0  ; 59e8: e2 ec 85... ... :48e8[1]
+    !byte   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0  ; 59f4: 00 00 00... ... :48f4[1]
+
 ; $5a00 referenced 1 time by $2355
 sub_c4900
     lda #osbyte_read_adc_or_get_buffer_status                         ; 5a00: a9 80       ..  :4900[1]
@@ -7320,19 +7393,19 @@ c4962
 c4965
     rts                                                               ; 5a65: 60          `   :4965[1]
 
-    !byte 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , $0c, $1f  ; 5a66: 00 00 00... ... :4966[1]
-    !byte $0c, 8                                                      ; 5a72: 0c 08       ..  :4972[1]
+    !byte   0,   0,   0,   0,   0,   0,   0,   0,   0,   0, $0c, $1f  ; 5a66: 00 00 00... ... :4966[1]
+    !byte $0c,   8                                                    ; 5a72: 0c 08       ..  :4972[1]
     !text "STARSHIP COMMAND"                                          ; 5a74: 53 54 41... STA :4974[1]
-    !byte $1f, 1  , $0a                                               ; 5a84: 1f 01 0a    ... :4984[1]
+    !byte $1f,   1, $0a                                               ; 5a84: 1f 01 0a    ... :4984[1]
     !text "Copyright (c) Acornsoft Limited 1982"                      ; 5a87: 43 6f 70... Cop :4987[1]
-    !byte $1f, 6  , $0c                                               ; 5aab: 1f 06 0c    ... :49ab[1]
+    !byte $1f,   6, $0c                                               ; 5aab: 1f 06 0c    ... :49ab[1]
     !text "Created by Peter J.M. Irvin"                               ; 5aae: 43 72 65... Cre :49ae[1]
     !byte $1f, $0a, $0e                                               ; 5ac9: 1f 0a 0e    ... :49c9[1]
     !text "All rights reserved"                                       ; 5acc: 41 6c 6c... All :49cc[1]
-    !byte $0d, 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0    ; 5adf: 0d 00 00... ... :49df[1]
-    !byte 0  , 0  , 0  , 0  , 0                                       ; 5aeb: 00 00 00... ... :49eb[1]
+    !byte $0d,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0  ; 5adf: 0d 00 00... ... :49df[1]
+    !byte   0,   0,   0,   0,   0                                     ; 5aeb: 00 00 00... ... :49eb[1]
 l49f0
-    !byte $11, 0                                                      ; 5af0: 11 00       ..  :49f0[1]
+    !byte $11,   0                                                    ; 5af0: 11 00       ..  :49f0[1]
 ; $5af2 referenced 1 time by $24ec
 l49f2
     !byte 0                                                           ; 5af2: 00          .   :49f2[1]
@@ -7343,7 +7416,7 @@ l49f3
 l49f4
     !byte 0, 0, 4, 0                                                  ; 5af4: 00 00 04... ... :49f4[1]
 l49f8
-    !byte $10, 0  , 3  , 0  , 7  , 0  , $1e, 0                        ; 5af8: 10 00 03... ... :49f8[1]
+    !byte $10,   0,   3,   0,   7,   0, $1e,   0                      ; 5af8: 10 00 03... ... :49f8[1]
 ; $5b00 referenced 1 time by $47c4
 l4a00
     !byte $d5, $82, $d5, $7b, $d5, $88, $d5, $75, $d3, $8f, $d3, $6e  ; 5b00: d5 82 d5... ... :4a00[1]
@@ -7406,143 +7479,143 @@ l4a00
     !byte $94                                                         ; 5c1a: 94          .   :4b1a[1]
     !text "DV$"                                                       ; 5c1b: 44 56 24    DV$ :4b1b[1]
     !byte $fb, $88, $fd, $b6, $8f, $31, $6a, $ea, $36, $b6, $14, $b5  ; 5c1e: fb 88 fd... ... :4b1e[1]
-    !byte $0a, $4b, $97, $4c, $f4, $0a, $10, $9d, 7  , $40, $e5, $66  ; 5c2a: 0a 4b 97... .K. :4b2a[1]
+    !byte $0a, $4b, $97, $4c, $f4, $0a, $10, $9d,   7, $40, $e5, $66  ; 5c2a: 0a 4b 97... .K. :4b2a[1]
     !byte $c0                                                         ; 5c36: c0          .   :4b36[1]
     !text "&%}.Lcz"                                                   ; 5c37: 26 25 7d... &%} :4b37[1]
     !byte $fe, $e4, $b2, $23, $a6, $43, $84, $cc, $3f, $6c, $c0, $d0  ; 5c3e: fe e4 b2... ... :4b3e[1]
     !byte $39, $96, $be, $c3, $80, $54, $32, $cf, $60, $8e, $4b, $c5  ; 5c4a: 39 96 be... 9.. :4b4a[1]
-    !byte $59, $5c, $b6, $ca, 3  , $82, $dc, $c5, $7c, $69, $0c, $cc  ; 5c56: 59 5c b6... Y\. :4b56[1]
+    !byte $59, $5c, $b6, $ca,   3, $82, $dc, $c5, $7c, $69, $0c, $cc  ; 5c56: 59 5c b6... Y\. :4b56[1]
     !byte $13, $93, $99, $c0, $33, $59, $cc, $cd, $e7, $9b, $da, $be  ; 5c62: 13 93 99... ... :4b62[1]
     !byte $5d, $50, $d7, $ca, $95, $a1, $f4, $b9                      ; 5c6e: 5d 50 d7... ]P. :4b6e[1]
     !text "=L:"                                                       ; 5c76: 3d 4c 3a    =L: :4b76[1]
     !byte $c4, $55, $85, $9b, $be, $e2, $68, $f1, $c6, $2b, $98, $ee  ; 5c79: c4 55 85... .U. :4b79[1]
     !byte $b9, $70, $56, $b6, $c6, $7c, $a6, $45, $b4, $49, $49, $d3  ; 5c85: b9 70 56... .pV :4b85[1]
-    !byte $c1, $41, $9d, $46, $b3, $ae, $53, $fb, $bb, 6  , $8a, $31  ; 5c91: c1 41 9d... .A. :4b91[1]
+    !byte $c1, $41, $9d, $46, $b3, $ae, $53, $fb, $bb,   6, $8a, $31  ; 5c91: c1 41 9d... .A. :4b91[1]
     !byte $b5, $af, $67, $9a, $c1, $92, $ab, $9c, $ad, $87, $46, $8b  ; 5c9d: b5 af 67... ..g :4b9d[1]
     !byte $bb, $8d, $a1, $d2, $ab, $18, $52, $49, $bd, $7b, $af, $1f  ; 5ca9: bb 8d a1... ... :4ba9[1]
     !byte $a8, $8f, $44, $5e, $b2, $f2, $8c, $30, $ab, $a6, $68, $c9  ; 5cb5: a8 8f 44... ..D :4bb5[1]
     !byte $b7, $9c, $b2, $d9, $a1, $c1, $43, $12, $b5, $e0, $a4, $90  ; 5cc1: b7 9c b2... ... :4bc1[1]
-    !byte $a4, $7d, $51, 0  , 0  , $2f, 0  , 9  , $57, 0  , $15, $96  ; 5ccd: a4 7d 51... .}Q :4bcd[1]
-    !byte 0  , $1a, $63, 0  , $46, $90, 0  , $59, $55, 0  , $37, $9a  ; 5cd9: 00 1a 63... ..c :4bd9[1]
-    !byte 0  , $7d, $91, 0  , $32, $69, 0  , $3b, $75, 0  , $7e, $a0  ; 5ce5: 00 7d 91... .}. :4be5[1]
-    !byte 0  , $71, $51, 0  , $42, $67, 0  , $42, $61, 0  , $57, $9a  ; 5cf1: 00 71 51... .qQ :4bf1[1]
-    !byte 0  , $0a, $6d, 0  , $f6, $a1, 0  , $6e, $98, 0  , $55, $8a  ; 5cfd: 00 0a 6d... ..m :4bfd[1]
-    !byte 0  , $36, $9d, 0  , $3d, $94, 0  , $2b, $75, 0  , $78, $32  ; 5d09: 00 36 9d... .6. :4c09[1]
-    !byte 0  , 6  , $a1, 0  , $29, $4c, 0  , $0e, $98, 0  , $2c, $83  ; 5d15: 00 06 a1... ... :4c15[1]
-    !byte 0  , $0d, $99, 0  , $39, $56, 0  , $15, $91, 0  , 5  , $98  ; 5d21: 00 0d 99... ... :4c21[1]
-    !byte 0  , $13, $73, 0  , $6d, $8a, 0  , $40, $36, 0  , 3  , $7e  ; 5d2d: 00 13 73... ..s :4c2d[1]
-    !byte 0  , $51, $4d, 0  , $34, $81, 0  , $90, $33, 0  , $25, $86  ; 5d39: 00 51 4d... .QM :4c39[1]
-    !byte 0  , $21, $53, 0  , $1f, $a0, 0  , $72, $65, 0  , $6c, $8d  ; 5d45: 00 21 53... .!S :4c45[1]
-    !byte 0  , $16, $96, 0  , $2f, $9c, 0  , $79, $4d, 0  , $45, $8c  ; 5d51: 00 16 96... ... :4c51[1]
-    !byte 0  , $2f, $9f, 0  , $64, $8c, 0  , $12, $68, 0  , $43, $76  ; 5d5d: 00 2f 9f... ./. :4c5d[1]
-    !byte 0  , $6d, $93, 0  , $2b, $7c, 0  , $62, $64, 0  , $65, $92  ; 5d69: 00 6d 93... .m. :4c69[1]
-    !byte 0  , $3d, $97, 0  , $16, $8c, 0  , $45, $95, 0  , $1a, $69  ; 5d75: 00 3d 97... .=. :4c75[1]
-    !byte 0  , $b1, $55, 0  , $26, $9e, 0  , $4b, $79, 0  , $85, $98  ; 5d81: 00 b1 55... ..U :4c81[1]
-    !byte 0  , $4a, $64, $86, $74, $92, $ad, $94, $65, 8  , $62, $c6  ; 5d8d: 00 4a 64... .Jd :4c8d[1]
+    !byte $a4, $7d, $51,   0,   0, $2f,   0,   9, $57,   0, $15, $96  ; 5ccd: a4 7d 51... .}Q :4bcd[1]
+    !byte   0, $1a, $63,   0, $46, $90,   0, $59, $55,   0, $37, $9a  ; 5cd9: 00 1a 63... ..c :4bd9[1]
+    !byte   0, $7d, $91,   0, $32, $69,   0, $3b, $75,   0, $7e, $a0  ; 5ce5: 00 7d 91... .}. :4be5[1]
+    !byte   0, $71, $51,   0, $42, $67,   0, $42, $61,   0, $57, $9a  ; 5cf1: 00 71 51... .qQ :4bf1[1]
+    !byte   0, $0a, $6d,   0, $f6, $a1,   0, $6e, $98,   0, $55, $8a  ; 5cfd: 00 0a 6d... ..m :4bfd[1]
+    !byte   0, $36, $9d,   0, $3d, $94,   0, $2b, $75,   0, $78, $32  ; 5d09: 00 36 9d... .6. :4c09[1]
+    !byte   0,   6, $a1,   0, $29, $4c,   0, $0e, $98,   0, $2c, $83  ; 5d15: 00 06 a1... ... :4c15[1]
+    !byte   0, $0d, $99,   0, $39, $56,   0, $15, $91,   0,   5, $98  ; 5d21: 00 0d 99... ... :4c21[1]
+    !byte   0, $13, $73,   0, $6d, $8a,   0, $40, $36,   0,   3, $7e  ; 5d2d: 00 13 73... ..s :4c2d[1]
+    !byte   0, $51, $4d,   0, $34, $81,   0, $90, $33,   0, $25, $86  ; 5d39: 00 51 4d... .QM :4c39[1]
+    !byte   0, $21, $53,   0, $1f, $a0,   0, $72, $65,   0, $6c, $8d  ; 5d45: 00 21 53... .!S :4c45[1]
+    !byte   0, $16, $96,   0, $2f, $9c,   0, $79, $4d,   0, $45, $8c  ; 5d51: 00 16 96... ... :4c51[1]
+    !byte   0, $2f, $9f,   0, $64, $8c,   0, $12, $68,   0, $43, $76  ; 5d5d: 00 2f 9f... ./. :4c5d[1]
+    !byte   0, $6d, $93,   0, $2b, $7c,   0, $62, $64,   0, $65, $92  ; 5d69: 00 6d 93... .m. :4c69[1]
+    !byte   0, $3d, $97,   0, $16, $8c,   0, $45, $95,   0, $1a, $69  ; 5d75: 00 3d 97... .=. :4c75[1]
+    !byte   0, $b1, $55,   0, $26, $9e,   0, $4b, $79,   0, $85, $98  ; 5d81: 00 b1 55... ..U :4c81[1]
+    !byte   0, $4a, $64, $86, $74, $92, $ad, $94, $65,   8, $62, $c6  ; 5d8d: 00 4a 64... .Jd :4c8d[1]
     !byte $72, $be, $a4, $53, $67, $dd, $6a, $85, $6d, $73, $94, $ab  ; 5d99: 72 be a4... r.. :4c99[1]
     !byte $68, $ee, $7b, $14, $6e, $97, $a1, $2e, $64, $91, $6f, $a1  ; 5da5: 68 ee 7b... h.{ :4ca5[1]
     !byte $6f, $71, $a9, $9f, $62, $b7, $67, $fd, $68, $7c, $9c       ; 5db1: 6f 71 a9... oq. :4cb1[1]
     !text "ka:v"                                                      ; 5dbc: 6b 61 3a... ka: :4cbc[1]
     !byte $bd, $6a, $50, $a5, $ac                                     ; 5dc0: bd 6a 50... .jP :4cc0[1]
     !text "_fm"                                                       ; 5dc5: 5f 66 6d    _fm :4cc5[1]
-    !byte $db, $66, $b1, $91, $8d, $63, 5  , $81, $9d, $67, $d0, $9f  ; 5dc8: db 66 b1... .f. :4cc8[1]
+    !byte $db, $66, $b1, $91, $8d, $63,   5, $81, $9d, $67, $d0, $9f  ; 5dc8: db 66 b1... .f. :4cc8[1]
     !byte $e0, $5e, $ab, $73, $12, $65, $2b, $98, $74, $5f, $b6       ; 5dd4: e0 5e ab... .^. :4cd4[1]
     !text "{}dQ"                                                      ; 5ddf: 7b 7d 64... {}d :4cdf[1]
     !byte $9a, $15, $5e, $f3                                          ; 5de3: 9a 15 5e... ..^ :4ce3[1]
     !text "y[b"                                                       ; 5de7: 79 5b 62    y[b :4ce7[1]
-    !byte $87, $8f, $37, $60, $bd, $84, 0  , $60, $f3, $8d, $a3, $5e  ; 5dea: 87 8f 37... ..7 :4cea[1]
+    !byte $87, $8f, $37, $60, $bd, $84,   0, $60, $f3, $8d, $a3, $5e  ; 5dea: 87 8f 37... ..7 :4cea[1]
     !byte $16, $87, $2a, $61, $d7, $93                                ; 5df6: 16 87 2a... ..* :4cf6[1]
     !text "x]3"                                                       ; 5dfc: 78 5d 33    x]3 :4cfc[1]
-    !byte $81, 0  , $d3, 0  , $85, 0  , $a9, 0  , $c6, 0  , $d7, 0    ; 5dff: 81 00 d3... ... :4cff[1]
-    !byte $9e, 0  , $cb, 0  , $cb, 0  , $9e, 0  , $a1, 0  , $7d, 0    ; 5e0b: 9e 00 cb... ... :4d0b[1]
-    !byte $da, 0  , $fb, 0  , $ce, 0  , $b2, 0  , $54, 0  , $6c, 0    ; 5e17: da 00 fb... ... :4d17[1]
-    !byte $da, 0  , $99, 0  , $aa, 0  , $d6, 0  , $91, 0  , $95, 0    ; 5e23: da 00 99... ... :4d23[1]
-    !byte $ad, 0  , $f7, 0  , $81, 0  , $89, 0  , $64, 0  , $99, 0    ; 5e2f: ad 00 f7... ... :4d2f[1]
-    !byte $fb, 0  , $44, 0  , $a2, 0  , $a5, 0  , $9d, 0  , $a2, 0    ; 5e3b: fb 00 44... ..D :4d3b[1]
-    !byte $a5, 0  , $75, 0  , $fb, 0  , $48, 0  , $ae, 0  , $d2, 0    ; 5e47: a5 00 75... ..u :4d47[1]
-    !byte $4c, 0  , $ff, 0  , $60, 0  , $71, 0  , $ba, 0  , $44, 0    ; 5e53: 4c 00 ff... L.. :4d53[1]
-    !byte $4c, 0  , $c2, 0  , $58, 0  , $f3, 0  , $91, 0  , $e7, 0    ; 5e5f: 4c 00 c2... L.. :4d5f[1]
-    !byte $aa, 0  , $71, 0  , $da, 0  , $9e, 0  , $71, 0  , $50, 0    ; 5e6b: aa 00 71... ..q :4d6b[1]
-    !byte $50, 0  , $a2, 0  , $4c, 0  , $e3, 0  , $cb, 0  , $91, 0    ; 5e77: 50 00 a2... P.. :4d77[1]
-    !byte $f3, 0  , $85, 0  , $89, 0  , $81, 0  , $e3, 0  , $cb, 0    ; 5e83: f3 00 85... ... :4d83[1]
-    !byte $9e, 0  , $44, 0  , $ba, 0  , $a1, 0  , $79, 0  , $54, 0    ; 5e8f: 9e 00 44... ..D :4d8f[1]
-    !byte $58, 0  , $44, 0  , $c7, 0  , $aa, 0  , $cb, 0  , $7d, 0    ; 5e9b: 58 00 44... X.D :4d9b[1]
-    !byte $68, 0  , $a5, 0  , $cf, 0  , $40, 0  , $71, 0  , $68, 0    ; 5ea7: 68 00 a5... h.. :4da7[1]
-    !byte $ae, 0  , $d2, 0  , $c2, 0  , $ae, 0  , $da, 0  , $6c, 0    ; 5eb3: ae 00 d2... ... :4db3[1]
-    !byte $c2, 0  , $a2, 0  , $54, 0  , $78, 0  , $eb, 0  , $d6, 0    ; 5ebf: c2 00 a2... ... :4dbf[1]
-    !byte $fb, 0  , $ce, 0  , $fb, 0  , $81, 0  , $ad, 0  , $f7, 0    ; 5ecb: fb 00 ce... ... :4dcb[1]
-    !byte $ad, 0  , $89, 0  , $a2, 0  , $b6, 0  , $91, 0  , $44, 0    ; 5ed7: ad 00 89... ... :4dd7[1]
-    !byte $d2, 0  , $a6, 0  , $c7, 0  , $85, 0  , $44, 0  , $50, 0    ; 5ee3: d2 00 a6... ... :4de3[1]
-    !byte $74, 0  , $85, 0  , $79, 0  , $a2, 0  , $40, 0  , $75, 0    ; 5eef: 74 00 85... t.. :4def[1]
-    !byte $ca, 0  , $cf, 0  , $a6, $ff, $ff, $ff, $ff, $ff, $ff, $ff  ; 5efb: ca 00 cf... ... :4dfb[1]
+    !byte $81,   0, $d3,   0, $85,   0, $a9,   0, $c6,   0, $d7,   0  ; 5dff: 81 00 d3... ... :4cff[1]
+    !byte $9e,   0, $cb,   0, $cb,   0, $9e,   0, $a1,   0, $7d,   0  ; 5e0b: 9e 00 cb... ... :4d0b[1]
+    !byte $da,   0, $fb,   0, $ce,   0, $b2,   0, $54,   0, $6c,   0  ; 5e17: da 00 fb... ... :4d17[1]
+    !byte $da,   0, $99,   0, $aa,   0, $d6,   0, $91,   0, $95,   0  ; 5e23: da 00 99... ... :4d23[1]
+    !byte $ad,   0, $f7,   0, $81,   0, $89,   0, $64,   0, $99,   0  ; 5e2f: ad 00 f7... ... :4d2f[1]
+    !byte $fb,   0, $44,   0, $a2,   0, $a5,   0, $9d,   0, $a2,   0  ; 5e3b: fb 00 44... ..D :4d3b[1]
+    !byte $a5,   0, $75,   0, $fb,   0, $48,   0, $ae,   0, $d2,   0  ; 5e47: a5 00 75... ..u :4d47[1]
+    !byte $4c,   0, $ff,   0, $60,   0, $71,   0, $ba,   0, $44,   0  ; 5e53: 4c 00 ff... L.. :4d53[1]
+    !byte $4c,   0, $c2,   0, $58,   0, $f3,   0, $91,   0, $e7,   0  ; 5e5f: 4c 00 c2... L.. :4d5f[1]
+    !byte $aa,   0, $71,   0, $da,   0, $9e,   0, $71,   0, $50,   0  ; 5e6b: aa 00 71... ..q :4d6b[1]
+    !byte $50,   0, $a2,   0, $4c,   0, $e3,   0, $cb,   0, $91,   0  ; 5e77: 50 00 a2... P.. :4d77[1]
+    !byte $f3,   0, $85,   0, $89,   0, $81,   0, $e3,   0, $cb,   0  ; 5e83: f3 00 85... ... :4d83[1]
+    !byte $9e,   0, $44,   0, $ba,   0, $a1,   0, $79,   0, $54,   0  ; 5e8f: 9e 00 44... ..D :4d8f[1]
+    !byte $58,   0, $44,   0, $c7,   0, $aa,   0, $cb,   0, $7d,   0  ; 5e9b: 58 00 44... X.D :4d9b[1]
+    !byte $68,   0, $a5,   0, $cf,   0, $40,   0, $71,   0, $68,   0  ; 5ea7: 68 00 a5... h.. :4da7[1]
+    !byte $ae,   0, $d2,   0, $c2,   0, $ae,   0, $da,   0, $6c,   0  ; 5eb3: ae 00 d2... ... :4db3[1]
+    !byte $c2,   0, $a2,   0, $54,   0, $78,   0, $eb,   0, $d6,   0  ; 5ebf: c2 00 a2... ... :4dbf[1]
+    !byte $fb,   0, $ce,   0, $fb,   0, $81,   0, $ad,   0, $f7,   0  ; 5ecb: fb 00 ce... ... :4dcb[1]
+    !byte $ad,   0, $89,   0, $a2,   0, $b6,   0, $91,   0, $44,   0  ; 5ed7: ad 00 89... ... :4dd7[1]
+    !byte $d2,   0, $a6,   0, $c7,   0, $85,   0, $44,   0, $50,   0  ; 5ee3: d2 00 a6... ... :4de3[1]
+    !byte $74,   0, $85,   0, $79,   0, $a2,   0, $40,   0, $75,   0  ; 5eef: 74 00 85... t.. :4def[1]
+    !byte $ca,   0, $cf,   0, $a6, $ff, $ff, $ff, $ff, $ff, $ff, $ff  ; 5efb: ca 00 cf... ... :4dfb[1]
     !byte $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff  ; 5f07: ff ff ff... ... :4e07[1]
     !byte $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff  ; 5f13: ff ff ff... ... :4e13[1]
     !byte $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff  ; 5f1f: ff ff ff... ... :4e1f[1]
     !byte $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff  ; 5f2b: ff ff ff... ... :4e2b[1]
-    !byte $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, 0  , 0  , 0    ; 5f37: ff ff ff... ... :4e37[1]
-    !byte 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0    ; 5f43: 00 00 00... ... :4e43[1]
-    !byte 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0    ; 5f4f: 00 00 00... ... :4e4f[1]
-    !byte 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0    ; 5f5b: 00 00 00... ... :4e5b[1]
-    !byte 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0    ; 5f67: 00 00 00... ... :4e67[1]
-    !byte 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0    ; 5f73: 00 00 00... ... :4e73[1]
-    !byte 0  , $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff  ; 5f7f: 00 ff ff... ... :4e7f[1]
+    !byte $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff,   0,   0,   0  ; 5f37: ff ff ff... ... :4e37[1]
+    !byte   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0  ; 5f43: 00 00 00... ... :4e43[1]
+    !byte   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0  ; 5f4f: 00 00 00... ... :4e4f[1]
+    !byte   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0  ; 5f5b: 00 00 00... ... :4e5b[1]
+    !byte   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0  ; 5f67: 00 00 00... ... :4e67[1]
+    !byte   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0  ; 5f73: 00 00 00... ... :4e73[1]
+    !byte   0, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff  ; 5f7f: 00 ff ff... ... :4e7f[1]
     !byte $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff  ; 5f8b: ff ff ff... ... :4e8b[1]
     !byte $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff  ; 5f97: ff ff ff... ... :4e97[1]
     !byte $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff  ; 5fa3: ff ff ff... ... :4ea3[1]
     !byte $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff  ; 5faf: ff ff ff... ... :4eaf[1]
-    !byte $ff, $ff, $ff, $ff, $ff, 0  , 0  , 0  , 0  , 0  , 0  , 0    ; 5fbb: ff ff ff... ... :4ebb[1]
-    !byte 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0    ; 5fc7: 00 00 00... ... :4ec7[1]
-    !byte 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0    ; 5fd3: 00 00 00... ... :4ed3[1]
-    !byte 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0    ; 5fdf: 00 00 00... ... :4edf[1]
-    !byte 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0    ; 5feb: 00 00 00... ... :4eeb[1]
-    !byte 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , $4b, $66  ; 5ff7: 00 00 00... ... :4ef7[1]
-    !byte $b1, $48, $fd, $66, $a3, $4a, 0  , $17                      ; 6003: b1 48 fd... .H. :4f03[1]
+    !byte $ff, $ff, $ff, $ff, $ff,   0,   0,   0,   0,   0,   0,   0  ; 5fbb: ff ff ff... ... :4ebb[1]
+    !byte   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0  ; 5fc7: 00 00 00... ... :4ec7[1]
+    !byte   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0  ; 5fd3: 00 00 00... ... :4ed3[1]
+    !byte   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0  ; 5fdf: 00 00 00... ... :4edf[1]
+    !byte   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0  ; 5feb: 00 00 00... ... :4eeb[1]
+    !byte   0,   0,   0,   0,   0,   0,   0,   0,   0,   0, $4b, $66  ; 5ff7: 00 00 00... ... :4ef7[1]
+    !byte $b1, $48, $fd, $66, $a3, $4a,   0, $17                      ; 6003: b1 48 fd... .H. :4f03[1]
     !text "f:K"                                                       ; 600b: 66 3a 4b    f:K :4f0b[1]
     !byte $cb                                                         ; 600e: cb          .   :4f0e[1]
     !text "f+M"                                                       ; 600f: 66 2b 4d    f+M :4f0f[1]
-    !byte 0  , $94, $49, $19, $44, $a2, $4a, $db, $45, 0  , $2f, $4a  ; 6012: 00 94 49... ..I :4f12[1]
-    !byte 9                                                           ; 601e: 09          .   :4f1e[1]
+    !byte   0, $94, $49, $19, $44, $a2, $4a, $db, $45,   0, $2f, $4a  ; 6012: 00 94 49... ..I :4f12[1]
+    !byte   9                                                         ; 601e: 09          .   :4f1e[1]
     !text "F=K"                                                       ; 601f: 46 3d 4b    F=K :4f1f[1]
-    !byte $c9, $47, 0  , $6b, $4b, $0e                                ; 6022: c9 47 00... .G. :4f22[1]
+    !byte $c9, $47,   0, $6b, $4b, $0e                                ; 6022: c9 47 00... .G. :4f22[1]
     !text "HwL"                                                       ; 6028: 48 77 4c    HwL :4f28[1]
-    !byte $d2, $49, 0  , $81, $4b, $fc, $48, $91, $4c, $bf, $4a, 0    ; 602b: d2 49 00... .I. :4f2b[1]
-    !byte $39, $83, $6b, $3f, $1d, $83, $7c, $41, 0  , $72, $7d, $89  ; 6037: 39 83 6b... 9.k :4f37[1]
-    !byte $3a, $82, $7d, $98, $3c, 0  , $12                           ; 6043: 3a 82 7d... :.} :4f43[1]
+    !byte $d2, $49,   0, $81, $4b, $fc, $48, $91, $4c, $bf, $4a,   0  ; 602b: d2 49 00... .I. :4f2b[1]
+    !byte $39, $83, $6b, $3f, $1d, $83, $7c, $41,   0, $72, $7d, $89  ; 6037: 39 83 6b... 9.k :4f37[1]
+    !byte $3a, $82, $7d, $98, $3c,   0, $12                           ; 6043: 3a 82 7d... :.} :4f43[1]
     !text "uv?`u~A"                                                   ; 604a: 75 76 3f... uv? :4f4a[1]
-    !byte 0  , $99                                                    ; 6051: 00 99       ..  :4f51[1]
+    !byte   0, $99                                                    ; 6051: 00 99       ..  :4f51[1]
     !text "m1="                                                       ; 6053: 6d 31 3d    m1= :4f53[1]
     !byte $13                                                         ; 6056: 13          .   :4f56[1]
     !text "n3?"                                                       ; 6057: 6e 33 3f    n3? :4f57[1]
-    !byte 0  , $d5                                                    ; 605a: 00 d5       ..  :4f5a[1]
+    !byte   0, $d5                                                    ; 605a: 00 d5       ..  :4f5a[1]
     !text "j6@ck5B"                                                   ; 605c: 6a 36 40... j6@ :4f5c[1]
-    !byte 0  , $b1, $68, $93                                          ; 6063: 00 b1 68... ..h :4f63[1]
+    !byte   0, $b1, $68, $93                                          ; 6063: 00 b1 68... ..h :4f63[1]
     !text "COi"                                                       ; 6067: 43 4f 69    COi :4f67[1]
-    !byte $86, $45, 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0    ; 606a: 86 45 00... .E. :4f6a[1]
-    !byte 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , $ff, $ff  ; 6076: 00 00 00... ... :4f76[1]
+    !byte $86, $45,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0  ; 606a: 86 45 00... .E. :4f6a[1]
+    !byte   0,   0,   0,   0,   0,   0,   0,   0,   0,   0, $ff, $ff  ; 6076: 00 00 00... ... :4f76[1]
     !byte $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff  ; 6082: ff ff ff... ... :4f82[1]
     !byte $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff  ; 608e: ff ff ff... ... :4f8e[1]
     !byte $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff  ; 609a: ff ff ff... ... :4f9a[1]
     !byte $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff  ; 60a6: ff ff ff... ... :4fa6[1]
-    !byte $ff, $ff, 0  , $fb, $23, 5  , 7  , $97, 0  , $38, $83, $f6  ; 60b2: ff ff 00... ... :4fb2[1]
-    !byte $7d, $9e, 0  , $e7, $45, $45, $8a, $c5, 0  , $f9, $37, $94  ; 60be: 7d 9e 00... }.. :4fbe[1]
-    !byte $6c, $bf, 0  , $78, $8a, $4e, $77, $a5, 0  , $28, $82, $6d  ; 60ca: 6c bf 00... l.. :4fca[1]
-    !byte $7c, $d2, 0  , $72, $fe, $82, $b1, $ac, 0  , $26, $81, $c2  ; 60d6: 7c d2 00... |.. :4fd6[1]
-    !byte $7e, $c8, 0  , $ab, $fd, $23, $a7, $ae, 0  , $4a, $fe, $f5  ; 60e2: 7e c8 00... ~.. :4fe2[1]
-    !byte $93, $b8, 0  , $5e, 2  , 3  , $ed, $9f, 0  , $85, $fd, 9    ; 60ee: 93 b8 00... ... :4fee[1]
-    !byte $98, $b7, 0  , $46, $81, $d8, $7b, $ab, 0  , $f0, $18, $b1  ; 60fa: 98 b7 00... ... :4ffa[1]
-    !byte $b0, $a8, 0  , $75, $0d, $21, $90, $b8, 0  , $fb, $43, $77  ; 6106: b0 a8 00... ... :5006[1]
-    !byte $c9, $b3, 0  , $1d, $47, 1  , $8f, $af, 0  , $55, $43, $b0  ; 6112: c9 b3 00... ... :5012[1]
-    !byte $73, $c3, 0                                                 ; 611e: 73 c3 00    s.. :501e[1]
+    !byte $ff, $ff,   0, $fb, $23,   5,   7, $97,   0, $38, $83, $f6  ; 60b2: ff ff 00... ... :4fb2[1]
+    !byte $7d, $9e,   0, $e7, $45, $45, $8a, $c5,   0, $f9, $37, $94  ; 60be: 7d 9e 00... }.. :4fbe[1]
+    !byte $6c, $bf,   0, $78, $8a, $4e, $77, $a5,   0, $28, $82, $6d  ; 60ca: 6c bf 00... l.. :4fca[1]
+    !byte $7c, $d2,   0, $72, $fe, $82, $b1, $ac,   0, $26, $81, $c2  ; 60d6: 7c d2 00... |.. :4fd6[1]
+    !byte $7e, $c8,   0, $ab, $fd, $23, $a7, $ae,   0, $4a, $fe, $f5  ; 60e2: 7e c8 00... ~.. :4fe2[1]
+    !byte $93, $b8,   0, $5e,   2,   3, $ed, $9f,   0, $85, $fd,   9  ; 60ee: 93 b8 00... ... :4fee[1]
+    !byte $98, $b7,   0, $46, $81, $d8, $7b, $ab,   0, $f0, $18, $b1  ; 60fa: 98 b7 00... ... :4ffa[1]
+    !byte $b0, $a8,   0, $75, $0d, $21, $90, $b8,   0, $fb, $43, $77  ; 6106: b0 a8 00... ... :5006[1]
+    !byte $c9, $b3,   0, $1d, $47,   1, $8f, $af,   0, $55, $43, $b0  ; 6112: c9 b3 00... ... :5012[1]
+    !byte $73, $c3,   0                                               ; 611e: 73 c3 00    s.. :501e[1]
     !text ".6E"                                                       ; 6121: 2e 36 45    .6E :5021[1]
-    !byte $b1, $b4, 0  , $ed, $81, $73, $7d, $a7, 0  , $af            ; 6124: b1 b4 00... ... :5024[1]
+    !byte $b1, $b4,   0, $ed, $81, $73, $7d, $a7,   0, $af            ; 6124: b1 b4 00... ... :5024[1]
     !text "}]{"                                                       ; 612e: 7d 5d 7b    }]{ :502e[1]
-    !byte $b2, 0  , $d9, $1c, $c9, $93, $b4, 0  , $51, $21, $1d, $82  ; 6131: b2 00 d9... ... :5031[1]
-    !byte $b8, 0  , $31, $28, $f2, $96, $be, 0  , 0  , 0  , 0  , 0    ; 613d: b8 00 31... ..1 :503d[1]
-    !byte 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0    ; 6149: 00 00 00... ... :5049[1]
-    !byte 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0    ; 6155: 00 00 00... ... :5055[1]
-    !byte 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0    ; 6161: 00 00 00... ... :5061[1]
-    !byte 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  , 0    ; 616d: 00 00 00... ... :506d[1]
-    !byte 0  , 0  , 0  , 0  , 0  , 0  , 0  , $ff, $ff, $ff, $ff, $ff  ; 6179: 00 00 00... ... :5079[1]
+    !byte $b2,   0, $d9, $1c, $c9, $93, $b4,   0, $51, $21, $1d, $82  ; 6131: b2 00 d9... ... :5031[1]
+    !byte $b8,   0, $31, $28, $f2, $96, $be,   0,   0,   0,   0,   0  ; 613d: b8 00 31... ..1 :503d[1]
+    !byte   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0  ; 6149: 00 00 00... ... :5049[1]
+    !byte   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0  ; 6155: 00 00 00... ... :5055[1]
+    !byte   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0  ; 6161: 00 00 00... ... :5061[1]
+    !byte   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0  ; 616d: 00 00 00... ... :506d[1]
+    !byte   0,   0,   0,   0,   0,   0,   0, $ff, $ff, $ff, $ff, $ff  ; 6179: 00 00 00... ... :5079[1]
     !byte $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff  ; 6185: ff ff ff... ... :5085[1]
     !byte $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff  ; 6191: ff ff ff... ... :5091[1]
     !byte $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff  ; 619d: ff ff ff... ... :509d[1]
@@ -7550,6 +7623,7 @@ l4a00
 }
 
     !byte 0                                                           ; 61b0: 00          .
+
 entry_point
     lda #0                                                            ; 61b1: a9 00       ..
     tay                                                               ; 61b3: a8          .
